@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="css/index.css" rel="stylesheet" />
+  <link href="css/tailwind.css" rel="stylesheet" />
+  <title>AstralDev</title>
+</head>
+
+<body>
+  <div class="static h-screen-5 top-0 shadow-sm z-10">
+    <nav class="hidden md:flex flex-row justify-between bg-gray-200">
+      <div class="w-p-60 p-2 font-bold text-xl">
+        AstralDev
+      </div>
+      <ul class="w-p-40 lg:w-p-30 flex items-stretch mr-1">
+        <li class="flex flex-grow items-center">
+          <a class="p-1.5 border-gray-600 w-full inline-flex justify-center" href="#home" id="active"
+            onclick="onLink(this)">
+            Home
+          </a>
+        </li>
+        <li class="flex flex-grow items-center">
+          <a class="p-1.5 border-gray-600 w-full inline-flex justify-center" href="#projects" onclick="onLink(this)">
+            Projects
+          </a>
+        </li>
+        <li class="flex flex-grow items-center">
+          <a class="p-1.5 border-gray-600 w-full inline-flex justify-center" href="#about" onclick="onLink(this)">
+            About me
+          </a>
+        </li>
+        
+        <li class="flex flex-grow items-center">
+          <a class="p-1.5 border-gray-600 w-full inline-flex justify-center" href="#skills" onclick="onLink(this)">
+            Skills
+          </a>
+        </li>
+        <li class="flex flex-grow items-center">
+          <a class="p-1.5 border-gray-600 w-full inline-flex justify-center" href="#contact" onclick="onLink(this)">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="flex md:hidden flex-col w-full top-0 bg-transparent">
+      <div class="flex p-2 h-screen-6 justify-between w-full border-b-2 nav-cover border-black-transparent shadow-purple-md">
+        <span class="font-bold text-xl text-theme">
+          AstralDev
+        </span>
+        <button class="block h-7 w-7 mx-1" onclick="toggleMenu()">
+          <svg fill="currentColor" stroke="currentColor" version="1.1" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" class="text-gray-200">
+            <g>
+              <rect height="2.3" rx="2.16" ry="1.78" width="20" x="1.41" y="2.63" />
+              <rect height="2.3" rx="2.16" ry="1.78" width="20" x="1.41" y="9.80" />
+              <rect height="2.3" rx="2.16" ry="1.78" width="20" x="1.41" y="16.97" />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <div class="w-p-60 fixed hidden slide-right right-0 top-screen-6 h-screen-94 text-white ml-auto border-l-2 border-black nav-cover text-lg" id="sm-menu-list">
+        <ul class="ml-2 grid space-y-2">
+          <li class="p-1 flex items-center rounded hover:nav-cover">
+            <a class="w-full flex items-center" href="#projects" onclick="onLink(this)">
+              Projects
+            </a>
+          </li>
+          <li class="p-1 flex items-center rounded hover:nav-cover">
+            <a class="w-full flex items-center" href="#about" onclick="onLink(this)">
+              About me
+            </a>
+          </li>
+          
+          <li class="p-1 flex items-center rounded hover:nav-cover">
+            <a class="w-full flex items-center" href="#skills" onclick="onLink(this)">
+              Skills
+            </a>
+          </li>
+          <li class="p-1 flex items-center rounded hover:nav-cover" >
+            <a class="w-full flex items-center" href="#contact" >
+              Contact
+            </a>
+          </li>
+        </ul>
+        <div class="h-p-40 mt-7">
+          <ul class="h-full flex flex-col justify-between items-center">
+            <li>
+              <div>
+                <span>Facebook</span>
+                <div class=""></div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Google</span>
+                <div class=""></div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Github</span>
+                <div class=""></div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span>Linked</span>
+                <div class=""></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="body text-white">
+    <div class="">
+      <a name="home"></a>
+      <div></div>
+    </div>
+    <div class="hidden">
+      <a name="projects">Projects</a>
+    </div>
+    <div class="hidden">
+      <a name="about"></a>
+    </div>
+    <div class="hidden">
+      <a name="skills"></a>
+      <div></div>
+      <div class="w-full md:w-p-85 lg:w-p-60 mb-2">
+        <div class="font-semibold text-gray-50 m-1 p-1.5 text-2xl">Skills</div>
+        <div class="grid grid-cols-skills grid-rows-skills space-y-3 justify-center md:justify-items-start">
+          <div class="w-p-95 bg-transparent border border-black p-3 nav-cover shadow-white-md shadow-white rounded-lg mx-auto">
+            <div class="text-lg text-white font-semibold ml-3">
+              Front End
+            </div>
+            <div class="rounded flex items-center py-2 relative">
+              <div class="text-percent inset-0 absolute flex w-p-60 text-gray-700 h-full items-center justify-center">
+                60
+                <span>%</span>
+              </div>
+              <div class="relative w-p-70 overflow-hidden">
+                <svg class="level" id="front-end-level">
+                  <circle cx="70" cy="70" r="70" />
+                  <circle class="main" cx="70" cy="70" r="70" />
+                </svg>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-semibold text-lg text-white">
+                Languages
+              </span>
+              <ul>
+                <li>
+                    <div class="w-full flex flex-row justify-between px-1.5">
+                      <span class="font-semibold text-base text-gray-800">
+                        Html
+                      </span>
+                      <span class="text-percent-line text-gray-700">
+                        80
+                        <span>%</span>
+                      </span>
+                    </div>
+                    <svg class="line" viewBox="0 0 105 5">
+                      <path class="base" d="M2 2 h 0 100" />
+                      <path class="main" d="M2 2 h 0 80" />
+                    </svg>
+                </li>
+                <li>
+                  <div class="w-full flex flex-row justify-between px-1.5">
+                    <span class="font-semibold text-base text-gray-800">
+                      CSS
+                    </span>
+                    <span class="text-percent-line text-gray-700">
+                      70
+                      <span>%</span>
+                    </span>
+                  </div>
+                  <svg class="line" viewBox="0 0 105 5">
+                    <path class="base" d="M2 2 h 0 100" />
+                    <path class="main" d="M2 2 h 0 70" />
+                  </svg>
+                </li>
+                <li>
+                  <div class="w-full flex flex-row justify-between px-1.5">
+                    <span class="font-semibold text-base text-gray-800">
+                      JavaScript
+                    </span>
+                    <span class="text-percent-line text-gray-700">
+                      70
+                      <span>%</span>
+                    </span>
+                  </div>
+                  <svg class="line" viewBox="0 0 105 5">
+                    <path class="base" d="M2 2 h 0 100" />
+                    <path class="main" d="M2 2 h 0 65" />
+                  </svg>
+                </li>
+              </ul>
+              <span class="font-semibold text-lg text-white">Frameworks</span>
+              <ul>
+                <li>
+                  <div class="w-full flex flex-row justify-between px-1.5">
+                    <span class="font-semibold text-base text-gray-800">
+                      VueJs
+                    </span>
+                    <span class="text-percent-line text-gray-700">
+                      45
+                      <span>%</span>
+                    </span>
+                  </div>
+                  <svg class="line" viewBox="0 0 105 5">
+                    <path class="base" d="M2 2 h 0 100" />
+                    <path class="main" d="M2 2 h 0 45" />
+                  </svg>
+                </li>
+                <li>
+                  <div class="w-full flex flex-row justify-between px-1.5">
+                    <span class="font-semibold text-base text-gray-800">
+                      React
+                    </span>
+                    <span class="text-percent-line text-gray-700">
+                      0
+                      <span>%</span>
+                    </span>
+                  </div>
+                  <svg class="line" viewBox="0 0 105 5">
+                    <path class="base" d="M2 2 h 0 100" />
+                    <path class="main" d="M2 2 h 0 0" />
+                  </svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-p-95 bg-transparent border border-black p-3 nav-cover shadow-white-md shadow-white rounded-lg mx-auto">
+            <div class="text-lg text-white font-semibold ml-3">Back End</div>
+            <div>
+              <div class="rounded flex items-center py-2 relative">
+                <div class="text-percent inset-0 absolute flex w-p-60 text-gray-700 h-full items-center justify-center">
+                  40
+                  <span>%</span>
+                </div>
+                <div class="relative w-p-70 overflow-hidden">
+                  <svg class="level" id="back-end-level">
+                    <circle cx="70" cy="70" r="70" />
+                    <circle class="main" cx="70" cy="70" r="70" stroke-dashoffset="260"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="font-semibold text-lg text-white">
+                Languages
+              </span>
+              <ul>
+                <li>
+                    <div class="w-full flex flex-row justify-between px-1.5">
+                      <span class="font-semibold text-base text-gray-800">
+                        NodeJs
+                      </span>
+                      <span class="text-percent-line text-gray-700">
+                        80
+                        <span>%</span>
+                      </span>
+                    </div>
+                    <svg class="line" viewBox="0 0 105 5">
+                      <path class="base" d="M2 2 h 0 100" />
+                      <path class="main" d="M2 2 h 0 80" />
+                    </svg>
+                </li>
+                <li>
+                  <div class="w-full flex flex-row justify-between px-1.5">
+                    <span class="font-semibold text-base text-gray-800">
+                      C#
+                    </span>
+                    <span class="text-percent-line text-gray-700">
+                      40
+                      <span>%</span>
+                    </span>
+                  </div>
+                  <svg class="line" viewBox="0 0 105 5">
+                    <path class="base" d="M2 2 h 0 100" />
+                    <path class="main" d="M2 2 h 0 40" />
+                  </svg>
+              </li>
+
+              <li>
+                <div class="w-full flex flex-row justify-between px-1.5">
+                  <span class="font-semibold text-base text-gray-800">
+                    Python
+                  </span>
+                  <span class="text-percent-line text-gray-700">
+                    85
+                    <span>%</span>
+                  </span>
+                </div>
+                <svg class="line" viewBox="0 0 105 5">
+                  <path class="base" d="M2 2 h 0 100" />
+                  <path class="main" d="M2 2 h 0 85" />
+                </svg>
+            </li>
+              </ul>
+              <span class="font-semibold text-lg text-white">
+                Frameworks
+              </span>
+              <ul>
+                <li>
+                    <div class="w-full flex flex-row justify-between px-1.5">
+                      <span class="font-semibold text-base text-gray-800">
+                        Express
+                      </span>
+                      <span class="text-percent-line text-gray-700">
+                        50
+                        <span>%</span>
+                      </span>
+                    </div>
+                    <svg class="line" viewBox="0 0 105 5">
+                      <path class="base" d="M2 2 h 0 100" />
+                      <path class="main" d="M2 2 h 0 50" />
+                    </svg>
+                </li>
+                <li>
+                  <div class="w-full flex flex-row justify-between px-1.5">
+                    <span class="font-semibold text-base text-gray-800">
+                      Flask
+                    </span>
+                    <span class="text-percent-line text-gray-700">
+                      45
+                      <span>%</span>
+                    </span>
+                  </div>
+                  <svg class="line" viewBox="0 0 105 5">
+                    <path class="base" d="M2 2 h 0 100" />
+                    <path class="main" d="M2 2 h 0 45" />
+                  </svg>
+              </li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-p-95 bg-transparent border border-black p-3 nav-cover shadow-white-md shadow-white rounded-lg mx-auto">
+            <div class="text-lg text-white font-semibold ml-3">Software Development</div>
+            <div>
+              <div class="rounded flex items-center py-2 relative">
+                <div class="text-percent inset-0 absolute flex w-p-60 text-gray-700 h-full items-center justify-center">
+                  50
+                  <span>%</span>
+                </div>
+                <div class="relative w-p-70 overflow-hidden">
+                  <svg class="level" id="sd-level">
+                    <circle cx="70" cy="70" r="70" />
+                    <circle class="main" cx="70" cy="70" r="70" stroke-dashoffset="260"/>
+                  </svg>
+                </div>
+              </div>
+              <span class="font-semibold text-lg text-white">
+                Languages
+              </span>
+              <ul>
+                <li>
+                    <div class="w-full flex flex-row justify-between px-1.5">
+                      <span class="font-semibold text-base text-gray-800">
+                        Python
+                      </span>
+                      <span class="text-percent-line text-gray-700">
+                        80
+                        <span>%</span>
+                      </span>
+                    </div>
+                    <svg class="line" viewBox="0 0 105 5">
+                      <path class="base" d="M2 2 h 0 100" />
+                      <path class="main" d="M2 2 h 0 80" />
+                    </svg>
+                </li>
+              <li>
+                <div class="w-full flex flex-row justify-between px-1.5">
+                  <span class="font-semibold text-base text-gray-800">
+                    C#
+                  </span>
+                  <span class="text-percent-line text-gray-700">
+                    30
+                    <span>%</span>
+                  </span>
+                </div>
+                <svg class="line" viewBox="0 0 105 5">
+                  <path class="base" d="M2 2 h 0 100" />
+                  <path class="main" d="M2 2 h 0 30" />
+                </svg>
+            </li>
+              </ul>
+              <span class="font-semibold text-lg text-white">
+                Frameworks
+              </span>
+              <ul>
+                <li>
+                    <div class="w-full flex flex-row justify-between px-1.5">
+                      <span class="font-semibold text-base text-gray-800">
+                        Gtk
+                      </span>
+                      <span class="text-percent-line text-gray-700">
+                        70
+                        <span>%</span>
+                      </span>
+                    </div>
+                    <svg class="line" viewBox="0 0 105 5">
+                      <path class="base" d="M2 2 h 0 100" />
+                      <path class="main" d="M2 2 h 0 70" />
+                    </svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a name="contact"></a>
+      <div>
+        Contact me at Gmail, Facebook, 
+      </div>
+    </div>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

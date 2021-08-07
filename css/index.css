@@ -1,0 +1,102 @@
+:root{
+  --theme-color: rgb(210, 95, 255);
+}
+body{
+  background-color: rgba(39, 39, 39, 0.842);
+  background-image: url("../images/background.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+.border-black-transparent{
+  border-color: rgba(30,30,30,0.5);
+}
+.shadow-purple-md{
+  box-shadow: 0 0.3px 1px 0 var(--theme-color);
+}
+.text-theme{
+  color: var(--theme-color);
+}
+.nav-cover{
+  background-image: linear-gradient(to top, rgba(5, 5, 5, 0.747), rgba(15, 15, 15, 0.692));
+}
+.h-screen-6{
+  height: 6vh;
+}
+.h-screen-94{
+  height: 94vh;
+}
+.top-screen-6{
+  top: 6vh;
+}
+.shadow-white-md{
+  box-shadow: 0 0.2px 6px 0 #fff;
+}
+.hover\:nav-cover:hover{
+  background-image: linear-gradient(to top, rgba(5, 5, 5, 0.747), rgba(15, 15, 15, 0.692));
+}
+.w-fit-content{
+  width: fit-content;
+}
+a#active{
+  border-bottom-width: 3px;
+  background: rgba(10, 10, 10, 0.04); 
+}
+.grid-cols-skills{
+  grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
+}
+.grid-rows-skills{
+  grid-template-rows: repeat(3, minmax(450px, 550px));
+}
+svg.line path{
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+svg.line path.base{
+  stroke: #fff;
+  stroke-width: 3;
+}
+svg.line path.main{
+  stroke-width: 3;
+  stroke: var(--theme-color);
+}
+svg.level circle{
+  fill: none;
+  stroke-width: 10;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 440;
+  stroke-linecap: round;
+}
+svg.level circle:first-child{
+  stroke-dashoffset: 0;
+  stroke: #fff;
+  stroke-width: 9.5;
+}
+svg.level circle:last-child{
+  stroke: var(--theme-color);
+}
+.text-percent{
+  font-size: 44px;
+}
+.text-percent span{
+  font-size: 20px;
+}
+.text-percent-line{
+  font-size: 18px;
+}
+.text-percent-line span{
+  font-size: 12px;
+}
+
+.tt{
+  color: rgb(138, 50, 388);
+}
+.slide-right{
+  transform: translateX(100%);
+  animation: slide-right 500ms 1 forwards linear;
+}
+@keyframes slide-right {
+  100%{transform: translateX(0%);}
+}
