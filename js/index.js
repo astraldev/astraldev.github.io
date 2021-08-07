@@ -26,9 +26,9 @@ function onLink(obj) {
   console.log(nm)
   section = document.querySelector(`a[name=${nm}]`)
   children = section.parentNode.parentNode.children;
+  i = 0
   for (i; i < children.length; i++) 
   children[i].classList.add("hidden")
-  
   var cls_list = section.parentNode.classList
   if (cls_list.contains("hidden")) cls_list.remove("hidden")
   section.parentNode.classList = cls_list
