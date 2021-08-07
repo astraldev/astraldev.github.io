@@ -8,6 +8,10 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 .border-black-transparent{
   border-color: rgba(30,30,30,0.5);
@@ -17,21 +21,26 @@ body{
 }
 .text-theme{
   color: var(--theme-color);
+}.border-theme{
+  border-color: var(--theme-color);
 }
 .nav-cover{
   background-image: linear-gradient(to top, rgba(5, 5, 5, 0.747), rgba(15, 15, 15, 0.692));
 }
-.h-screen-6{
-  height: 6vh;
+.h-screen-7{
+  height: 7vh;
 }
-.h-screen-94{
-  height: 94vh;
+.h-screen-93{
+  height: 93vh;
 }
-.top-screen-6{
-  top: 6vh;
+.top-screen-7{
+  top: 7vh;
 }
 .shadow-white-md{
   box-shadow: 0 0.2px 6px 0 #fff;
+}
+.shadow-white-sm{
+  box-shadow: 0 0.2px 3px 0 #fff;
 }
 .hover\:nav-cover:hover{
   background-image: linear-gradient(to top, rgba(5, 5, 5, 0.747), rgba(15, 15, 15, 0.692));
@@ -41,13 +50,27 @@ body{
 }
 a#active{
   border-bottom-width: 3px;
-  background: rgba(10, 10, 10, 0.04); 
+  background: rgba(139, 139, 139, 0.384);
+  font-weight: 700;
+}
+.font-x-semibold{
+  font-weight: 550;
+}
+a.active-hidden#active{
+  border: 0;
+  background: transparent;
+}
+a.sm#active{
+  border-left-width: 3px;
+  border-bottom-width: 0;
+  padding-left: 8px;
+  background: rgba(182, 182, 182, 0.14); 
 }
 .grid-cols-skills{
   grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
 }
 .grid-rows-skills{
-  grid-template-rows: repeat(3, minmax(450px, 550px));
+  grid-template-rows: repeat(auto-fit, minmax(480px, 75vh));
 }
 svg.line path{
   fill: none;
@@ -74,7 +97,7 @@ svg.level circle:first-child{
   stroke: #fff;
   stroke-width: 9.5;
 }
-svg.level circle:last-child{
+svg.level circle.main:last-child{
   stroke: var(--theme-color);
 }
 .text-percent{
@@ -93,10 +116,18 @@ svg.level circle:last-child{
 .tt{
   color: rgb(138, 50, 388);
 }
-.slide-right{
+.slide-from-right{
   transform: translateX(100%);
-  animation: slide-right 500ms 1 forwards linear;
+  animation: slide-from-right 200ms 1 forwards linear;
 }
-@keyframes slide-right {
-  100%{transform: translateX(0%);}
+.slide-to-right{
+  transform: translateX(0%);
+  animation: slide-to-right 200ms 1 forwards linear;
+}
+@keyframes slide-from-right{
+  100%{transform: translateX(0%) ;}
+}
+
+@keyframes slide-to-right{
+  100%{transform: translateX(100%) ;}
 }
