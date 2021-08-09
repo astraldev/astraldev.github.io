@@ -14,11 +14,11 @@
 
 <body>
   <div class="sticky w-full h-screen-7 top-0 shadow-sm z-10">
-    <nav class="hidden md:flex flex-row justify-between nav-cover">
+    <nav class="hidden md:flex flex-row justify-between nav-cover p-1">
       <div class="w-p-70 font-semibold text-2xl">
         <a href="#home" class="w-full border-0 h-full p-2 text-white active-hidden" onclick="onLink(this)">AstralDev</a>
       </div>
-      <ul class="w-p-30 lg:w-p-30 flex items-stretch mr-1" id="menu-list">
+      <ul class="w-p-30 md:w-p-50 lg:w-p-30 flex items-stretch mr-1" id="menu-list">
         <li class="flex flex-grow items-center">
           <a class="p-1.5 border-theme w-full inline-flex justify-center text-white font-x-semibold" href="#home" id="active"
             onclick="onLink(this)">
@@ -49,17 +49,17 @@
       </ul>
     </nav>
     <nav class="flex md:hidden flex-col w-full top-0 bg-transparent">
-      <div class="flex p-2 h-screen-7 justify-between w-full border-b-2 nav-cover border-black-transparent shadow-white-sm">
+      <div class="flex p-2 h-10 justify-between w-full border-b-2 nav-cover border-black-transparent shadow-white-sm">
         <span class="font-bold text-xl text-white">
-          <a href="#home" class="h-full w-full active-hidden" onclick="onLink_sm(this)">AstralDev</a>
+          <a href="#home" class="h-full w-full flex items-center  active-hidden" onclick="onLink_sm(this)">AstralDev</a>
         </span>
-        <button class="block h-7 w-7 mr-2" onclick="toggleMenu()">
-          <svg fill="currentColor" stroke="currentColor" version="1.1" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg" class="text-gray-200">
-            <g>
-              <rect height="2.3" rx="2.16" ry="1.78" width="20" x="1.41" y="2.63" />
-              <rect height="2.3" rx="2.16" ry="1.78" width="20" x="1.41" y="9.80" />
-              <rect height="2.3" rx="2.16" ry="1.78" width="20" x="1.41" y="16.97" />
+        <button class="flex items-center h-7 w-7 mr-2" onclick="toggleMenu()">
+          <svg id="menu-icon" fill="currentColor" stroke="currentColor" version="1.1" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" class="text-purple-500">
+            <g >
+              <rect height="3.3" rx="2.16" ry="1.78" width="20" x="1" y="2" />
+              <rect height="3.3" rx="2.16" ry="1.78" width="20" x="1" y="9" />
+              <rect height="3.3" rx="2.16" ry="1.78" width="20" x="1" y="16" />
             </g>
           </svg>
         </button>
@@ -96,7 +96,7 @@
         </ul>
       </div>
         <div class="relative mt-auto h-p-30">
-          <ul class="flex w-p-70 border-t border-gray-400 p-3 mx-auto flex-wrap justify-center">
+          <ul class="flex w-p-60 border-t border-gray-400 p-3 mx-auto flex-wrap justify-center">
             <li class="w-9 m-1">
               <a class="fa fa-facebook bg-blue-400 flex items-center justify-center  p-2 h-9 text-center w-9 rounded-full"></a>
             </li>
@@ -115,21 +115,46 @@
     </nav>
   </div>
   <div class="body text-white">
-    <div class="">
+    <div class="md:w-p-90 lg:w-p-80 mx-auto hidden">
       <a name="home"></a>
+      <div>
+        <div>This is AstralDev</div>
+        <div>
+          <ul>
+            <li>Web Developer</li>
+            <li>Web Designer</li>
+            <li>Software Developer</li>
+          </ul>
+        </div>
+        <div>
+          <span>Top projects</span>
+          <ul>
+            <li>Brightness Adjuster</li>
+            <li>niceprint</li>
+            <li>PyEdit</li>
+            <li>And many more</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>Projects</li>
+            <li>About me</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="hidden">
+    <div class=" md:w-p-90 lg:w-p-80 mx-auto">
       <a name="projects">Projects</a>
     </div>
-    <div class="hidden">
+    <div class="hidden md:w-p-90 lg:w-p-80 mx-auto">
       <a name="about"></a>
     </div>
-    <div class="hidden">
+    <div class="md:w-p-90 lg:w-p-80 mx-auto hidden">
       <a name="skills"></a>
-      <div></div>
-      <div class="w-full mb-2">
+      <div class="">
         <div class="font-semibold text-gray-50 m-1 p-1.5 text-2xl">Skills</div>
-        <div class="grid grid-cols-skills w-p-95 grid-rows-skills space-y-3 md:space-y-0 justify-center md:justify-start">
+        <div class="grid grid-cols-skills w-p-95 grid-rows-skills mb-3 space-y-3 md:space-y-0 justify-center md:justify-start ">
           <div class="w-p-95 bg-transparent border border-black p-3 nav-cover shadow-white-sm rounded-lg mx-auto">
             <div class="text-lg text-white font-semibold ml-3">
               Front End
@@ -412,30 +437,30 @@
     </div>
     <div class="hidden">
       <a name="contact"></a>
-      <div>
-        Contact me at 
-        <ul>
-          <li class="w-9 m-1">
-            <a class="fa fa-facebook bg-blue-400 flex items-center justify-center  p-2 h-9 text-center w-9 rounded-full"></a>
-          </li>
-          <li class="w-9 m-1">
-              <a class="fa fa-google bg-red-400 flex items-center justify-center  p-2 h-9 text-center w-9 rounded-full"></a>
-          </li>
-          <li class="w-9 m-1">
-            <a class="fa fa-github bg-gray-600 flex items-center justify-center  p-2 h-9 text-center w-9 rounded-full"></a>
-          </li>
-          <li class="w-9 m-1">
-              <a class="fa fa-linkedin bg-blue-400 flex items-center justify-center  p-2 h-9 text-center w-9 rounded-full"></a>
-          </li>
-        </ul>
-        <div>
-          <form action="mailto:ekureedem480@gmail.com">
-            <div>Send a mail</div>
-            <textarea name="mail" id="" cols="30" rows="10">
-            </textarea>
-            <button>Send</button>
+      <div class="text-2xl w-p-90 mx-auto font-bold">Contact</div>
+      <div class="mx-auto h-screen-80 flex flex-col justify-between relative rounded-lg mt-3 p-2 shadow-white-sm p-2 w-p-90">
+        <div class="w-full relative ">
+          <form action="mailto:ekureedem480@gmail.com" class="w-p-90 mx-auto">
+            <div class="text-base font-semibold mb-">Send a mail: </div>
+            <div class="flex flex-col relative mt-4"><input type="email" name="email" id="contact-email" class="h-10 border-t-2 bg-transparent p-2" placeholder="Input Email"></div>
+            <textarea name="mail" id="" cols="40" rows="10" class="w-full resize-none p-1.5 h-p-90 border-b-2 bg-transparent" placeholder="Message here"></textarea>
+            <button class="p-1.5 font-bold border-2 email-send rounded-b-none border-b-0 right-3 absolute rounded-md">Send</button>
           </form>
         </div>
+        <ul class="flex mx-auto w-full justify-center items-center mb-6">
+          <li class="w-9 m-1">
+            <a class="fa fa-facebook bg-blue-400 flex items-center justify-center  p-2.5 h-9 text-center w-9 rounded-full"></a>
+          </li>
+          <li class="w-9 m-1">
+              <a class="fa fa-google bg-red-400 flex items-center justify-center  p-2.5 h-9 text-center w-9 rounded-full"></a>
+          </li>
+          <li class="w-9 m-1">
+            <a class="fa fa-github bg-gray-600 flex items-center justify-center  p-2.5 h-9 text-center w-9 rounded-full"></a>
+          </li>
+          <li class="w-9 m-1">
+              <a class="fa fa-linkedin bg-blue-400 flex items-center justify-center  p-2.5 h-9 text-center w-9 rounded-full"></a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
