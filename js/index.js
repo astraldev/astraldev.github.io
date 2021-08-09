@@ -5,6 +5,15 @@ function load(){
   el2.style.strokeDashoffset = 440 - (440 * 40) / 100
   var el3 = document.querySelector("svg#sd-level circle.main")
   el3.style.strokeDashoffset = 440 - (440 * 50) / 100
+  document.getElementById("contact-email").value = ""
+  document.getElementById("contact-email").addEventListener("blur", function(ev){
+    if(this.value != "")
+    this.nextElementSibling.classList.add("hidden")
+    else this.nextElementSibling.classList.remove("hidden")
+  })
+  document.getElementById("contact-email").addEventListener("focus", function(ev){
+    this.nextElementSibling.classList.remove("hidden")
+  })
 }
 
 function onLink(obj) {
@@ -61,23 +70,42 @@ function onLink_sm(obj){
   if (cls_list.contains("hidden")) cls_list.remove("hidden")
 
   section.parentNode.classList = cls_list
-  document.getElementById("sm-menu").classList.add("hidden")
+
+  var m_list = document.getElementById("sm-menu");
+  var m_ico = document.getElementById("menu-icon")
+  var cs = m_list.classList;
+  cs.remove("slide-from-right")
+  cs.add("slide-to-right")
+  m_ico.classList.add("menu-animation-reverse")
+  setTimeout(function() {
+    cs.remove("slide-to-right")
+    cs.add("hidden")
+    m_ico.classList.remove("menu-animation")
+    m_ico.classList.remove("menu-animation-reverse")
+  }, 210);
   window.scrollTo(0,0);
 }
-function toggleMenu() {
+function toggleMenu(hide=true) {
   var m_list = document.getElementById("sm-menu");
   var cs = m_list.classList;
+  var m_ico = document.getElementById("menu-icon")
+
   if (cs.contains("hidden")){
     cs.remove("hidden");
     cs.add("slide-from-right")
+    m_ico.classList.add("menu-animation")
   }
   else{
     cs.remove("slide-from-right")
     cs.add("slide-to-right")
+    m_ico.classList.add("menu-animation-reverse")
     setTimeout(function() {
       cs.remove("slide-to-right")
       cs.add("hidden")
-    }, 650);
+      m_ico.classList.remove("menu-animation")
+      m_ico.classList.remove("menu-animation-reverse")
+    }, 210);
+
   }
 }
 load()
