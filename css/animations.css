@@ -1,0 +1,35 @@
+/*Keyframes Animation*/
+@keyframes slide-from-right{
+  100%{transform: translateX(0%) ;}
+}
+@keyframes slide-to-right{
+  100%{transform: translateX(100%) ;}
+}
+
+/* Transition animations */
+
+svg.menu-animation rect:nth-child(2){
+  transform: translateX(-100px);
+  transition: transform 200ms linear;
+}
+svg.menu-animation rect:nth-child(1){
+  transform: translateX(8px) rotate(45deg);
+  transition: transform 200ms linear;
+}
+svg.menu-animation rect:nth-child(3){
+  transform: translateX(-7px) translateY(5px) rotate(-45deg) ;
+  transition: transform 200ms linear;
+}
+
+svg.menu-animation-reverse rect:nth-child(2){
+  transform: translateX(0);
+  transition: transform 200ms linear;
+}
+svg.menu-animation-reverse rect:nth-child(1){
+  transform: translateX(0) rotate(0deg);
+  transition: transform 200ms linear;
+}
+svg.menu-animation-reverse rect:nth-child(3){
+  transform: translateX(0) translateY(0) rotate(0) ;
+  transition: transform 200ms linear;
+}
