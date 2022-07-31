@@ -6,8 +6,8 @@ export default {
     var strings = binding.value ? [...binding.value.strings || text] : [text || '']
     el.innerText = ""
     new Typed(el, {
-      strings: strings ,
-      typeSpeed: binding.value ? binding.value.speed || 40 : 40
+      ...binding.value || {},
+      strings: strings
     })
   }
 }
