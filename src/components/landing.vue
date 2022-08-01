@@ -73,7 +73,7 @@ export default {
           duration: 1500
         }
       ],
-    }, "-=1400")
+    }, "-=1000")
     timeline.add({
       targets: this.$refs.caption,
       keyframes: [

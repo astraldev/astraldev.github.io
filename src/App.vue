@@ -1,6 +1,5 @@
 <template>
   <landing />
-  <navbar />
   <about-me />
 </template>
 <script>
