@@ -13,8 +13,8 @@
         </span>
       </span>
     </div>
-    <button ref="getInTouch" class="get-in-touch">
-      <font-awesome-icon icon="fa-solid fa-down-long" /> Get In Touch <font-awesome-icon icon="fa-solid fa-down-long" />
+    <button ref="getInTouch" class="get-in-touch font-asap font-bold uppercase">
+      <font-awesome-icon icon="fa-solid fa-down-long" /> My Works <font-awesome-icon icon="fa-solid fa-down-long" />
     </button>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     return {
       typedOptions: {
         strings: [
-          "I love to create and design intuitive <b>websites</b>^800  &amp;^1000 linux desktop <b>applications</b>.",
+          "I <b>love</b> to create and design intuitive <b>websites</b>^800  &amp;^1000 linux desktop <b>applications</b>.",
           "Freelancer and <b>UI/UX designer</b>."
         ],
         loop: true,
