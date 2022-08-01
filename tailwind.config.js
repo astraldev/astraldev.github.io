@@ -13,7 +13,7 @@ module.exports = {
       fontFamily: {
         'ubuntu-mono': "'Ubuntu Mono', monospace",
         'asap': 'Asap, sans-serif',
-        'comfortaa': 'Comfortaa, cursive',
+        'comfortaa': 'Comfortaa, sans-serif',
       }
     },
   },
