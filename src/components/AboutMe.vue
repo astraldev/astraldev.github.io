@@ -1,45 +1,62 @@
 <template>
-  <div class="w-full -mt-5 about-me">
+  <div class="w-full about-me">
     <div ref="illustration" class="illustration">
-      <coding-illustration class="w-full" v-intersect="{callback: illustrationIntersect}"/>
+      <coding-illustration :class="`w-full -mt-4`" v-intersect="{callback: illustrationIntersect, once: true}"/>
     </div>
-    <div class="p-4 flex items-center bg-cyan -mt-20 justify-center">
-      <div>
-        <h2 class="font-bold text-2xl text-center px-4 py-2 mt-20 text-white font-comfortaa">Hi, I'm AstralDEV, nice to meet you</h2>
+    <div class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/70 justify-center">
+      <div class="flex flex-col pb-4">
+        <h2 class="font-bold text-2xl text-center pt-16 px-4 py-2 text-white font-comfortaa">Hello, I am AstralDev</h2>
+        <span class="py-8 px-4 font-asap text-gray-200 text-center">
+          With a spark for web development, I soar with more than <b>4</b> years of experience with 
+          <b>frontend development</b> and <b>UI</b> designing and creation of applications & software for desktop.
+        </span>
+      </div>
+      <div class="flex flex-col w-full" id="works">
+        <div class="flex justify-between px-10 items-center text-white">
+          <h2 class="text-lg font-bold font-comfortaa">My Works</h2>
+          <font-awesome-icon icon="fa-solid fa-link" class="text-gray-200 cursor-pointer hover:text-gray-50" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CodingIllustration from '../assets/coding-illustration.svg'
+import CodingIllustration from '../assets/coding-illustration.svg?component'
 import anime from 'animejs'
 export default {
   components: { CodingIllustration },
+  data(){
+    return {
+      intersected: false
+    }
+  },
   methods: {
     illustrationIntersect(){
-      const timeline = anime.timeline({easing: 'easeInOutElastic(1,.4)'})
-      this.$refs.illustration.style.opacity = 1
+      this.intersected = true;
+      const timeline = anime.timeline({easing: 'easeInOutElastic(1,.9)'})
       timeline.add({
-        targets: '.illustration > svg',
+        targets: [".illustration > svg g"],
         keyframes: [
           {
             opacity: 0,
-            translateY: "-10%"
+            translateY: "-15%",
+            delay: 0,
+            duration: 0
           },
           {
             opacity: 1,
             translateY: 0,
-            duration: 1000,
+            duration: 600,
+            delay: anime.stagger(300, {start: 0})
           }
         ],
-        delay: anime.stagger(400)
       })
     }
   }
 }
 </script>
 <style lang="sass" scoped>
-div.illustration
-  @apply opacity-0
+  .illustration > svg g 
+    @apply opacity-0
 </style>

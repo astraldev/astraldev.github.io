@@ -13,9 +13,9 @@
         </span>
       </span>
     </div>
-    <button ref="getInTouch" class="get-in-touch font-asap font-bold uppercase">
+    <a ref="getInTouch" href="#works" class="get-in-touch font-asap font-bold uppercase" v-smooth-scroll>
       <font-awesome-icon icon="fa-solid fa-down-long" /> My Works <font-awesome-icon icon="fa-solid fa-down-long" />
-    </button>
+    </a>
   </div>
 </template>
 <script>
