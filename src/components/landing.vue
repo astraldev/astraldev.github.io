@@ -5,7 +5,7 @@
       <round-logo class="aspect-square" />
     </div>
     <div class="h-[calc(2.25rem_+_2.5rem)] flex flex-col mt-2">
-      <h2 ref="header" class="text-4xl overflow-clip my-auto font-comfortaa inline font-bold text-gray-600 text-center">Web & Software Developer</h2>
+      <h2 ref="header" class="text-heading overflow-clip my-auto inline text-center">Web & Software Developer</h2>
     </div>
     <div ref="caption" class="h-[calc((0.875rem_+_1.25rem)*2)] text-center mx-4 p-2">
       <span class="inline text-sm">

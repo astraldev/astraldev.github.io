@@ -1,13 +1,14 @@
 <template>
   <div class="w-full about-me">
     <div ref="illustration" class="illustration">
-      <coding-illustration :class="`w-full -mt-4`" v-intersect="{callback: illustrationIntersect, once: true}"/>
+      <coding-illustration :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, once: true }" />
     </div>
-    <div class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/60 justify-center">
+    <div
+      class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/50 justify-center">
       <div class="flex flex-col pb-4">
         <h2 class="font-bold text-2xl text-center pt-16 px-4 py-2 text-white font-comfortaa">Hello, I am AstralDev</h2>
         <span class="py-8 px-4 font-asap text-gray-200 text-center">
-          With a spark for web development, I soar with more than <b>4</b> years of experience with 
+          With a spark for web development, I soar with more than <b>4</b> years of experience with
           <b>frontend development</b> and <b>UI</b> designing and creation of applications & software for desktop.
         </span>
       </div>
@@ -16,8 +17,8 @@
           <h2 class="text-lg font-bold font-comfortaa">My Works</h2>
           <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
+        <works />
       </div>
-      <works />
       <div class="my-2">
         <a href="" class="see-more">See more</a>
       </div>
@@ -42,18 +43,18 @@ import Works from './works.vue';
 import Challenges from './challenges.vue';
 export default {
   components: { CodingIllustration, Works, Challenges },
-  mounted(){
-    document.querySelectorAll('.illustration > svg g').forEach(el => {el.style.opacity = 0})
+  mounted() {
+    document.querySelectorAll('.illustration > svg g').forEach(el => { el.style.opacity = 0 })
   },
-  data(){
+  data() {
     return {
       intersected: false
     }
   },
   methods: {
-    illustrationIntersect(){
+    illustrationIntersect() {
       this.intersected = true;
-      const timeline = anime.timeline({easing: 'spring(1,80,10,10)'})
+      const timeline = anime.timeline({ easing: 'spring(1,80,10,10)' })
       timeline.add({
         targets: [".illustration > svg g"],
         keyframes: [
@@ -66,8 +67,8 @@ export default {
           {
             opacity: 1,
             translateY: 0,
-            duration: 800,
-            delay: anime.stagger(400, {start: 0})
+            duration: 600,
+            delay: anime.stagger(100, { start: 0 })
           }
         ],
       })
