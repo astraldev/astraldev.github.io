@@ -3,7 +3,7 @@
     <div ref="illustration" class="illustration">
       <coding-illustration :class="`w-full -mt-4`" v-intersect="{callback: illustrationIntersect, once: true}"/>
     </div>
-    <div class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/70 justify-center">
+    <div class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/60 justify-center">
       <div class="flex flex-col pb-4">
         <h2 class="font-bold text-2xl text-center pt-16 px-4 py-2 text-white font-comfortaa">Hello, I am AstralDev</h2>
         <span class="py-8 px-4 font-asap text-gray-200 text-center">
@@ -14,22 +14,22 @@
       <div class="flex flex-col w-11/12" id="works">
         <div class="flex justify-between pb-4 px-1 items-center text-white">
           <h2 class="text-lg font-bold font-comfortaa">My Works</h2>
-          <font-awesome-icon icon="fa-solid fa-link" class="text-gray-200 cursor-pointer hover:text-gray-50" />
+          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
       </div>
       <works />
       <div class="my-2">
-        <a href="" class="underline underline-offset-4 text-center decoration-dotted font-ubuntu-mono text-gray-100">See more</a>
+        <a href="" class="see-more">See more</a>
       </div>
       <div class="flex flex-col w-11/12" id="challenges">
         <div class="flex justify-between py-4 px-1 items-center text-white">
           <h2 class="text-lg font-bold font-comfortaa">Frontend Challenges</h2>
-          <font-awesome-icon icon="fa-solid fa-link" class="text-gray-200 cursor-pointer hover:text-gray-50" />
+          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
       </div>
       <challenges :count="2" />
       <div class="my-2">
-        <a href="" class="underline underline-offset-4 text-center decoration-dotted font-ubuntu-mono text-gray-100">See more</a>
+        <a href="" class="see-more">See more</a>
       </div>
     </div>
   </div>
@@ -42,6 +42,9 @@ import Works from './works.vue';
 import Challenges from './challenges.vue';
 export default {
   components: { CodingIllustration, Works, Challenges },
+  mounted(){
+    document.querySelectorAll('.illustration > svg g').forEach(el => {el.style.opacity = 0})
+  },
   data(){
     return {
       intersected: false
@@ -50,7 +53,7 @@ export default {
   methods: {
     illustrationIntersect(){
       this.intersected = true;
-      const timeline = anime.timeline({easing: 'easeInOutElastic(1,.9)'})
+      const timeline = anime.timeline({easing: 'spring(1,80,10,10)'})
       timeline.add({
         targets: [".illustration > svg g"],
         keyframes: [
@@ -63,8 +66,8 @@ export default {
           {
             opacity: 1,
             translateY: 0,
-            duration: 600,
-            delay: anime.stagger(300, {start: 0})
+            duration: 800,
+            delay: anime.stagger(400, {start: 0})
           }
         ],
       })
@@ -73,6 +76,8 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-  .illustration > svg g 
-    @apply opacity-0
+  .heading-icon
+    @apply text-gray-200 cursor-pointer hover:text-gray-50
+  .see-more
+    @apply underline underline-offset-4 hover:text-gray-100 text-center decoration-dotted font-ubuntu-mono text-gray-300
 </style>

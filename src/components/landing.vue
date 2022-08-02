@@ -29,7 +29,7 @@ export default {
     return {
       typedOptions: {
         strings: [
-          "I <b>love</b> to create and design intuitive <b>websites</b>^800  &amp;^1000 linux desktop <b>applications</b>.",
+          "I <b>love</b> to create and design intuitive <b>websites</b>^400  &amp;^400 linux desktop <b>applications</b>.",
           "Freelancer and <b>UI/UX designer</b>."
         ],
         loop: true,

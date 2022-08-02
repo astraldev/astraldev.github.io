@@ -4,13 +4,13 @@ export default {
     const callback = binding.value.callback || (()=>{});
     delete binding.value.callback;
     const options = {
-      threshold: 0.1,
+      threshold: 0.2,
       ...binding.value.options,
     }
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach((entry)=>{
         if(entry.isIntersecting){
-          callback()
+          callback(el)
           if(binding.value.once || false){
             observer.unobserve(el)
           }
