@@ -1,0 +1,26 @@
+{
+  "works": [
+    {
+      "image": "/images/dualsight.jpg",
+      "role": "frontend developer",
+      "name": "dualsight"
+    },
+    {
+      "image": "",
+      "role": "frontend developer",
+      "name": "originswift"
+    }
+  ],
+  "challenges": [
+    {
+      "url": "https://astraldev.github.io/easybank-landing-page-master/",
+      "link": "https://www.frontendmentor.io/solutions/easybank-landing-page-ObwljIGjig",
+      "title": "Easy banking"
+    },
+    {
+      "url": "https://frontendmentor-interactive-comment-section-astraldev.vercel.app/",
+      "link": "https://www.frontendmentor.io/solutions/interactive-comment-section-with-vuejs-and-tailwindcss-OiGsHHhk1l",
+      "title": "Interactive Comment Section"
+    }
+  ]
+}

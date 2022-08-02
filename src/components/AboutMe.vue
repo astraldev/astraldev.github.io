@@ -11,11 +11,25 @@
           <b>frontend development</b> and <b>UI</b> designing and creation of applications & software for desktop.
         </span>
       </div>
-      <div class="flex flex-col w-full" id="works">
-        <div class="flex justify-between px-10 items-center text-white">
+      <div class="flex flex-col w-11/12" id="works">
+        <div class="flex justify-between pb-4 px-1 items-center text-white">
           <h2 class="text-lg font-bold font-comfortaa">My Works</h2>
           <font-awesome-icon icon="fa-solid fa-link" class="text-gray-200 cursor-pointer hover:text-gray-50" />
         </div>
+      </div>
+      <works />
+      <div class="my-2">
+        <a href="" class="underline underline-offset-4 text-center decoration-dotted font-ubuntu-mono text-gray-100">See more</a>
+      </div>
+      <div class="flex flex-col w-11/12" id="challenges">
+        <div class="flex justify-between py-4 px-1 items-center text-white">
+          <h2 class="text-lg font-bold font-comfortaa">Frontend Challenges</h2>
+          <font-awesome-icon icon="fa-solid fa-link" class="text-gray-200 cursor-pointer hover:text-gray-50" />
+        </div>
+      </div>
+      <challenges :count="2" />
+      <div class="my-2">
+        <a href="" class="underline underline-offset-4 text-center decoration-dotted font-ubuntu-mono text-gray-100">See more</a>
       </div>
     </div>
   </div>
@@ -24,8 +38,10 @@
 <script>
 import CodingIllustration from '../assets/coding-illustration.svg?component'
 import anime from 'animejs'
+import Works from './works.vue';
+import Challenges from './challenges.vue';
 export default {
-  components: { CodingIllustration },
+  components: { CodingIllustration, Works, Challenges },
   data(){
     return {
       intersected: false

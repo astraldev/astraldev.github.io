@@ -1,6 +1,6 @@
 
 <template>
-  <div class="md:hidden flex flex-col h-screen w-full items-center justify-center">
+  <div class="flex flex-col h-screen w-full items-center justify-center">
     <div ref="logo" class="aspect-square h-1/4 ">
       <round-logo class="aspect-square" />
     </div>
@@ -13,13 +13,13 @@
         </span>
       </span>
     </div>
-    <a ref="getInTouch" href="#works" class="get-in-touch font-asap font-bold uppercase" v-smooth-scroll>
+    <a ref="getInTouch" href="#works" class="get-in-touch font-asap font-bold uppercase" v-smooth-scroll="{offset: -16}">
       <font-awesome-icon icon="fa-solid fa-down-long" /> My Works <font-awesome-icon icon="fa-solid fa-down-long" />
     </a>
   </div>
 </template>
 <script>
-import CodingIllustration from '../assets/coding-illustration.svg'
+import CodingIllustration from '../assets/coding-illustration.svg?component'
 import RoundLogo from '../assets/logo-round.svg'
 import anime from 'animejs'
 
@@ -53,7 +53,7 @@ export default {
         {
           translateY: 0,
           scale: 1,
-          duration: 900
+          duration: 700
         }
       ],
       easing: 'easeInOutQuad'
@@ -70,7 +70,7 @@ export default {
         {
           opacity: 1,
           height: "80px",
-          duration: 1500
+          duration: 1300
         }
       ],
     }, "-=1000")
@@ -86,7 +86,7 @@ export default {
         {
           translateX: 0,
           opacity: 1,
-          duration: 800,
+          duration: 600,
         }
       ],
       easing: 'easeOutElastic(1,.8)'
@@ -100,7 +100,7 @@ export default {
         },
         {
           opacity: 1,
-          duration: 600,
+          duration: 400,
         }
       ]
     })
