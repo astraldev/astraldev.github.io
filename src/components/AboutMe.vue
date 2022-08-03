@@ -1,7 +1,7 @@
 <template>
   <div class="w-full about-me">
-    <div ref="illustration" class="illustration">
-      <coding-illustration :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, once: true }" />
+    <div class="illustration">
+      <coding-illustration ref="illustration" :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, once: true }" />
     </div>
     <div
       class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/50 justify-center">
@@ -52,11 +52,11 @@ export default {
     }
   },
   methods: {
-    illustrationIntersect() {
+    illustrationIntersect(el) {
       this.intersected = true;
       const timeline = anime.timeline({ easing: 'spring(1,80,10,10)' })
       timeline.add({
-        targets: [".illustration > svg g"],
+        targets: [...el.querySelectorAll("g")],
         keyframes: [
           {
             opacity: 0,
