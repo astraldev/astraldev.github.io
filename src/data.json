@@ -1,6 +1,5 @@
 {
-  "works": [
-    {
+  "works": [{
       "image": "/images/dualsight.jpg",
       "role": "frontend developer",
       "name": "dualsight"
@@ -11,8 +10,7 @@
       "name": "originswift"
     }
   ],
-  "challenges": [
-    {
+  "challenges": [{
       "url": "https://astraldev.github.io/easybank-landing-page-master/",
       "link": "https://www.frontendmentor.io/solutions/easybank-landing-page-ObwljIGjig",
       "title": "Easy banking"
@@ -22,5 +20,19 @@
       "link": "https://www.frontendmentor.io/solutions/interactive-comment-section-with-vuejs-and-tailwindcss-OiGsHHhk1l",
       "title": "Interactive Comment Section"
     }
-  ]
+  ],
+  "languages": {
+    "Frontend": {
+      "language": ["HTML", "CSS", "TailwindCSS", "JavaScript", "VueJS", "ReactJS"],
+      "icon": "fa-brands fa-chrome"
+    },
+    "Backend": {
+      "language": ["JavaScript (NodeJS)", "C# (.NET)"],
+      "icon": "fa-solid fa-server"
+    },
+    "Software": {
+      "language": ["python", "c++"],
+      "icon": "fa-solid fa-window-restore"
+    }
+  }
 }

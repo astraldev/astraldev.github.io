@@ -5,7 +5,7 @@
         {{ getImage(work) }}
         <img :src="work.image" :alt="work.name" class="h-36 aspect-video">
         <div :class="`image-overlay ${isDefaultImage(work) ? 'opacity-90' : 'opacity-0'}`">
-          <span class="text-white font-ubuntu-mono font-bold text-center capitalize text-sm">
+          <span class="text-white font-comfortaa font-bold text-center capitalize text-sm">
             {{ `${work.role}` }} <br /> {{ `${work.role ? '@' : ''} ${work.name}` }}
           </span>
         </div>
@@ -46,5 +46,5 @@ export default {
     @apply bg-green/40
     
 .image-overlay
-  @apply absolute inset-0 flex hover:opacity-100 items-center justify-center transition-opacity duration-300 backdrop-blur-sm
+  @apply absolute inset-0 flex hover:opacity-100 items-center justify-center transition-opacity duration-700 backdrop-blur-sm
 </style>
