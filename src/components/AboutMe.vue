@@ -1,7 +1,7 @@
 <template>
   <div class="w-full about-me">
     <div class="illustration">
-      <coding-illustration ref="illustration" :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, once: true }" />
+      <coding-illustration ref="illustration" :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, threshold: 1 }" />
     </div>
     <div
       class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/50 justify-center">
@@ -43,23 +43,16 @@ import Works from './works.vue';
 import Challenges from './challenges.vue';
 export default {
   components: { CodingIllustration, Works, Challenges },
-  mounted() {
-    document.querySelectorAll('.illustration > svg g').forEach(el => { el.style.opacity = 0 })
-  },
-  data() {
-    return {
-      intersected: false
-    }
+  mounted(){
+    this.$el.querySelectorAll(".illustration g").forEach(el => el.style.opacity = 0)
   },
   methods: {
     illustrationIntersect(el) {
-      this.intersected = true;
-      const timeline = anime.timeline({ easing: 'spring(1,80,10,10)' })
+      const timeline = anime.timeline({ easing: 'spring(1,80,10,0)', duration: 1500 })
       timeline.add({
-        targets: [...el.querySelectorAll("g")],
+        targets: [el.querySelector("g#background"), el.querySelector("g#backdrop"), el.querySelector("g#person"), el.querySelector("g#bottom-obj"), el.querySelector("g#top-obj")],
         keyframes: [
           {
-            opacity: 0,
             translateY: "-15%",
             delay: 0,
             duration: 0
@@ -67,8 +60,7 @@ export default {
           {
             opacity: 1,
             translateY: 0,
-            duration: 600,
-            delay: anime.stagger(100, { start: 0 })
+            delay: anime.stagger(150, { start: 0 })
           }
         ],
       })

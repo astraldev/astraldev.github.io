@@ -85,7 +85,7 @@ export default {
       else this.closeDetail(detail_el)
     },
     animateIllustration() {
-      const timeline = anime.timeline({ easing: "spring(1,80,10,10)", dekay: 100 })
+      const timeline = anime.timeline({ easing: "spring(1,80,10,0)", delay: 100 })
       timeline.add({
         targets: "g#background",
         keyframes: [

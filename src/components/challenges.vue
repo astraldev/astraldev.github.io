@@ -32,7 +32,6 @@ export default {
       else return i
     },
     slideIn(el) {
-      // console.log(el.parentNode)
       const parent = el.parentNode
       const direction = Array.prototype.indexOf.call(parent.children, el) % 2 == 0 ? -1 : 1
 
@@ -50,7 +49,7 @@ export default {
             translateX: 0,
             delay: 100,
             duration: 1000,
-            easing: 'spring(2,80,20,10)'
+            easing: 'spring(1,80,20,0)'
           }
         ]
       })
