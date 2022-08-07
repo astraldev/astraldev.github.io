@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full about-me">
+  <section class="w-full about-me" id="about">
     <div class="illustration">
-      <coding-illustration ref="illustration" :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, threshold: 1 }" />
+      <coding-illustration ref="illustration" :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, threshold: 0.99, once: true }" />
     </div>
     <div
       class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/50 justify-center">
@@ -33,7 +33,7 @@
         <a href="" class="see-more">See more</a>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     illustrationIntersect(el) {
-      const timeline = anime.timeline({ easing: 'spring(1,80,10,0)', duration: 1500 })
+      const timeline = anime.timeline({ easing: 'spring(1,80,10,0)', duration: 1600 })
       timeline.add({
         targets: [el.querySelector("g#background"), el.querySelector("g#backdrop"), el.querySelector("g#person"), el.querySelector("g#bottom-obj"), el.querySelector("g#top-obj")],
         keyframes: [
@@ -60,7 +60,7 @@ export default {
           {
             opacity: 1,
             translateY: 0,
-            delay: anime.stagger(150, { start: 0 })
+            delay: anime.stagger(250, { start: 150 })
           }
         ],
       })

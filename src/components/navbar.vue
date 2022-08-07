@@ -1,105 +1,162 @@
 <template>
-  <nav class="border-b-2 border-gray-200 bg-white/5 before:absolute backdrop-blur-md before:bg-white/5 before:inset-0 before:z-[-1] relative dark:border-gray-800">
-    <img src="/favicon.png" alt="astraldev logo" class="h-9 w-9">
-    <h2 class="text-2xl text-left mr-auto ml-4 md:self-center inline self-end text-gray-500 dark:text-white">
-      AstralCO
-    </h2>
-    <ul :class="`${active ? 'active' : ''} ${window.innerWidth < parseInt(screens.md.replace('px', '')) ? 'hidden' : ''}`" ref="navigation">
-      <button class="menu-button py-2 mt-2 mb-3" @click="active = false">
-        <font-awesome-icon icon="fa-solid fa-xmark" class="w-full h-full"/>
+  <nav :class="`sticky top-0 z-40 rounded-bl-lg ${active ? '' : 'rounded-br-lg'}`" ref="navigation">
+    <div class="w-full shadow-md py-3 overflow-y-hidden dark:bg-base/70 bg-white/40 px-6 items-center flex text-gray-700 dark:text-white  backdrop-blur">
+      <div ref="title" id="nav-title" class="flex-grow relative flex h-9 overflow-y-hidden flex-col">
+        <h1 class="text-2xl font-asap font-bold">About me</h1>
+      </div>
+      <button class="flex-grow-0" @click="active = !active">
+        <font-awesome-icon icon="fa-solid fa-xmark" class="h-4 w-4" v-if="active"/>
+        <font-awesome-icon icon="fa-solid fa-bars" class="h-4 w-4" v-else/>
       </button>
-      <li class="active">
-        <a href="" aria-label="">Home</a>
+    </div>
+    <ul class="nav-list translate-x-full" ref="navlist">
+      <li>
+        <a @click="active = false" id="nav-link-anchor" href="#about" v-smooth-scroll="{offset:-35}">About me</a>
       </li>
       <li>
-        <a href="" aria-label="">About me</a>
+        <a @click="active = false" id="nav-link-anchor" href="#works" v-smooth-scroll="{offset:-55}">My works</a>
       </li>
       <li>
-        <a href="" aria-label="">My works</a>
+        <a @click="active = false" id="nav-link-anchor" href="#challenges" v-smooth-scroll="{offset:-55}">Challenges</a>
       </li>
-      <li class="get-in-touch">
-        <a href="" aria-label="">Get in touch</a>
+      <li>
+        <a @click="active = false" id="nav-link-anchor" href="#skills" v-smooth-scroll="{offset:-55}">My Skills</a>
+      </li>
+      <li>
+        <a @click="active = false"  id="nav-link-anchor" href="#contact" v-smooth-scroll="{offset:-55}">Contact</a>
       </li>
     </ul>
-    <button class="menu-button" @click="active = true">
-      <font-awesome-icon icon="fa-solid fa-bars" class="h-full w-full"/>
-    </button>
   </nav>
 </template>
 
 <script>
-import Logo from '../assets/logo.svg'
-import anime from 'animejs/lib/anime'
-import { boxShadow, screens } from 'tailwindcss/defaultTheme'
+import anime from 'animejs'
 export default {
-  data(){
-    return {
-      active: false,
-      screens: screens,
-      window: window,
+  methods: {
+    changeTitle(text){
+      const newH1 = document.createElement("h1");
+      newH1.classList.add("text-2xl");
+      newH1.classList.add("font-asap");
+      newH1.classList.add("font-bold");
+      newH1.innerText = text;
+      newH1.style.transform = "translateY(50%)"
+      newH1.style.textShadow = '2px 2px #fff6'
+      const timeline = anime.timeline()
+
+      timeline.add({
+        targets: this.$refs.title.querySelector('h1'),
+        translateY: [0, "-1000%"],
+        // opacity: [1,0],
+        delay: 0,
+        easing: "linear",
+        duration: 150,
+        complete: ()=>{
+          while(this.$refs.title.firstChild) this.$refs.title.removeChild(this.$refs.title.lastChild);
+          this.$refs.title.appendChild(newH1);
+        }
+      })
+      timeline.add({
+        targets: newH1,
+        opacity: [0,1],
+        translateY: ["10%", "0%"],
+        delay: 0,
+        duration: 150,
+        easing: "linear"
+      })
     }
   },
-  methods: {},
-  watch : {
+  data(){
+    return {
+      active: false
+    }
+  },
+  components: {},
+  mounted(){
+    this.$el.style.opacity = 0
+    this.$el.style.overflowY = "hidden"
+    document.addEventListener("scroll", ()=>{
+      if(Math.abs(this.$el.offsetTop - window.scrollY) < 5){
+        if(this.$el.style.opacity == 0){
+          anime({targets:this.$el,opacity:[0,1],easing:'linear',duration:250})
+        }
+      }else{
+        if(this.$el.style.opacity == 1 || this.$el.style.opacity == '1'){
+          anime({targets:this.$el,opacity:[1,0],easing:'linear',duration:250})
+        }
+      }
+
+      const watchList = ["#about","#works","#challenges","#skills","#contact"]
+      watchList.reverse()
+
+      for(const el in watchList){
+        const elm = document.querySelector(watchList[el]),
+              title = this.$el.querySelector("#nav-title"),
+              text = this.$el.querySelector(`a#nav-link-anchor[href='${watchList[el]}']`).innerText;
+
+        if(Math.abs(elm.offsetTop - window.scrollY) <= 55){
+          if(title.querySelector("h1").innerText.toLowerCase() != text.toLowerCase()){
+            this.changeTitle(text)
+            break;
+          }
+        }
+        
+      }
+    })
+  },
+  watch: {
     active(val){
-      const navigation = this.$refs.navigation;
-      this.$refs.navigation.style = ""
-
-      if(window.innerWidth > parseInt(screens.md.replace('px', ""))) return;
-
       if(val){
-        navigation.style.transform = "translateX(-100%)"
         anime({
-          targets: navigation,
+          targets: this.$refs.navlist,
           keyframes: [
-            {translateX: '100%', duration: 0},
-            {translateX: '0', duration: 400},
-          ],
-          easing: 'easeInOutExpo'
+            {
+              translateX: "100%",
+              opactity: 0,
+              delay: 0,
+              duration: 0,
+            },
+            {
+              translateX: 0,
+              opactity: 1,
+              delay: 100,
+              duration: 200,
+              easing: 'easeOutCubic'
+            }
+          ]
         })
-      }else {
-        navigation.style.position = "fixed"
-        navigation.style.display = "flex"
-        navigation.style.boxShadow = boxShadow.sm;
+      }else{
         anime({
-          targets: navigation,
+          targets: this.$refs.navlist,
           keyframes: [
-            {translateX: '0%', duration: 0},
-            {translateX: '100%', duration: 400},
-          ],
-          easing: 'easeInOutExpo',
-          complete: ()=>{
-            navigation.style = ""
-          },
+            {
+              translateX: "0%",
+              opactity: 1,
+              delay: 0,
+              duration: 0,
+            },
+            {
+              translateX: "100%",
+              opactity: 0,
+              delay: 100,
+              duration: 200,
+              easing: 'easeOutCubic'
+            }
+          ]
         })
       }
     }
-  },
-  components: { Logo }
+  }
 }
 </script>
 
 <style lang="sass" scoped>
-nav
-  @apply flex items-center px-4 py-2 justify-between
-
-  button.menu-button
-    @apply grid place-items-center h-5 w-5 text-gray-400 hover:text-green/90 md:hidden
-
-  &>ul 
-    @apply hidden md:relative shadow-sm w-48 h-full md:shadow-none md:h-auto md:border-l-0 border-l-2 md:w-auto md:flex gap-x-4 inset-y-0 right-0 ml-auto pr-5 md:py-2 pl-10 items-end md:flex-row md:items-center flex-col bg-white md:px-4 md:border-l-0 md:gap-y-4 md:w-auto md:shadow-none
-    &.active
-      @apply flex fixed md:relative bg-white
+  div#nav-title > h1
+    text-shadow: 2px 2px #fff6
+  .nav-list
+    @apply flex flex-col z-30 fixed h-screen gap-y-4 right-0 w-44 top-14 mt-1 p-4 bg-white/40 dark:bg-base/70 backdrop-blur-md shadow-md
 
     &>li
-      &.get-in-touch
-        @apply bg-cyan text-white rounded-full w-full md:w-36 md:mt-0 text-center mt-2 relative after:inset-0 after:absolute after:bg-transparent after:pointer-events-none hover:after:bg-white/20
-        &>a:hover
-          @apply text-white
-
-      @apply p-2 text-sm font-bold text-gray-500
-      &:not(.get-in-touch)>a:hover
-        @apply hover:text-green/70
+      @apply font-ubuntu-mono text-lg text-gray-700 dark:text-white
       &.active
-        @apply text-green/90
+        @apply text-gray-900
 </style>

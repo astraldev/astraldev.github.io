@@ -1,5 +1,6 @@
 <template>
   <landing />
+  <navbar />
   <about-me />
   <skills />
   <contact />

@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col w-full pb-5">
+  <section class="flex flex-col w-full pb-5" id="skills">
     <div class="bg-gradient-to-b from-cyan/50">
-      <programming-illustration class="aspect-square -mt-4 h-11/12" v-intersect="{ callback: animateIllustration }" />
+      <programming-illustration class="aspect-square -mt-4 h-11/12" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
     </div>
     <div class="w-11/12 mx-auto" ref="languages">
-      <h3 class="text-heading mx-auto text-center -mt-10 pb-10">
+      <h3 class="text-heading mx-auto text-center -mt-10 pb-10 dark:text-white">
         Languages I Speak
       </h3>
       <div v-for="(title, index) in Object.keys(languageUsed)" :key="index" class="language-details">
@@ -24,7 +24,7 @@
         </details>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import ProgrammingIllustration from '../assets/programming-language.svg'
@@ -162,19 +162,19 @@ export default {
 <style lang="sass" scoped>
 
 details 
-  @apply border border-gray-300 rounded-md my-4 first:mt-0
+  @apply border dark:border-gray-800 border-gray-300 rounded-md my-4 first:mt-0
   &[open]>summary
-    @apply border-b-2 border-gray-200
+    @apply border-b-2 border-gray-200 dark:border-gray-800
   &>summary 
     @apply flex px-6 py-2 cursor-pointer
     &::-webkit-details-marker, &::marker
       display: none
     &>div
-      @apply flex items-center w-full text-gray-700 gap-x-4
+      @apply flex items-center w-full text-gray-700 gap-x-4 dark:text-gray-300
   &>ul 
-    @apply flex flex-col divide-y divide-gray-200 overflow-y-clip
+    @apply flex flex-col divide-y divide-gray-200 dark:divide-gray-900 overflow-y-clip
     &>li 
-      @apply w-full px-6 hover:bg-gray-50 cursor-pointer text-sm text-gray-500 font-ubuntu-mono font-bold py-1.5
+      @apply w-full px-6 hover:bg-gray-50 dark:hover:bg-white/10 cursor-pointer text-sm text-gray-500 dark:text-gray-400 font-ubuntu-mono font-bold py-1.5
 
 g.screen-item, g#pc-screen, g#background, g.leafs
   @apply opacity-0

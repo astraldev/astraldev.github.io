@@ -1,52 +1,52 @@
 <template>
-  <div class="flex flex-col w-full pb-5">
+  <section class="flex flex-col w-full pb-5" id="contact">
     <div class="mx-auto w-11/12 flex items-center justify-center">
-      <contact-illustration class="illustration aspect-square mx-auto w-full" v-intersect="{ callback: animateIllustration }" />
+      <contact-illustration class="illustration aspect-square mx-auto w-full" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
     </div>
     <div class="w-11/12 mx-auto" ref="languages">
-      <h3 class="text-heading mx-auto text-center -my-5 pb-10">
+      <h3 class="text-heading mx-auto text-center -my-5 pb-10 dark:text-white">
         Contact me
       </h3>
       <form class="flex gap-y-4 flex-col">
-        <custom-input label="Name" placeholder="How do I address you?"/>
-        <custom-input label="Email" placeholder="How do I get to you?">
+        <custom-input label="Name" placeholder="How do I address you?" @input="updateFormName(text)"/>
+        <custom-input label="Email" placeholder="How do I get to you?" @input="updateFormText(text)">
           <template #icon>
             <font-awesome-icon icon="fa-solid fa-at" />
           </template>
         </custom-input>
         <custom-textarea label="Your message" />
-        <button class="send-button">
+        <button class="send-button" @click="sendMail">
           <span>Send a mail</span>
           <font-awesome-icon icon="fa-solid fa-paper-plane" />
         </button>
       </form>
       <div class="mt-4">
-        <div class="flex gap-x-5 items-center">
+        <div class="flex gap-x-5 mb-4 mt-3 items-center">
           <div class="w-auto flex-grow h-0 border-t border-gray-300"></div>
-          <h4 class="text-lg text-gray-700">OR</h4>
+          <h4 class="text-lg text-gray-700 dark:text-gray-200">OR</h4>
           <div class="w-auto flex-grow h-0 border-t border-gray-300"></div>
         </div>
         <div class="social-links">
-          <div class="after:bg-transparent hover:after:bg-black/25">
+          <a target="_blank" href="https://github.com/astraldev" class="after:bg-transparent hover:after:bg-black/25">
             <font-awesome-icon icon="fa-brands fa-github" />
             <span>GitHub</span>
-          </div>
-          <div class="hover:after:bg-[#4285F4]/25 after:bg-transparent">
-            <font-awesome-icon icon="fa-brands fa-google" />
-            <span>Google</span>
-          </div>
-          <div class="after:bg-transparent hover:after:bg-[#FD1D1D]/25">
+          </a>
+          <a target="_blank" href="https://t.me/+2349049821801?text=Hello%2C%20I%20am%20" class="hover:after:bg-[#4285F4]/25 after:bg-transparent">
+            <font-awesome-icon icon="fa-brands fa-telegram"/>
+            <span>Telegram</span>
+          </a>
+          <a target="_blank" href="https://instagram.com/just_ekure" class="after:bg-transparent hover:after:bg-[#FD1D1D]/25">
             <font-awesome-icon icon="fa-brands fa-instagram" />
             <span>Instagram</span>
-          </div>
-          <div class="after:bg-transparent hover:after:bg-[#25D366]/25">
+          </a>
+          <a target="_blank" href="https://wa.me/2349049821801?text=Hello%2C%20I%20am%20" class="after:bg-transparent hover:after:bg-[#25D366]/25">
             <font-awesome-icon icon="fa-brands fa-whatsapp" />
             <span>WhatsApp</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import ContactIllustration from '../assets/contact-illustration.svg'
@@ -83,7 +83,10 @@ export default {
         duration: 100,
         delay: anime.stagger(150, {start: 0})
       }, "-=1000")
-    }
+    },
+    updateFormName(text){},
+    updateFormText(text){},
+    sendMail(){},
   }
 }
 </script>
@@ -97,8 +100,8 @@ export default {
 .social-links
   @apply grid grid-cols-2 gap-4
 
-  &>div
-    @apply after:absolute after:transition-colors overflow-hidden after:duration-500 after:inset-0 relative cursor-pointer bg-white border border-gray-50 shadow p-4 gap-y-2 flex flex-col items-center justify-center rounded-md
+  &>a
+    @apply after:absolute dark:bg-white/5 dark:text-gray-300 after:transition-colors overflow-hidden after:duration-500 after:inset-0 relative cursor-pointer bg-white shadow p-4 gap-y-2 flex flex-col items-center justify-center rounded-md
 
     &>svg
       @apply h-7 w-7

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col md:grid gap-y-4 md:px-6 grid-cols-2 md:gap-x-2">
+  <div class="w-full flex flex-col md:grid gap-y-4 md:px-6 grid-cols-2 md:gap-x-2" id="works">
     <div class="webcard" v-for="(work, index) in workDescriptions" :key="index">
       <div class="overflow-hidden rounded-md relative">
         {{ getImage(work) }}

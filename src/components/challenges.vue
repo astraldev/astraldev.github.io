@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full flex flex-col md:grid grid-cols-2 place-items-center md:px-6 md:gap-x-2">
+  <div class="w-full flex flex-col md:grid grid-cols-2 place-items-center md:px-6 md:gap-x-2" id="challenges">
     <div v-for="(challenge, index) in challengeList" :key="index" class="challenge-list"
-      v-intersect="{ callback: slideIn, once: true }">
+      v-intersect="{ callback: slideIn, once: true, threshold: 0.99 }">
       <span
-        class="h-full col-span-1 flex border-r border-gray-400 items-end text-lg font-comfortaa font-bold text-cyan">{{
+        class="h-full col-span-1 flex border-r border-gray-400 items-center text-lg font-comfortaa font-bold text-cyan">{{
             getIndex(index + 1)
         }}</span>
       <a class="flex-grow ml-1 col-span-8" :href="challenge.link" target="_blank">
