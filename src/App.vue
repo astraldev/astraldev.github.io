@@ -14,7 +14,18 @@ import AboutMe from './components/AboutMe.vue'
 import contact from './components/contact.vue'
 import CustomFooter from './components/custom-footer.vue'
 export default {
-  components: { navbar, landing, AboutMe, skills, contact, CustomFooter }
+  components: { navbar, landing, AboutMe, skills, contact, CustomFooter },
+  methods: {
+    toggleTheme(){
+      if(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)"))){
+        document.documentElement.classList.remove("dark")
+        return true
+      }else {
+        document.documentElement.classList.add("dark")
+        return false
+      }
+    },
+  }
 }
 </script>
 <style>

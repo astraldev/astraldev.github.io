@@ -4,6 +4,7 @@
       <div ref="title" id="nav-title" class="flex-grow relative flex h-9 overflow-y-hidden flex-col">
         <h1 class="text-2xl font-asap font-bold">About me</h1>
       </div>
+      <theme-switcher />
       <button class="flex-grow-0" @click="active = !active">
         <font-awesome-icon icon="fa-solid fa-xmark" class="h-4 w-4" v-if="active"/>
         <font-awesome-icon icon="fa-solid fa-bars" class="h-4 w-4" v-else/>
@@ -31,6 +32,7 @@
 
 <script>
 import anime from 'animejs'
+import ThemeSwitcher from './theme-switcher.vue';
 export default {
   methods: {
     changeTitle(text){
@@ -70,7 +72,7 @@ export default {
       active: false
     }
   },
-  components: {},
+  components: { ThemeSwitcher },
   mounted(){
     this.$el.style.opacity = 0
     this.$el.style.overflowY = "hidden"
@@ -150,6 +152,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  nav *
+    @apply duration-150
+
   div#nav-title > h1
     text-shadow: 2px 2px #fff6
   .nav-list
