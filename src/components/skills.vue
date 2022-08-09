@@ -1,10 +1,10 @@
 <template>
-  <section class="flex flex-col w-full pb-5" id="skills">
-    <div class="bg-gradient-to-b from-cyan/50">
-      <programming-illustration class="aspect-square -mt-4 h-11/12" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
+  <section class="flex flex-col md:mt-5 w-full pb-5 md:flex-row md:h-[70vh] items-start md:gap-x-10" id="skills">
+    <div class="bg-gradient-to-b from-cyan/50 md:bg-none flex w-full md:w-1/2 relative">
+      <programming-illustration class="aspect-square -mt-4 md:absolute md:w-[35vmax] z-[-1] inset-0 -right-[5vh]" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
     </div>
-    <div class="w-11/12 mx-auto" ref="languages">
-      <h3 class="text-heading mx-auto text-center -mt-10 pb-10 dark:text-white">
+    <div class="w-11/12 self-center my-auto md:justify-between mx-auto md:mr-0 md:w-1/2" ref="languages">
+      <h3 class="text-heading md:hidden mx-auto text-center -mt-10 pb-10 dark:text-white">
         Languages I Speak
       </h3>
       <div v-for="(title, index) in Object.keys(languageUsed)" :key="index" class="language-details">
@@ -50,7 +50,7 @@ export default {
         targets: ul,
         height: 0,
         duration: 100*childrenCount,
-        delay: 100,
+        delay: 100/childrenCount,
         easing: "easeInOutQuad",
         complete: () => {
           el.open = false;
@@ -74,13 +74,19 @@ export default {
             height: `${2.05*childrenCount}rem`,
             duration: 100*childrenCount,
             easing: "easeOutCubic",
-            delay: 50,
+            delay: 50/childrenCount,
           }
         ]
       })
     },
+    closeOtherDetails(keep){
+      const details = this.$el.querySelectorAll('.language-details > details')
+      details.forEach((dt) => {if(dt != keep) this.closeDetail(dt)})
+    },
+
     detailToggled(ev){
       const detail_el = ev.currentTarget.parentNode;
+      this.closeOtherDetails(detail_el)
       if(!detail_el.open) this.openDetail(detail_el)
       else this.closeDetail(detail_el)
     },

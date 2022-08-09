@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col md:grid gap-y-4 md:px-6 grid-cols-2 md:gap-x-2" id="works">
+  <div class="w-full flex flex-col md:grid gap-y-4 grid-cols-2 md:gap-x-2" id="works">
     <div class="webcard" v-for="(work, index) in workDescriptions" :key="index">
       <div class="overflow-hidden rounded-md relative">
         {{ getImage(work) }}
@@ -39,7 +39,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 .webcard
-  @apply bg-white/70 grid place-items-center rounded-lg select-none h-52 shadow-lg px-10 py-6
+  @apply bg-white/70 md:bg-black/10 grid place-items-center rounded-lg select-none h-52 shadow-lg px-10 py-6
   &:nth-child(even) .image-overlay
     @apply bg-cyan/70
   &:nth-child(odd)  .image-overlay

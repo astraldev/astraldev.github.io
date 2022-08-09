@@ -1,36 +1,46 @@
 <template>
   <section class="w-full about-me" id="about">
     <div class="illustration">
-      <coding-illustration ref="illustration" :class="`w-full -mt-4`" v-intersect="{ callback: illustrationIntersect, threshold: 0.99, once: true }" />
-    </div>
-    <div
-      class="p-4 flex items-center flex-col -mt-20 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/50 justify-center">
-      <div class="flex flex-col pb-4">
-        <h2 class="font-bold text-2xl text-center pt-16 px-4 py-2 text-white font-comfortaa">Hello, I am AstralDev</h2>
-        <span class="py-8 px-4 font-asap text-gray-200 text-center">
+      <coding-illustration ref="illustration" :class="`aspect-square -mt-4`"
+        v-intersect="{ callback: illustrationIntersect, threshold: 0.99, once: true }" />
+      <div class="flex-col pb-4 w-2/3 hidden md:flex text-left">
+        <h2 class="font-bold title-colors text-5xl pt-16 px-4 py-2 font-comfortaa">Hello, I
+          am AstralDev</h2>
+        <span class="py-8 px-4 font-asap md:subtitle-colors">
           With a spark for web development, I soar with more than <b>4</b> years of experience with
           <b>frontend development</b> and <b>UI</b> designing and creation of applications & software for desktop.
         </span>
       </div>
-      <div class="flex flex-col w-11/12" id="works">
-        <div class="flex justify-between pb-4 px-1 items-center text-white">
-          <h2 class="text-lg font-bold font-comfortaa">My Works</h2>
+    </div>
+    <div
+      class="p-4 flex items-center flex-col -mt-20 md:mt-0 rounded-t-2xl bg-gradient-to-b from-cyan to-cyan/50 md:bg-none justify-center">
+      <div class="flex flex-col pb-4 md:hidden text-center ">
+        <h2 class="font-bold text-2xl pt-16 px-4 py-2 text-white font-comfortaa">Hello, I
+          am AstralDev</h2>
+        <span class="py-8 px-4 font-asap text-slate-200 md:subtitle-colors">
+          With a spark for web development, I soar with more than <b>4</b> years of experience with
+          <b>frontend development</b> and <b>UI</b> designing and creation of applications & software for desktop.
+        </span>
+      </div>
+      <div class="flex flex-col w-full" id="works">
+        <div class="flex justify-between pb-4 px-1 items-center text-white md:text-slate-900">
+          <h2 class="text-lg md:text-2xl font-bold font-comfortaa">My Works</h2>
           <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
         <works />
-      </div>
-      <div class="my-2">
-        <a href="" class="see-more">See more</a>
-      </div>
-      <div class="flex flex-col w-11/12" id="challenges">
-        <div class="flex justify-between py-4 px-1 items-center text-white">
-          <h2 class="text-lg font-bold font-comfortaa">Frontend Challenges</h2>
-          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
+        <div class="my-2">
+          <a href="" class="see-more">See more</a>
         </div>
       </div>
-      <challenges :count="2" />
-      <div class="my-2">
-        <a href="" class="see-more">See more</a>
+      <div class="flex flex-col w-full" id="challenges">
+        <div class="flex justify-between py-4 px-1 items-center text-white md:title-colors">
+          <h2 class="text-lg font-bold  md:text-2xl font-comfortaa">Frontend Challenges</h2>
+          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
+        </div>
+        <challenges :count="2" />
+        <div class="my-2">
+          <a href="" class="see-more">See more</a>
+        </div>
       </div>
     </div>
   </section>
@@ -43,7 +53,7 @@ import Works from './works.vue';
 import Challenges from './challenges.vue';
 export default {
   components: { CodingIllustration, Works, Challenges },
-  mounted(){
+  mounted() {
     this.$el.querySelectorAll(".illustration g").forEach(el => el.style.opacity = 0)
   },
   methods: {
@@ -70,7 +80,16 @@ export default {
 </script>
 <style lang="sass" scoped>
   .heading-icon
-    @apply text-gray-200 cursor-pointer hover:text-gray-50
+    @apply text-slate-200 md:text-current cursor-pointer hover:text-slate-50
   .see-more
-    @apply underline underline-offset-4 hover:text-gray-100 text-center decoration-dotted font-ubuntu-mono text-gray-300
+    @apply underline underline-offset-4 hover:text-slate-100 text-center decoration-dotted font-ubuntu-mono text-slate-300
+  
+  .about-me
+    @apply flex flex-col 
+
+    &>.illustration
+      @apply w-full flex flex-row items-center
+
+      &>svg
+        @apply order-1 w-full md:w-1/3 z-10 flex-grow
 </style>

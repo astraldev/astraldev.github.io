@@ -1,20 +1,25 @@
 
 <template>
-  <section class="flex flex-col h-[calc(100vh_-_3rem)] w-full items-center justify-center">
-    <div ref="logo" class="aspect-square h-1/4 ">
+  <section class="flex flex-col h-[calc(100vh_-_3rem)] md:flex-row w-full items-center justify-center">
+    <div ref="logo" class="aspect-square my-2 h-1/3 md:w-1/3 grid place-items-center md:mr-14 md:mb-[4.5vmax]">
       <round-logo class="aspect-square" />
     </div>
-    <div class="h-[calc(2.25rem_+_2.5rem)] flex flex-col mt-2">
-      <h2 ref="header" class="text-heading overflow-clip my-auto inline text-center dark:text-white">Web & Software Developer</h2>
+    <div class="flex flex-col gap-y-2 md:mt-[5vmax]">
+      <div class="h-[calc(2.25rem_+_2.5rem)] lg:h-[calc(3.75rem_*_2)] flex flex-col">
+        <h2 ref="header" class="text-heading lg:text-6xl overflow-clip md:my-0 md:h-full md:block inline text-center dark:text-white">Web & Software
+          Developer</h2>
+      </div>
+      <div ref="caption" class="h-[calc((0.875rem_+_1.25rem)*2)] text-center mx-4 text-gray-500 dark:text-gray-300 p-2">
+        <span class="inline text-sm">
+          <span class=" font-ubuntu-mono inline" v-typed="typedOptions"></span>
+        </span>
+      </div>
+      <a ref="getInTouch" href="#works" class="get-in-touch mx-auto font-comfortaa font-bold lowercase"
+        v-smooth-scroll="{ offset: -16 }">
+        <font-awesome-icon icon="fa-solid fa-down-long" /> My Works
+        <font-awesome-icon icon="fa-solid fa-down-long" />
+      </a>
     </div>
-    <div ref="caption" class="h-[calc((0.875rem_+_1.25rem)*2)] text-center mx-4 text-gray-500 dark:text-gray-300 p-2">
-      <span class="inline text-sm">
-        <span class=" font-ubuntu-mono inline" v-typed="typedOptions"></span>
-      </span>
-    </div>
-    <a ref="getInTouch" href="#works" class="get-in-touch font-comfortaa font-bold lowercase" v-smooth-scroll="{offset: -16}">
-      <font-awesome-icon icon="fa-solid fa-down-long" /> My Works <font-awesome-icon icon="fa-solid fa-down-long" />
-    </a>
   </section>
 </template>
 <script>
@@ -24,7 +29,7 @@ import anime from 'animejs'
 
 export default {
   components: { RoundLogo, CodingIllustration },
-  data(){
+  data() {
     return {
       typedOptions: {
         strings: [
@@ -39,8 +44,8 @@ export default {
       },
     }
   },
-  mounted(){
-    const timeline = anime.timeline({easing: 'easeInOutCubic'})
+  mounted() {
+    const timeline = anime.timeline({ easing: 'easeInOutCubic' })
     timeline.add({
       targets: this.$refs.logo,
       keyframes: [
@@ -68,7 +73,7 @@ export default {
         },
         {
           opacity: 1,
-          height: "80px",
+          height: window.innerWidth > 768 ? "8rem" : "80px",
           duration: 1300
         }
       ],

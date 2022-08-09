@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col md:grid grid-cols-2 place-items-center md:px-6 md:gap-x-2" id="challenges">
+  <div class="w-full flex flex-col md:flex-row place-items-center md:px-6 md:gap-x-2" id="challenges">
     <div v-for="(challenge, index) in challengeList" :key="index" class="challenge-list"
       v-intersect="{ callback: slideIn, once: true, threshold: 0.99 }">
       <span
@@ -7,7 +7,7 @@
             getIndex(index + 1)
         }}</span>
       <a class="flex-grow ml-1 col-span-8" :href="challenge.link" target="_blank">
-        <h2 class="font-asap text-gray-800 text-lg">{{ challenge.title }}</h2>
+        <h2 class="font-asap title-colors text-lg">{{ challenge.title }}</h2>
       </a>
       <a :href="challenge.url" target="_blank"
         class="pl-1 h-full flex items-center justify-center place-self-stretch col-span-1 border-l border-l-gray-400">
