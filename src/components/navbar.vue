@@ -158,7 +158,9 @@ export default {
   div#nav-title > h1
     text-shadow: 2px 2px #fff6
   .nav-list
-    @apply flex flex-col z-30 fixed lg:relative md:top-0 md:my-0 md:flex-row md:h-9 md:w-full md:translate-x-0 h-screen gap-y-4 right-0 w-44 top-14 mt-1 p-4 bg-white/40 dark:bg-base/70 backdrop-blur-md shadow-md
+    // small screens
+    @apply flex flex-col z-30 fixed h-screen gap-y-4 right-0 w-44 top-14 mt-1 p-4 bg-white/40 dark:bg-base/70 backdrop-blur-md shadow-md
+    @apply lg:relative md:top-0 md:my-0 md:flex-row md:h-9 md:w-full md:translate-x-0 
 
     &>li
       @apply font-ubuntu-mono text-lg text-gray-700 dark:text-white
