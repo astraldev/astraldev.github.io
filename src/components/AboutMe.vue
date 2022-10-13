@@ -28,7 +28,7 @@
           <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
         <works />
-        <div class="my-2">
+        <div class="my-2 flex">
           <a href="" class="see-more">See more</a>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
         <challenges :count="2" />
-        <div class="my-2">
+        <div class="my-2 flex">
           <a href="" class="see-more">See more</a>
         </div>
       </div>
@@ -74,6 +74,7 @@ export default {
           }
         ],
       })
+      
     }
   }
 }
@@ -82,7 +83,7 @@ export default {
   .heading-icon
     @apply text-slate-200 md:text-current cursor-pointer hover:text-slate-50
   .see-more
-    @apply underline underline-offset-4 hover:text-slate-100 text-center decoration-dotted font-ubuntu-mono text-slate-300
+    @apply underline mx-auto underline-offset-4 hover:text-slate-100 text-center decoration-dotted font-ubuntu-mono text-slate-300
   
   .about-me
     @apply flex flex-col 
