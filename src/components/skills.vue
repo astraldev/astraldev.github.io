@@ -49,7 +49,7 @@ export default {
       anime({
         targets: ul,
         height: 0,
-        duration: 100*childrenCount,
+        duration: childrenCount > 3 ? 3500/childrenCount : 1000/childrenCount,
         delay: 100/childrenCount,
         easing: "easeInOutQuad",
         complete: () => {
@@ -72,9 +72,9 @@ export default {
           },
           {
             height: `${2.05*childrenCount}rem`,
-            duration: 100*childrenCount,
+            duration: 1500/childrenCount,
             easing: "easeOutCubic",
-            delay: 50/childrenCount,
+            delay: 100/childrenCount,
           }
         ]
       })
@@ -86,10 +86,13 @@ export default {
 
     detailToggled(ev){
       const detail_el = ev.currentTarget.parentNode;
-      this.closeOtherDetails(detail_el)
+      //NOTE: Not used due to UI effects.
+      //Dear Future Me: Uncomment this line to enable closing of other details
+      // this.closeOtherDetails(detail_el)
       if(!detail_el.open) this.openDetail(detail_el)
       else this.closeDetail(detail_el)
     },
+
     animateIllustration() {
       const timeline = anime.timeline({ easing: "spring(1,80,10,0)", delay: 100 })
       timeline.add({
@@ -159,7 +162,7 @@ export default {
             delay: anime.stagger(100, { start: 0 }),
             duration: 600,
           }
-        ]
+        ],
       }, "-=600")
     }
   }

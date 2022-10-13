@@ -7,7 +7,7 @@
             getIndex(index + 1)
         }}</span>
       <a class="flex-grow ml-1 col-span-8" :href="challenge.link" target="_blank">
-        <h2 class="font-asap title-colors text-lg">{{ challenge.title }}</h2>
+        <h2 class="font-asap title-colors dark:text-gray-900 text-lg">{{ challenge.title }}</h2>
       </a>
       <a :href="challenge.url" target="_blank"
         class="pl-1 h-full flex items-center justify-center place-self-stretch col-span-1 border-l border-l-gray-400">
