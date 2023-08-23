@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex flex-col md:grid gap-y-4 grid-cols-2 md:gap-x-2" id="works">
-    <div class="webcard" v-for="(work, index) in workDescriptions" :key="index">
+    <div class="webcard bg-white/70 md:bg-gray-100 dark:md:bg-gray-900" v-for="(work, index) in workDescriptions" :key="index">
       <div class="overflow-hidden rounded-md relative">
         {{ getImage(work) }}
         <img :src="work.image" :alt="work.name" class="h-36 aspect-video">
@@ -39,7 +39,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 .webcard
-  @apply bg-white/70 md:bg-black/10 grid place-items-center rounded-lg select-none h-52 shadow-lg px-10 py-6
+  @apply md:shadow-sm grid place-items-center rounded-lg select-none h-52 shadow-lg px-10 py-6
   &:nth-child(even) .image-overlay
     @apply bg-cyan/70
   &:nth-child(odd)  .image-overlay

@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggleTheme" class="dark:text-gray-200 text-gray-600 grid place-items-center pr-2 mr-2 border-r border-gray-400">
+  <button @click="toggleTheme" class="dark:text-gray-200 text-gray-500 grid place-items-center pr-2 mr-2 border-r border-gray-400">
     <svg version="1.1" viewBox="0 0 32 32" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
       <g stroke-linejoin="round">
         <circle id="sun-moon" cx="16" cy="16" fill="currentColor" r="8.5265245" mask="url(#moon-mask)" />
@@ -29,11 +29,8 @@ export default {
 </script>
 <style lang="sass" scoped>
 svg 
-
   & *
     transform-origin: center center
-
-  @apply text-gray-600
 
   #sun-rays
     animation: rotate-left-and-fade-rv ease-out 400ms 700ms
@@ -43,7 +40,6 @@ svg
     @supports (cx: 1)
       animation: animate-cx-bwd 200ms 0ms ease-out forwards
   .dark &
-    @apply text-white
     #sun-rays
       animation: rotate-left-and-fade ease-out 400ms 200ms forwards
     #sun-moon

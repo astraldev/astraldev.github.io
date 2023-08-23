@@ -1,6 +1,6 @@
 
 <template>
-  <section class="flex flex-col h-[calc(100vh_-_3rem)] md:flex-row w-full items-center justify-center">
+  <section class="flex flex-col h-[100dvh] md:flex-row w-full items-center justify-center">
     <div ref="logo" class="aspect-square my-2 h-1/3 md:w-1/3 grid place-items-center md:mr-14 md:mb-[4.5vmax]">
       <round-logo class="aspect-square" />
     </div>

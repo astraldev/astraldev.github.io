@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col md:mt-5 w-full pb-5 md:flex-row md:h-[70vh] items-start md:gap-x-10" id="skills">
-    <div class="bg-gradient-to-b from-cyan/50 md:bg-none flex w-full md:w-1/2 relative">
+    <div class="bg-gradient-to-b from-cyan/50 dark:from-cyan/30 md:bg-none flex w-full md:w-1/2 relative">
       <programming-illustration class="aspect-square -mt-4 md:absolute md:w-[35vmax] z-[-1] inset-0 -right-[5vh]" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
     </div>
     <div class="w-11/12 self-center my-auto md:justify-between mx-auto md:mr-0 md:w-1/2" ref="languages">
@@ -71,8 +71,8 @@ export default {
             duration: 0,
           },
           {
-            height: `${2.05*childrenCount}rem`,
-            duration: 1500/childrenCount,
+            height: `${1.75*childrenCount}rem`,
+            duration: 1000/childrenCount,
             easing: "easeOutCubic",
             delay: 100/childrenCount,
           }
@@ -183,7 +183,7 @@ details
   &>ul 
     @apply flex flex-col divide-y divide-gray-200 dark:divide-gray-900 overflow-y-clip
     &>li 
-      @apply w-full px-6 hover:bg-gray-50 dark:hover:bg-white/10 cursor-pointer text-sm text-gray-500 dark:text-gray-400 font-ubuntu-mono font-bold py-1.5
+      @apply w-full px-6 hover:bg-gray-50 dark:hover:bg-white/10 cursor-pointer text-xs text-gray-500 dark:text-gray-400 font-comfortaa py-1.5
 
 g.screen-item, g#pc-screen, g#background, g.leafs
   @apply opacity-0
