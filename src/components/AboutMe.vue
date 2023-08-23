@@ -1,8 +1,8 @@
 <template>
-  <section class="w-full about-me" id="about">
+  <section class="w-full about-me border-t-2 border-red-400" id="about">
     <div class="illustration">
       <coding-illustration ref="illustration" :class="`aspect-square`"
-        v-intersect="{ callback: illustrationIntersect, threshold: 0.99, once: true }" />
+        v-intersect="{ callback: illustrationIntersect, threshold: 0.5, once: true }" />
       <div class="flex-col pb-4 w-2/3 hidden md:flex text-left">
         <h2 class="font-bold title-colors text-5xl pt-16 px-4 py-2 font-comfortaa">Hello, I
           am AstralDev</h2>
