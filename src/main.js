@@ -34,7 +34,7 @@ createApp(App)
   .use(Vue3SmoothScroll, {
     duration: 600,
     updateHistory: false,
-    easing: 'easeInQuint'
+    easing: 'easeInQuart'
   })
   .directive('typed', typed)
   .directive('anime', anime)

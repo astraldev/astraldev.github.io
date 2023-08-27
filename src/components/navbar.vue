@@ -2,8 +2,8 @@
   <nav :class="`sticky top-0 z-30 rounded-b-lg shadow-md`" ref="navigation">
     <div class="md:flex md:flex-nowrap dark:bg-white/10 bg-white/40 backdrop-blur-md">
       <div class="py-3 w-full overflow-y-hidden px-6 md:pr-0 items-center flex text-gray-700 dark:text-white">
-        <div ref="title" id="nav-title" class="flex-grow relative flex h-9 overflow-y-hidden flex-col">
-          <h1 class="text-2xl font-asap font-bold">About me</h1>
+        <div id="nav-title" class="flex-grow relative flex h-9 overflow-y-hidden flex-col">
+          <logo class="text-gray-500 dark:text-gray-200 w-max"/>
         </div>
         <theme-switcher />
         <button class="flex-grow-0 md:hidden" @click="active = !active">
@@ -11,7 +11,7 @@
           <font-awesome-icon icon="fa-solid fa-bars" class="h-4 w-4" v-else />
         </button>
       </div>
-      <div :class="`overflow-hidden nav-list max-h-0 md:max-h-[15rem] ${active ? 'h-fit' : ''}`" ref="navlist">
+      <div :class="`overflow-hidden nav-list max-h-0 md:max-h-[15rem] ${active ? 'h-fit' : '!border-transparent'}`" ref="navlist">
         <ul>
           <li>
             <a @click="active = false" id="nav-link-anchor" href="#about" v-smooth-scroll="{ offset: -35 }">About me</a>
@@ -38,48 +38,15 @@
 <script>
 import anime from 'animejs'
 import ThemeSwitcher from './theme-switcher.vue';
+import Logo from "../assets/astraldev.svg"
 
 export default {
-  methods: {
-    changeTitle(text) {
-      const newH1 = document.createElement("h1");
-      newH1.classList.add("text-2xl");
-      newH1.classList.add("font-asap");
-      newH1.classList.add("font-bold");
-      newH1.innerText = text;
-      newH1.style.transform = "translateY(50%)"
-      newH1.style.textShadow = '2px 2px #fff6'
-      const timeline = anime.timeline()
-
-      timeline.add({
-        targets: this.$refs.title.querySelector('h1'),
-        translateY: [0, "-1000%"],
-        // opacity: [1,0],
-        delay: 0,
-        easing: "linear",
-        duration: 150,
-        complete: () => {
-          while (this.$refs.title.firstChild) this.$refs.title.removeChild(this.$refs.title.lastChild);
-          this.$refs.title.appendChild(newH1);
-        }
-      })
-      timeline.add({
-        targets: newH1,
-        opacity: [0, 1],
-        translateY: ["10%", "0%"],
-        delay: 0,
-        duration: 150,
-        easing: "linear"
-      })
-    }
-
-  },
   data() {
     return {
       active: false
     }
   },
-  components: { ThemeSwitcher },
+  components: { ThemeSwitcher, Logo },
   mounted() {
     this.$el.style.opacity = 0
     this.$el.style.overflowY = "hidden"
@@ -92,23 +59,6 @@ export default {
         if (this.$el.style.opacity == 1 || this.$el.style.opacity == '1') {
           anime({ targets: this.$el, opacity: [1, 0], easing: 'linear', duration: 250 })
         }
-      }
-
-      const watchList = ["#about", "#works", "#challenges", "#skills", "#contact"]
-      watchList.reverse()
-
-      for (const el in watchList) {
-        const elm = document.querySelector(watchList[el]),
-          title = this.$el.querySelector("#nav-title"),
-          text = this.$el.querySelector(`a#nav-link-anchor[href='${watchList[el]}']`).innerText;
-
-        if (Math.abs(elm.offsetTop - window.scrollY) <= 55) {
-          if (title.querySelector("h1").innerText.toLowerCase() != text.toLowerCase()) {
-            this.changeTitle(text)
-            break;
-          }
-        }
-
       }
     })
   },

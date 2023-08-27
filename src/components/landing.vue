@@ -21,20 +21,23 @@
       </a>
     </div>
   </section>
+  <navbar />
 </template>
 <script>
 import CodingIllustration from '../assets/coding-illustration.svg?component'
 import RoundLogo from '../assets/logo.svg'
+import Navbar from "./navbar.vue"
 import anime from 'animejs'
 
 export default {
-  components: { RoundLogo, CodingIllustration },
+  components: { RoundLogo, CodingIllustration, Navbar },
   data() {
     return {
       typedOptions: {
         strings: [
-          "I <b>love</b> to create and design intuitive <b>websites</b>^400  &amp;^400 linux desktop <b>applications</b>.",
-          "Freelancer and <b>UI/UX designer</b>."
+          "I <b>love</b> creating intuitive <b>websites</b>",
+          "I <b>love</b> creating desktop <b>applications</b> for linux.",
+          "Freelancer and <b>Software developer</b>."
         ],
         loop: true,
         typeSpeed: 50,
@@ -114,6 +117,6 @@ export default {
 <style lang="sass" scoped>
 .get-in-touch
   &>svg
-    @apply animate-bounce -mb-0.5 mx-0.5
-  @apply opacity-0 text-gray-400 dark:text-gray-300 text-sm underline underline-offset-2 decoration-dotted hover:text-cyan/70
+    @apply animate-bounce -mb-0.5 mx-0.5 text-current
+  @apply opacity-0 text-gray-400 dark:text-gray-300 text-sm underline underline-offset-2 decoration-dotted hover:text-cst-cyan/70
 </style>

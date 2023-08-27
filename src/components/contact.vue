@@ -72,8 +72,6 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-.send-button
-  @apply h-10 bg-cyan font-bold font-asap flex items-center justify-center gap-x-4 relative rounded after:absolute after:inset-0 after:bg-transparent hover:after:bg-white/10 text-white
 .illustration 
   @apply md:absolute md:h-[35vmax]
   &>.objects, &>g#person, &>g#background, &>g#plant, &>g#laptop, &>g#table

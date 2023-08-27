@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col md:mt-5 w-full pb-5 md:flex-row md:h-[70vh] items-start md:gap-x-10" id="skills">
-    <div class="bg-gradient-to-b from-cyan/50 dark:from-cyan/30 md:bg-none flex w-full md:w-1/2 relative">
+    <div class="bg-gradient-to-b from-cst-cyan/50 dark:from-cst-cyan/30 md:bg-none flex w-full md:w-1/2 relative">
       <programming-illustration class="aspect-square -mt-4 md:absolute md:w-[35vmax] z-[-1] inset-0 -right-[5vh]" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
     </div>
     <div class="w-11/12 self-center my-auto md:justify-between mx-auto md:mr-0 md:w-1/2" ref="languages">
