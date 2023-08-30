@@ -11,8 +11,17 @@
   @apply transition-colors duration-500
 
 body
-  @apply dark:bg-gradient-to-b to-[#0d1327] from-gray-900 overflow-x-hidden
+  @apply dark:bg-gradient-to-b bg-white to-[#032430] from-[#09050e] overflow-x-hidden
   max-width: 100vw
+
+.background 
+  @apply flex flex-col justify-between items-center
+  & > span
+    &:first-child
+      @apply  dark:bg-cst-cyan/80 translate-x-[100%] -translate-y-[50%] 
+    &:last-child
+      @apply dark:bg-cst-green/80 -translate-x-[100%] translate-y-[50%]
+    @apply rounded-full aspect-square h-[50vw] lg:hidden bg-transparent
 
 summary
   list-style: none

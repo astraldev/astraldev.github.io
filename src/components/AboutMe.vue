@@ -14,7 +14,7 @@
       </div>
     </div>
     <div
-      class="p-4 flex items-center flex-col -mt-20 md:mt-0 rounded-t-2xl bg-gradient-to-b from-cst-cyan dark:from-cst-cyan/50 dark:to-cyan/30 to-cst-cyan/50 md:bg-none justify-center">
+      class="p-4 flex items-center flex-col -mt-20 md:mt-0 rounded-t-2xl bg-gradient-to-b from-cst-cyan dark:from-cst-cyan/40 dark:to-cst-cyan/20 to-cst-cyan/50 md:bg-none justify-center">
       <div class="flex flex-col pb-4 md:hidden text-center ">
         <h2 class="font-bold text-2xl pt-16 px-4 py-2 text-white font-comfortaa">Hello, I
           am AstralDev</h2>

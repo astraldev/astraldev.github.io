@@ -1,7 +1,7 @@
 <template>
-  <section class="flex w-full pb-5 md:mt-24" id="contact">
+  <section class="flex w-full pb-4 md:pb-5 md:mt-24" id="contact">
     <div class="flex md:grid grid-cols-2 w-full md:flex-row flex-col gap-x-10">
-      <div class="mx-auto w-11/12 md:w-1/2 relative md:order-1 flex items-center justify-center">
+      <div class="mx-auto w-11/12 md:w-1/2 relative md:order-1 flex items-center -mb-10 md:mb-0 mt-10 justify-center">
         <contact-illustration class="illustration aspect-square md:mx-0 mx-auto"
           v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
       </div>
@@ -79,9 +79,9 @@ export default {
 
 .social-links
   @apply grid grid-cols-2 gap-4 md:grid-cols-2 mx-4
-
   &>a
-    @apply after:absolute dark:bg-white/5 dark:text-gray-300 after:transition-colors overflow-hidden after:duration-500 after:inset-0 relative cursor-pointer bg-white shadow p-4 gap-y-2 flex flex-col items-center justify-center rounded-md
+    @apply dark:bg-white/5 dark:text-gray-300 h-24 md:h-28 relative cursor-pointer bg-white shadow p-4 gap-y-2 flex flex-col items-center justify-center rounded-md
+    @apply after:absolute after:transition-colors overflow-hidden after:duration-500 after:inset-0 
 
     &>svg
       @apply h-7 w-7

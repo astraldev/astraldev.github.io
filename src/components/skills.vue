@@ -1,7 +1,7 @@
 <template>
   <section class="flex flex-col md:mt-5 w-full pb-5 md:flex-row md:h-[70vh] items-start md:gap-x-10" id="skills">
-    <div class="bg-gradient-to-b from-cst-cyan/50 dark:from-cst-cyan/30 md:bg-none flex w-full md:w-1/2 relative">
-      <programming-illustration class="aspect-square -mt-4 md:absolute md:w-[35vmax] z-[-1] inset-0 -right-[5vh]" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
+    <div class="bg-gradient-to-b from-cst-cyan/50 dark:from-cst-cyan/20 md:bg-none flex w-full md:w-1/2 relative">
+      <programming-illustration class="aspect-square -mt-4 md:-mt-14 md:absolute md:w-[35vmax] z-[-1] inset-0 -right-[5vh]" v-intersect="{ callback: animateIllustration, once: true, threshold: 0.99 }" />
     </div>
     <div class="w-11/12 self-center my-auto md:justify-between mx-auto md:mr-0 md:w-1/2" ref="languages">
       <h3 class="text-heading md:hidden mx-auto text-center -mt-10 pb-10 dark:text-white">
@@ -171,9 +171,9 @@ export default {
 <style lang="sass" scoped>
 
 details 
-  @apply border dark:border-gray-800 border-gray-300 rounded-md my-4 first:mt-0
+  @apply border dark:border-zinc-400/20 border-gray-300 rounded-md my-4 first:mt-0
   &[open]>summary
-    @apply border-b-2 border-gray-200 dark:border-gray-800
+    @apply border-b-2 border-gray-200 dark:border-zinc-400/20
   &>summary 
     @apply flex px-6 py-2 cursor-pointer
     &::-webkit-details-marker, &::marker
@@ -181,9 +181,9 @@ details
     &>div
       @apply flex items-center w-full text-gray-700 gap-x-4 dark:text-gray-300
   &>ul 
-    @apply flex flex-col divide-y divide-gray-200 dark:divide-gray-900 overflow-y-clip
+    @apply flex flex-col divide-y divide-gray-200 dark:divide-zinc-400/10 overflow-y-clip
     &>li 
-      @apply w-full px-6 hover:bg-gray-50 dark:hover:bg-white/10 cursor-pointer text-xs text-gray-500 dark:text-gray-400 font-comfortaa py-1.5
+      @apply w-full px-6 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer text-xs text-gray-500 dark:text-gray-400 font-comfortaa py-1.5
 
 g.screen-item, g#pc-screen, g#background, g.leafs
   @apply opacity-0

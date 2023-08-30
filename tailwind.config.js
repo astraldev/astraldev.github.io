@@ -1,7 +1,7 @@
 module.exports = {
   content: [
     "*.html",
-    "src/**/*.vue"
+    "src/**/*.(vue|svg)",
   ],
   darkMode: 'class',
   theme: {

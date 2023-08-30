@@ -1,6 +1,6 @@
 <template>
-  <nav :class="`sticky top-0 z-30 rounded-b-lg shadow-md`" ref="navigation">
-    <div class="md:flex md:flex-nowrap dark:bg-white/10 bg-white/40 backdrop-blur-md">
+  <nav :class="`sticky top-0 z-30 rounded-b-lg shadow-md`">
+    <div class="md:flex md:flex-nowrap dark:bg-white/20 md:dark:bg-white/10 bg-white/40 backdrop-blur-md">
       <div class="py-3 w-full overflow-y-hidden px-6 md:pr-0 items-center flex text-gray-700 dark:text-white">
         <div id="nav-title" class="flex-grow relative flex h-9 overflow-y-hidden flex-col">
           <logo class="text-gray-500 dark:text-gray-200 w-max"/>
@@ -70,7 +70,7 @@ export default {
           targets: this.$refs.navlist,
           keyframes: [
             {
-              maxHeight: "15rem",
+              maxHeight: "100dvh",
               delay: 0,
               duration: 0,
             },
@@ -92,7 +92,7 @@ export default {
               duration: 0,
             },
             {
-              maxHeight: "15rem",
+              maxHeight: "100vh",
               delay: 100,
               duration: 200,
               easing: 'easeOutCubic'
@@ -113,7 +113,7 @@ export default {
     // small screens
     & > ul
       @apply p-4 md:py-0 flex md:flex-row flex-col gap-y-4 md:h-full md:items-center md:pl-1 md:pr-6 md:w-max md:gap-x-3 font-comfortaa md:mt-1
-    @apply md:h-full flex-shrink-0 md:my-auto border-t-2 border-white/10 md:border-t-0 md:w-fit w-full
+    @apply md:h-full flex-shrink-0 md:my-auto border-t-2 border-white/10 md:border-t-0 md:w-fit w-full flex justify-between flex-col
 
     &> ul > li
       @apply font-comfortaa text-sm text-gray-700 dark:text-white
