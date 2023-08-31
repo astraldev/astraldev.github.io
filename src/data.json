@@ -1,12 +1,12 @@
 {
   "works": [{
       "image": "/images/dualsight.jpg",
-      "role": "frontend developer",
+      "description": "Frontend developer",
       "name": "dualsight"
     },
     {
-      "image": "",
-      "role": "frontend developer",
+      "image": "/images/website-layout.jpg",
+      "description": "Frontend developer",
       "name": "originswift"
     }
   ],

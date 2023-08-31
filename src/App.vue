@@ -6,7 +6,7 @@
   </div>
   <div class="-z-10 fixed inset-0 pointer-events-none backdrop-blur-lg"></div>
   <div
-    class="fixed inset-x-1.5 md:inset-x-8 lg:inset-x-16 inset-y-0 pointer-events-none border-x border-zinc-500/10"
+    class="fixed inset-x-1.5 md:inset-x-8 lg:inset-x-16 inset-y-0 pointer-events-none border-x glass-border"
   ></div>
   <div class="snap-y snap-mandatory">
     <landing />

@@ -1,9 +1,9 @@
 <template>
-  <section class="w-full about-me snap-start" id="about">
+  <section class="w-full mt-2 md:min-h-[100dvh] about-me snap-start" id="about">
     <div class="illustration">
       <coding-illustration ref="illustration" :class="`aspect-square`"
         v-intersect="{ callback: illustrationIntersect, threshold: 0.99, once: true }" />
-      <div class="flex-col pb-4 w-2/3 hidden md:flex text-left">
+      <div class="flex-col pb-4 -mt-8 w-2/3 hidden md:flex text-left">
         <h2 class="font-bold title-colors text-5xl pt-16 px-4 py-2 font-comfortaa">Hello, I
           am AstralDev</h2>
         <span class="py-8 px-4 font-asap md:subtitle-colors">
@@ -29,20 +29,7 @@
           <h2 class="text-lg md:text-2xl font-bold font-comfortaa">My Works</h2>
           <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
         </div>
-        <works />
-        <div class="my-2 flex">
-          <a href="" class="see-more">See more</a>
-        </div>
-      </div>
-      <div class="flex flex-col w-full" id="challenges">
-        <div class="flex justify-between py-4 px-1 items-center text-white md:title-colors">
-          <h2 class="text-lg font-bold md:text-2xl font-comfortaa">Frontend Challenges</h2>
-          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
-        </div>
-        <challenges :count="2" />
-        <div class="my-2 flex">
-          <a href="" class="see-more">See more</a>
-        </div>
+        <timeline />
       </div>
     </div>
   </section>
@@ -51,10 +38,10 @@
 <script>
 import CodingIllustration from '../assets/coding-illustration.svg?component'
 import anime from 'animejs'
-import Works from './works.vue';
-import Challenges from './challenges.vue';
+import Timeline from './timeline.vue';
+
 export default {
-  components: { CodingIllustration, Works, Challenges },
+  components: { CodingIllustration, Timeline },
   mounted() {
     this.$el.querySelectorAll(".illustration g").forEach(el => el.style.opacity = 0)
   },
