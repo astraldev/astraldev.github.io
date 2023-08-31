@@ -2,8 +2,7 @@
   <div
     class="background -z-20 fixed inset-0 pointer-events-none"
   >
-    <span class="animate-none dark:animate-pulse"></span>
-    <span class="animate-none dark:animate-pulse" ref="background"></span>
+    <span class="blur-2xl"></span>
   </div>
   <div class="-z-10 fixed inset-0 pointer-events-none backdrop-blur-lg"></div>
   <div
@@ -33,15 +32,6 @@ export default {
       document.documentElement
     )
       document.documentElement.classList.add("dark");
-
-    document.onscroll = () => {
-      const elm = document.body;
-      const p = elm.parentNode;
-      const scroll_percentage = 100 - (((elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight)) * 100);
-      if(this.$refs['background']){
-        this.$refs.background.style.opacity =  scroll_percentage;
-      }
-    };
   },
   methods: {
     toggleTheme() {
