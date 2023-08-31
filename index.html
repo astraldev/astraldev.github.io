@@ -1,29 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="shorcut icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Frontend web and software developer">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <meta name="theme-color" content="#0a63d9" media="(prefers-color-theme: light)">
 
-    <meta property="og:title" content="AstralDEV | Web & Software Developer"/>
-    <meta property="og:description" content="Web developer, UI/UX designer and software developer." />
-    <meta property="og:url" content="https://astraldev.github.io" />
-    <meta property="og:type" content="website" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shorcut icon" type="image/png" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="darkreader-lock">
+  <meta name="description" content="Frontend web and software developer">
+  <meta name="theme-color" content="#0a63d9" media="(prefers-color-theme: light)">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Asap&family=Comfortaa:wght@400;700&family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <meta name="keyword" content="portfolio, javascript, developer, html, css, python, c++">
-    <title>AstralDEV | Web & Software Developer</title>
-    <script type="module" crossorigin src="/assets/index.ab0509a5.js"></script>
-    <link rel="stylesheet" href="/assets/index.46105cd7.css">
-  </head>
-  <body class="lg:px-36 md:px-16">
-    <div id="app">
-      
+  <meta property="og:title" content="AstralDEV | Web & Software Developer" />
+  <meta property="og:description" content="Web developer, UI/UX designer and software developer." />
+  <meta property="og:url" content="https://astraldev.github.io" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://astraldev.github.io/images/image.jpg" />
+  <meta property="og:site_name" content="AstralDev" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Asap&family=Comfortaa:wght@400;700&family=Ubuntu+Mono&display=swap"
+    rel="stylesheet">
+  <meta name="keyword" content="portfolio, javascript, developer, html, css, python, c++">
+  <title>AstralDEV | Web & Software Developer</title>
+
+  <style>
+    .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+
+    .placeholder>span {
+      height: 0.75rem;
+      width: 0.75rem;
+      border-radius: 100%;
+      background-color: #1d54c1;
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .5;
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index.a18bb797.js"></script>
+  <link rel="stylesheet" href="/assets/index.95554ebc.css">
+</head>
+
+<body class="lg:px-36 md:px-16">
+  <div id="app">
+    <div class="placeholder">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    
-  </body>
+  </div>
+  
+</body>
+
 </html>
