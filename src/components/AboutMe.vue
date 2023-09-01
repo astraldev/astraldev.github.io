@@ -1,6 +1,6 @@
 <template>
-  <section class="w-full mt-2 md:min-h-[100dvh] about-me snap-start" id="about">
-    <div class="illustration bg-red-400">
+  <section class="w-full mt-5 md:min-h-[100dvh] about-me snap-start" id="about">
+    <div class="illustration">
       <coding-illustration
         ref="illustration"
         :class="`aspect-square`"
