@@ -13,39 +13,47 @@
           }"
         />
       </div>
-      <div class="social-links">
-        <a
-          target="_blank"
-          href="https://github.com/astraldev"
-          class="after:bg-transparent hover:after:bg-black/25"
+      <div class="flex flex-col gap-y-10">
+        <div
+          class="flex justify-center -mb-5 -mt-8 md:my-0 md:justify-between text-gray-700 px-4 top-0 items-center dark:text-white md:title-colors"
         >
-          <font-awesome-icon icon="fa-brands fa-github" />
-          <span>GitHub</span>
-        </a>
-        <a
-          target="_blank"
-          href="https://t.me/+2349049821801?text=Hello%2C%20I%20am%20"
-          class="hover:after:bg-[#4285F4]/25 after:bg-transparent"
-        >
-          <font-awesome-icon icon="fa-brands fa-telegram" />
-          <span>Telegram</span>
-        </a>
-        <a
-          target="_blank"
-          href="https://instagram.com/just_ekure"
-          class="after:bg-transparent hover:after:bg-[#FD1D1D]/25"
-        >
-          <font-awesome-icon icon="fa-brands fa-instagram" />
-          <span>Instagram</span>
-        </a>
-        <a
-          target="_blank"
-          href="https://wa.me/2349049821801?text=Hello%2C%20I%20am%20"
-          class="after:bg-transparent hover:after:bg-[#25D366]/25"
-        >
-          <font-awesome-icon icon="fa-brands fa-whatsapp" />
-          <span>WhatsApp</span>
-        </a>
+          <h2 class="text-2xl font-bold font-comfortaa">Contact me</h2>
+          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon hidden md:inline" />
+        </div>
+        <div class="social-links">
+          <a
+            target="_blank"
+            href="https://github.com/astraldev"
+            class="after:bg-transparent hover:after:bg-black/25"
+          >
+            <font-awesome-icon icon="fa-brands fa-github" />
+            <span>GitHub</span>
+          </a>
+          <a
+            target="_blank"
+            href="https://t.me/+2349049821801?text=Hello%2C%20I%20am%20"
+            class="hover:after:bg-[#4285F4]/25 after:bg-transparent"
+          >
+            <font-awesome-icon icon="fa-brands fa-telegram" />
+            <span>Telegram</span>
+          </a>
+          <a
+            target="_blank"
+            href="https://instagram.com/just_ekure"
+            class="after:bg-transparent hover:after:bg-[#FD1D1D]/25"
+          >
+            <font-awesome-icon icon="fa-brands fa-instagram" />
+            <span>Instagram</span>
+          </a>
+          <a
+            target="_blank"
+            href="https://wa.me/2349049821801?text=Hello%2C%20I%20am%20"
+            class="after:bg-transparent hover:after:bg-[#25D366]/25"
+          >
+            <font-awesome-icon icon="fa-brands fa-whatsapp" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>

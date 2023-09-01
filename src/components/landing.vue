@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col h-[calc(100dvh_-_3rem)] pt-[3rem] md:flex-row w-full items-center justify-center"
+    class="flex flex-col h-[calc(100dvh_-_3.6rem)] pt-[3rem] md:flex-row w-full items-center snap-center justify-center"
   >
     <div
       ref="logo"

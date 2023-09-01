@@ -37,7 +37,7 @@
               >About me</a
             >
           </li>
-          <li>
+          <li class="hidden md:flex">
             <a
               @click="active = false"
               href="#works"
@@ -45,7 +45,15 @@
               >Works</a
             >
           </li>
-          <li>
+          <li class="md:hidden flex">
+            <a
+              href="#work-seperate"
+              @click="active = false"
+              v-smooth-scroll="{ offset: 8 }"
+              >Works</a
+            >
+          </li>
+          <li class="flex md:hidden">
             <a
               href="#projects"
               @click="active = false"
@@ -53,11 +61,18 @@
               >Projects</a
             >
           </li>
+          <li class="hidden md:flex">
+            <a
+              href="#works"
+              @click="active = false"
+              >Projects</a
+            >
+          </li>
           <li>
             <a
               @click="active = false"
               href="#skills"
-              v-smooth-scroll="{ offset: -55 }"
+              v-smooth-scroll="{ offset: -8 }"
               >Skills</a
             >
           </li>
@@ -65,7 +80,7 @@
             <a
               @click="active = false"
               href="#contact"
-              v-smooth-scroll="{ offset: -55 }"
+              v-smooth-scroll="{ offset: -8 }"
               >Contact</a
             >
           </li>

@@ -4,16 +4,12 @@
     id="skills"
   >
     <div
-      class="bg-gradient-to-b from-cst-cyan/50 dark:from-cst-cyan/20 md:bg-none h-full flex w-full flex-col gap-y-10 md:w-full"
+      class="bg-gradient-to-b from-cst-cyan/40 dark:from-cst-cyan/[.25] md:bg-none h-full flex w-full flex-col gap-y-10 md:w-full"
     >
       <h2
-        class="text-heading hidden title-colors ml-4 md:flex justify-between items-center"
+        class="text-heading hidden title-colors mx-8 md:flex items-center"
       >
         Languages I speak
-        <font-awesome-icon
-          icon="fa-solid fa-link"
-          class="text-slate-200 md:text-current cursor-pointer hover:text-slate-50 h-6 w-6"
-        />
       </h2>
       <div class="relative">
         <programming-illustration

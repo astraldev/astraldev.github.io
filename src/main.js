@@ -19,6 +19,7 @@ import {
   faPaperPlane,
   faServer,
   faWindowRestore,
+  faCloudArrowDown,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -27,7 +28,7 @@ import typed from './directives/typed'
 import anime from './directives/anime'
 import intersect from './directives/intersect'
 
-library.add(faPython, faBars, faCaretDown, faAt, faPaperPlane, faWhatsapp, faGithub, faInstagram, faCaretUp, faXmark, faChrome, faDownLong, faLink, faArrowUpRightFromSquare, faTelegram, faWindowRestore, faServer)
+library.add(faCloudArrowDown, faPython, faBars, faCaretDown, faAt, faPaperPlane, faWhatsapp, faGithub, faInstagram, faCaretUp, faXmark, faChrome, faDownLong, faLink, faArrowUpRightFromSquare, faTelegram, faWindowRestore, faServer)
 
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)
