@@ -1,13 +1,13 @@
 <template>
   <section class="w-full mt-2 md:min-h-[100dvh] about-me snap-start" id="about">
-    <div class="illustration">
+    <div class="illustration bg-red-400">
       <coding-illustration
         ref="illustration"
         :class="`aspect-square`"
         v-intersect="{
           callback: illustrationIntersect,
           once: true,
-          options: { threshold: 0.5 },
+          options: { threshold: 0.6 },
         }"
       />
       <div class="flex-col pb-4 -mt-8 w-2/3 hidden md:flex text-left">
