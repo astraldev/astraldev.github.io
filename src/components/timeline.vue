@@ -15,7 +15,7 @@
       <div
         class="h-auto w-fit py-0 px-2 md:px-0 flex flex-col items-center md:h-fit md:w-full md:py-1 gap-2 md:flex-row"
       >
-        <span class="h-[15%] w-0.5 md:w-[15%] md:h-0.5 glass-line"></span>
+        <span class="h-3 w-0.5 md:w-[15%] md:h-0.5 glass-line"></span>
         <span class="h-2 w-2 aspect-square rounded-full glass-line"></span>
         <span class="w-0.5 h-full md:w-full md:h-0.5 glass-line"></span>
       </div>
@@ -30,7 +30,7 @@
         <img
           :src="work.image"
           :alt="work.name"
-          class="h-40 aspect-video rounded-md mt-2"
+          class="w-full max-h-48 aspect-video rounded-md mt-2 object-cover"
         />
       </div>
     </a>

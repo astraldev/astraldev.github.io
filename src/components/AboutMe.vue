@@ -1,9 +1,9 @@
 <template>
-  <section class="w-full mt-5 md:min-h-[100dvh] about-me snap-start" id="about">
+  <section class="w-full mt-2 md:min-h-[100dvh] about-me snap-start" id="about">
     <div class="illustration">
       <coding-illustration
         ref="illustration"
-        :class="`aspect-square`"
+        class="aspect-square outline-1 outline-red-300"
         v-intersect="{
           callback: illustrationIntersect,
           once: true,
@@ -63,30 +63,33 @@ export default {
     el.style.opacity = 0;
   },
   methods: {
-    illustrationIntersect(el) {
+    illustrationIntersect() {
+
       const svg = this.$el.querySelector(".illustration");
       svg.style.opacity = 1;
+
       const timeline = anime.timeline({
         easing: "spring(1,80,10,0)",
         duration: 1500,
       });
       timeline.add({
         targets: [
-          el.querySelector("g#backdrop"),
-          el.querySelector("g#person"),
-          el.querySelector("g#bottom-obj"),
-          el.querySelector("g#top-obj"),
+          svg.querySelector("g#backdrop"),
+          svg.querySelector("g#person"),
+          svg.querySelector("g#bottom-obj"),
+          svg.querySelector("g#top-obj"),
         ],
         keyframes: [
           {
-            translateY: "-15%",
+            translateY: "-5%",
             delay: 0,
+            opacity: 0,
             duration: 0,
           },
           {
             opacity: 1,
             translateY: 0,
-            delay: anime.stagger(250, { start: 150 }),
+            delay: anime.stagger(250, { start: 100 }),
           },
         ],
       });

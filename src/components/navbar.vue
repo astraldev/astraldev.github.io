@@ -1,5 +1,5 @@
 <template>
-  <nav :class="`sticky top-0 z-30 rounded-b-md shadow-md md:overflow-hidden`">
+  <nav :class="`sticky top-0 z-30 rounded-b-md shadow-md overflow-hidden`">
     <div
       class="md:flex md:flex-nowrap dark:bg-white/20 md:dark:bg-white/10 bg-white/40 backdrop-blur-md"
     >
