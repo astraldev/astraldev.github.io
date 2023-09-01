@@ -3,7 +3,7 @@
     <div class="illustration">
       <coding-illustration
         ref="illustration"
-        class="aspect-square outline-1 outline outline-red-300"
+        class="aspect-square"
         v-intersect="{
           callback: illustrationIntersect,
           once: true,
