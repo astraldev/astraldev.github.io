@@ -1,0 +1,34 @@
+<svg width="1280" height="720" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="filter3134" x="-.08" y="-.084" width="1.1933" height="1.203" color-interpolation-filters="sRGB">
+      <feFlood flood-color="rgb(0,0,0)" flood-opacity=".9" result="flood"/>
+      <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+      <feGaussianBlur result="blur" stdDeviation="1.4"/>
+      <feOffset dx="1.4" dy="1.4" result="offset"/>
+      <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" rx="2.0821" ry="1.9117" fill="#f2f2f2" stroke="#000" stroke-dasharray="1, 1"/>
+  <g transform="matrix(13.808 0 0 13.808 312.75 32.745)">
+    <path d="m36 43c8 0 8-8 8-8v-24s0-8-8-8h-26c-8 0-8 8-8 8v24s0 8 8 8h26z" fill="#fff" filter="url(#filter3134)"/>
+    <g fill="none">
+      <path d="m14 10.5h-9.5v18" stroke="#00f"/>
+      <g stroke="#f00">
+        <path d="m14 16.5h-7.5v18"/>
+        <path d="m20.5 13.5h6v6h3"/>
+        <path d="m21.5 31.5h5v-6h3"/>
+        <path d="m41 22.5h3"/>
+      </g>
+      <path d="m2 28.5h8" stroke="#00f"/>
+      <path d="m2 34.5h8" stroke="#f00"/>
+    </g>
+    <g fill="#fff" stroke="#000">
+      <g>
+        <path d="m9.5 7.5c6 0 9.5 0.5 13 6-3.5 5.5-7 6-13 6 0 0 2-3 2-6s-2-6-2-6z"/>
+        <path d="m28.5 16.5h7s6 0 6 6-6 6-6 6h-7z"/>
+        <path d="m8.5 25.5h7s6 0 6 6-6 6-6 6h-7z"/>
+      </g>
+      <path d="m25.5 31.5a2 2 0 0 1-4 0 2 2 0 1 1 4 0z"/>
+    </g>
+  </g>
+</svg>

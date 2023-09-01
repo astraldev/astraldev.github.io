@@ -1,0 +1,13 @@
+<svg width="1280" height="720" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="linearGradient2" x1="215.01" x2="1065" y1="360" y2="360" gradientTransform="translate(-99.137 -9.5248e-5)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f00" offset="0"/>
+      <stop stop-color="#ffae00" offset=".16581"/>
+      <stop stop-color="#0f0" offset=".50064"/>
+      <stop stop-color="#00cfff" stop-opacity=".99578" offset=".875"/>
+      <stop stop-color="#0027ff" offset="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" rx="2.0821" ry="1.9117" fill="#02010a" stroke="#000" stroke-dasharray="1, 1"/>
+  <text x="101.61026" y="402.18057" fill="url(#linearGradient2)" font-family="'Liberation Mono'" font-size="163.15px" letter-spacing="0px" stroke-width="4.0787" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="101.61026" y="402.18057" fill="url(#linearGradient2)" stroke-width="4.0787">:niceprint:</tspan></text>
+</svg>

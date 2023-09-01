@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gradient-to-t md:mt-20 mt-8 md:from-gray-100 md:dark:bg-none md:to-gray-50 pb-1 md:pb-4 py-4 md:dark:bg-gray-900/10 from-cst-cyan/70 to-cst-cyan/50 rounded-t-2xl md:rounded-t-lg flex items-center justify-between flex-col"
+    class="bg-gradient-to-t md:mt-20 mt-10 md:from-gray-100 md:dark:bg-none md:to-gray-50 pb-1 md:pb-4 py-4 md:dark:bg-gray-900/10 from-cst-cyan/70 to-cst-cyan/50 rounded-t-2xl md:rounded-t-lg flex items-center justify-between flex-col"
   >
     <logo class="text-white md:dark:text-white md:text-gray-700 w-32" />
     <span

@@ -47,6 +47,15 @@
         </div>
         <timeline />
       </div>
+      <div class="flex flex-col w-full mt-4" id="projects">
+        <div
+          class="flex justify-between pb-4 px-1 items-center text-white md:title-colors"
+        >
+          <h2 class="text-lg md:text-2xl font-bold font-comfortaa">Projects</h2>
+          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon" />
+        </div>
+        <projects />
+      </div>
     </div>
   </section>
 </template>
@@ -55,9 +64,10 @@
 import CodingIllustration from "../assets/coding-illustration.svg?component";
 import anime from "animejs";
 import Timeline from "./timeline.vue";
+import Projects from "./projects.vue";
 
 export default {
-  components: { CodingIllustration, Timeline },
+  components: { CodingIllustration, Timeline, Projects },
   mounted() {
     const el = this.$el.querySelector(".illustration");
     el.style.opacity = 0;

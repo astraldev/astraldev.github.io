@@ -10,6 +10,26 @@
       "name": "originswift"
     }
   ],
+  "projects": [
+    {
+      "name": "GLogic (Redesign)",
+      "description": "A redesign of the classic logic gate simulator (GLogic) application for Linux.",
+      "link": "https://github.com/astraldev/GLogic",
+      "languages": ["fa-brands fa-python"]
+    },
+    {
+      "name": "TicTacToe",
+      "link": "https://github.com/astraldev/TicTacToe",
+      "description": "A console (terminal) tic tac toe game made for 2 players.",
+      "languages": ["csharp"]
+    },
+    {
+      "name": "Pynes",
+      "description": "Classic minesweeper game for Linux.",
+      "link": "",
+      "languages": ["fa-brands fa-python"]
+    }
+  ],
   "challenges": [{
       "url": "https://astraldev.github.io/easybank-landing-page-master/",
       "link": "https://www.frontendmentor.io/solutions/easybank-landing-page-ObwljIGjig",
@@ -31,7 +51,7 @@
       "icon": "fa-solid fa-server"
     },
     "Software": {
-      "language": ["python", "c++"],
+      "language": ["Python", "C++"],
       "icon": "fa-solid fa-window-restore"
     }
   }

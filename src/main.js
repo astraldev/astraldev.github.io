@@ -7,7 +7,7 @@ import Vue3SmoothScroll from 'vue3-smooth-scroll'
 /** Font Awesome */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChrome, faTelegram, faGithub, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faChrome, faTelegram, faGithub, faInstagram, faWhatsapp, faPython } from '@fortawesome/free-brands-svg-icons'
 import {
   faArrowUpRightFromSquare,
   faAt,
@@ -27,7 +27,7 @@ import typed from './directives/typed'
 import anime from './directives/anime'
 import intersect from './directives/intersect'
 
-library.add(faBars, faCaretDown, faAt, faPaperPlane, faWhatsapp, faGithub, faInstagram, faCaretUp, faXmark, faChrome, faDownLong, faLink, faArrowUpRightFromSquare, faTelegram, faWindowRestore, faServer)
+library.add(faPython, faBars, faCaretDown, faAt, faPaperPlane, faWhatsapp, faGithub, faInstagram, faCaretUp, faXmark, faChrome, faDownLong, faLink, faArrowUpRightFromSquare, faTelegram, faWindowRestore, faServer)
 
 createApp(App)
   .component('font-awesome-icon', FontAwesomeIcon)

@@ -4,7 +4,7 @@
   >
     <a
       v-for="(work, index) in workDescriptions"
-      class="flex gap-x-2 ml-2 md:ml-0 flex-row md:flex-col opacity-0 group"
+      class="flex gap-x-2 ml-0 flex-row md:flex-col opacity-0 group"
       :key="index"
       v-intersect="{
         callback: slideIn,
@@ -30,7 +30,7 @@
         <img
           :src="work.image"
           :alt="work.name"
-          class="w-full max-h-48 aspect-video rounded-md mt-2 object-cover"
+          class="w-full max-h-48 aspect-video dark:mix-blend-darken rounded-md mt-2 object-cover"
         />
       </div>
     </a>
