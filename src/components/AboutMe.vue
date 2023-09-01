@@ -3,11 +3,11 @@
     <div class="illustration">
       <coding-illustration
         ref="illustration"
-        class="aspect-square outline-1 outline-red-300"
+        class="aspect-square outline-1 outline outline-red-300"
         v-intersect="{
           callback: illustrationIntersect,
           once: true,
-          options: { threshold: 0.6 },
+          options: { threshold: 0.8 },
         }"
       />
       <div class="flex-col pb-4 -mt-8 w-2/3 hidden md:flex text-left">
