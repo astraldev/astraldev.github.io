@@ -1,5 +1,5 @@
 <template>
-  <nav :class="`sticky top-0 z-30 rounded-b-lg shadow-md`">
+  <nav :class="`sticky top-0 z-30 rounded-b-md shadow-md md:overflow-hidden`">
     <div
       class="md:flex md:flex-nowrap dark:bg-white/20 md:dark:bg-white/10 bg-white/40 backdrop-blur-md"
     >
@@ -8,7 +8,7 @@
       >
         <div
           id="nav-title"
-          class="flex-grow relative flex h-9 overflow-y-hidden flex-col"
+          class="flex-grow relative flex h-9 overflow-y-hidden flex-col mr-auto"
         >
           <logo class="text-gray-500 dark:text-gray-200 w-max" />
         </div>
@@ -41,16 +41,16 @@
             <a
               @click="active = false"
               href="#works"
-              v-smooth-scroll="{ offset: -55 }"
+              v-smooth-scroll="{ offset: -16 }"
               >Works</a
             >
           </li>
           <li>
             <a
-              href="#challenges"
+              href="#projects"
               @click="active = false"
               v-smooth-scroll="{ offset: -55 }"
-              >Challenges</a
+              >Projects</a
             >
           </li>
           <li>
@@ -82,10 +82,11 @@ import Logo from "../assets/astraldev.svg";
 
 export default {
   components: { ThemeSwitcher, Logo },
-  data: () => {active: false},
+  data() {
+    return { active: false };
+  },
   mounted() {
     this.$el.style.opacity = 0;
-    this.$el.style.overflowY = "hidden";
     document.addEventListener("scroll", () => {
       if (Math.abs(this.$el.offsetTop - window.scrollY) < 5) {
         if (this.$el.style.opacity == 0) {
@@ -93,7 +94,7 @@ export default {
             targets: this.$el,
             opacity: [0, 1],
             easing: "linear",
-            duration: 250,
+            duration: 150,
           });
         }
       } else {
@@ -102,7 +103,7 @@ export default {
             targets: this.$el,
             opacity: [1, 0],
             easing: "linear",
-            duration: 250,
+            duration: 150,
           });
         }
       }

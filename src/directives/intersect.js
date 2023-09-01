@@ -11,7 +11,7 @@ export default {
       entries.forEach((entry)=>{
         if(entry.isIntersecting){
           callback(el)
-          if(binding.value.once || false){
+          if(binding.value.once === true){
             observer.unobserve(el)
           }
         }

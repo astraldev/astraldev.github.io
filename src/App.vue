@@ -3,6 +3,8 @@
     class="background -z-20 fixed inset-0 pointer-events-none"
   >
     <span class="blur-2xl"></span>
+    <span class="blur-2xl"></span>
+    <span class="blur-2xl"></span>
   </div>
   <div class="-z-10 fixed inset-0 pointer-events-none backdrop-blur-lg"></div>
   <div
@@ -36,8 +38,8 @@ export default {
   methods: {
     toggleTheme() {
       if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
+        (localStorage.theme === "dark" ||
+        (!("theme" in localStorage)) &&
           window.matchMedia("(prefers-color-scheme: dark)"))
       ) {
         document.documentElement.classList.remove("dark");

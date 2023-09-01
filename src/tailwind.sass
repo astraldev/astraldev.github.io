@@ -1,34 +1,40 @@
 @tailwind base
-@tailwind components
 @tailwind utilities
 
 @layer utilities
   .title-colors
-    @apply text-slate-800 dark:text-gray-200
+    @apply text-gray-600 dark:text-gray-200
   .subtitle-colors
-    @apply text-slate-600 dark:text-gray-400
-  .no-scrollbar::-webkit-scrollbar 
-    @ppply hidden
-  .no-scrollbar 
-    -ms-overflow-style: none
-    scrollbar-width: none
-  
-* 
-  @apply transition-colors duration-500
+    @apply text-gray-400 dark:text-gray-300
+
+.no-scrollbar::-webkit-scrollbar
+  @ppply hidden
+.no-scrollbar
+  -ms-overflow-style: none
+  scrollbar-width: none
+
+*
+  @apply transition-colors duration-75
 
 body
-  @apply dark:bg-gradient-to-b bg-white to-[#032430] from-[#09050e] overflow-x-hidden
   max-width: 100vw
+  @apply dark:bg-gradient-to-b bg-white to-[#032430] from-[#09050e] overflow-x-hidden
 
-.glass-border 
+.glass-border
   @apply border-zinc-500/10
 .glass-line
   @apply bg-zinc-300/20 md:bg-zinc-500/10 dark:bg-zinc-400/40
 
-.background 
-  @apply flex flex-col justify-between items-center
+.background
+  @apply flex flex-col justify-around items-center
   & > span
-    @apply rounded-full aspect-square h-[100vw] lg:hidden bg-transparent dark:bg-[#0b111d] translate-x-[30%] -translate-y-[30%] 
+    &:first-child
+      @apply md:bg-cst-green/10 bg-cst-green/20 translate-y-[10%] lg:translate-x-[100%] dark:bg-[#0b171d] translate-x-[170%]
+    &:nth-child(2)
+      @apply md:bg-cst-cyan/10 bg-cst-cyan/20 translate-y-[15%] lg:translate-x-[0%] dark:bg-[#0b111d] translate-x-[0%]
+    &:nth-child(3)
+      @apply md:bg-cst-green/10 bg-cst-green/20 translate-y-[20%] lg:translate-x-[-100%] dark:bg-[#0b171d] translate-x-[-170%]
+    @apply rounded-full h-1/2 w-1/3 -rotate-45
 
 summary
   list-style: none
@@ -36,7 +42,7 @@ summary
     display: none
 
 g
-  transform-origin: center
+    transform-origin: center
 
 .text-heading
-  @apply text-4xl font-comfortaa font-bold text-gray-600 
+  @apply text-3xl font-comfortaa font-bold text-gray-600
