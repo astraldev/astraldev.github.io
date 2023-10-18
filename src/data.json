@@ -33,7 +33,7 @@
       "name": "v-calendar",
       "description": "A fork of v-calendar version 0.9.7 by nathanreyes This version is fully compatible with Vue 3 (TS not supported)",
       "link": "https://github.com/astraldev/v-calendar",
-      "languages": ["fa-regular","fa-calendar"]
+      "languages": ["fa-regular fa-calendar"]
     }
   ],
   "challenges": [{
