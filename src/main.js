@@ -1,13 +1,20 @@
-import { createApp } from 'vue'
-import './tailwind.sass'
-import App from './App.vue'
+import { createApp } from "vue";
+import "./tailwind.sass";
+import App from "./App.vue";
 
-import Vue3SmoothScroll from 'vue3-smooth-scroll'
+import Vue3SmoothScroll from "vue3-smooth-scroll";
 
 /** Font Awesome */
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChrome, faTelegram, faGithub, faInstagram, faWhatsapp, faPython } from '@fortawesome/free-brands-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+  faChrome,
+  faTelegram,
+  faGithub,
+  faInstagram,
+  faWhatsapp,
+  faPython,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowUpRightFromSquare,
   faAt,
@@ -21,23 +28,44 @@ import {
   faWindowRestore,
   faCloudArrowDown,
   faXmark,
-} from '@fortawesome/free-solid-svg-icons'
+} from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 /** Custom directives */
-import typed from './directives/typed'
-import anime from './directives/anime'
-import intersect from './directives/intersect'
+import typed from "./directives/typed";
+import anime from "./directives/anime";
+import intersect from "./directives/intersect";
 
-library.add(faCloudArrowDown, faPython, faBars, faCaretDown, faAt, faPaperPlane, faWhatsapp, faGithub, faInstagram, faCaretUp, faXmark, faChrome, faDownLong, faLink, faArrowUpRightFromSquare, faTelegram, faWindowRestore, faServer)
+library.add(
+  faCalendar,
+  faCloudArrowDown,
+  faPython,
+  faBars,
+  faCaretDown,
+  faAt,
+  faPaperPlane,
+  faWhatsapp,
+  faGithub,
+  faInstagram,
+  faCaretUp,
+  faXmark,
+  faChrome,
+  faDownLong,
+  faLink,
+  faArrowUpRightFromSquare,
+  faTelegram,
+  faWindowRestore,
+  faServer
+);
 
 createApp(App)
-  .component('font-awesome-icon', FontAwesomeIcon)
+  .component("font-awesome-icon", FontAwesomeIcon)
   .use(Vue3SmoothScroll, {
     duration: 600,
     updateHistory: false,
-    easing: 'easeInQuart'
+    easing: "easeInQuart",
   })
-  .directive('typed', typed)
-  .directive('anime', anime)
-  .directive('intersect', intersect)
-  .mount('#app')
+  .directive("typed", typed)
+  .directive("anime", anime)
+  .directive("intersect", intersect)
+  .mount("#app");
