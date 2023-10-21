@@ -39,13 +39,12 @@
   <navbar />
 </template>
 <script>
-import CodingIllustration from "../assets/coding-illustration.svg?component";
 import RoundLogo from "../assets/logo.svg";
 import Navbar from "./navbar.vue";
 import anime from "animejs";
 
 export default {
-  components: { RoundLogo, CodingIllustration, Navbar },
+  components: { RoundLogo, Navbar },
   data() {
     return {
       typedOptions: {
@@ -99,7 +98,7 @@ export default {
           },
         ],
       },
-      "-=300"
+      "-=300",
     );
     timeline.add(
       {
@@ -119,7 +118,7 @@ export default {
         ],
         easing: "easeOutElastic(2,.6)",
       },
-      "+=100"
+      "+=100",
     );
     timeline.add({
       targets: this.$refs.getInTouch,

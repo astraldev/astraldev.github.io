@@ -2,6 +2,7 @@
   <button
     @click="toggleTheme"
     class="dark:text-gray-200 text-gray-500 grid place-items-center pr-2 mr-2 border-r border-gray-400"
+    aria-label="Theme switcher"
   >
     <svg
       version="1.1"

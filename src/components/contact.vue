@@ -18,7 +18,10 @@
           class="flex justify-center -mb-5 -mt-8 md:my-0 md:justify-between text-gray-700 px-4 top-0 items-center dark:text-white md:title-colors"
         >
           <h2 class="text-2xl font-bold font-comfortaa">Contact me</h2>
-          <font-awesome-icon icon="fa-solid fa-link" class="heading-icon hidden md:inline" />
+          <font-awesome-icon
+            icon="fa-solid fa-link"
+            class="heading-icon hidden md:inline"
+          />
         </div>
         <div class="social-links">
           <a
@@ -95,7 +98,7 @@ export default {
           duration: 50,
           delay: anime.stagger(350, { start: 0 }),
         },
-        "-=1400"
+        "-=1400",
       );
       timeline.add(
         {
@@ -116,7 +119,7 @@ export default {
             });
           },
         },
-        "-=1000"
+        "-=1000",
       );
     },
   },

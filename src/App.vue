@@ -13,12 +13,9 @@
   <timeline class="md:hidden" />
   <projects class="md:hidden" />
   <skills />
-  <div
-    class="hidden md:grid grid-cols-2 [grid-template-rows:min-content] template-rows-min"
-    id="works"
-  >
-    <timeline />
-    <projects />
+  <div class="hidden md:flex items-center justify-center" id="works">
+    <timeline ref="tl" no-id />
+    <projects ref="pr" no-id />
   </div>
   <contact />
   <custom-footer />
@@ -49,6 +46,8 @@ export default {
       document.documentElement
     )
       document.documentElement.classList.add("dark");
+    window.addEventListener("resize", this.autoResizeTimeline);
+    this.autoResizeTimeline();
   },
   methods: {
     toggleTheme() {
@@ -64,6 +63,14 @@ export default {
         localStorage.theme = "dark";
         document.documentElement.classList.add("dark");
         return false;
+      }
+    },
+    autoResizeTimeline() {
+      const pr = this.$refs["pr"];
+      const tl = this.$refs["tl"];
+
+      if (pr && tl) {
+        tl.$el.style.height = `${pr.$el.clientHeight}px`;
       }
     },
   },

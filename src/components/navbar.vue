@@ -13,12 +13,12 @@
           <logo class="text-gray-500 dark:text-gray-200 w-max" />
         </div>
         <theme-switcher />
-        <button class="flex-grow-0 md:hidden" @click="active = !active">
-          <font-awesome-icon
-            icon="fa-solid fa-xmark"
-            class="h-4 w-4"
-            v-if="active"
-          />
+        <button
+          class="flex-grow-0 md:hidden"
+          @click="active = !active"
+          :aria-label="active ? 'Close menu' : 'Open menu'"
+        >
+          <font-awesome-icon icon="fa-solid fa-xmark" class="h-4 w-4" v-if="active" />
           <font-awesome-icon icon="fa-solid fa-bars" class="h-4 w-4" v-else />
         </button>
       </div>
@@ -30,59 +30,25 @@
       >
         <ul>
           <li>
-            <a
-              @click="active = false"
-              href="#about"
-              v-smooth-scroll="{ offset: -35 }"
-              >About me</a
-            >
+            <a href="#about" @click="active = false" v-smooth-scroll>About me</a>
           </li>
           <li class="hidden md:flex">
-            <a
-              @click="active = false"
-              href="#works"
-              v-smooth-scroll="{ offset: -16 }"
-              >Works</a
-            >
+            <a href="#works" @click="active = false" v-smooth-scroll>Works</a>
           </li>
           <li class="md:hidden flex">
-            <a
-              href="#work-seperate"
-              @click="active = false"
-              v-smooth-scroll="{ offset: 8 }"
-              >Works</a
-            >
+            <a href="#work-seperate" @click="active = false" v-smooth-scroll>Works</a>
           </li>
           <li class="flex md:hidden">
-            <a
-              href="#projects"
-              @click="active = false"
-              v-smooth-scroll="{ offset: -55 }"
-              >Projects</a
-            >
+            <a href="#projects" @click="active = false" v-smooth-scroll>Projects</a>
           </li>
           <li class="hidden md:flex">
-            <a
-              href="#works"
-              @click="active = false"
-              >Projects</a
-            >
+            <a href="#works" @click="active = false" v-smooth-scroll>Projects</a>
           </li>
           <li>
-            <a
-              @click="active = false"
-              href="#skills"
-              v-smooth-scroll="{ offset: -8 }"
-              >Skills</a
-            >
+            <a href="#skills" @click="active = false" v-smooth-scroll>Skills</a>
           </li>
           <li>
-            <a
-              @click="active = false"
-              href="#contact"
-              v-smooth-scroll="{ offset: -8 }"
-              >Contact</a
-            >
+            <a href="#contact" @click="active = false" v-smooth-scroll>Contact</a>
           </li>
         </ul>
       </div>

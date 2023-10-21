@@ -1,13 +1,15 @@
-import Typed from 'typed.js'
+import Typed from "typed.js";
 
 export default {
-  mounted(el, binding){
+  mounted(el, binding) {
     var text = el.innerHtml;
-    var strings = binding.value ? [...binding.value.strings || text] : [text || '']
-    el.innerText = ""
+    var strings = binding.value
+      ? [...(binding.value.strings || text)]
+      : [text || ""];
+    el.innerText = "";
     new Typed(el, {
-      ...binding.value || {},
-      strings: strings
-    })
-  }
-}
+      ...(binding.value || {}),
+      strings: strings,
+    });
+  },
+};

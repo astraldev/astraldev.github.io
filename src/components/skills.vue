@@ -4,16 +4,11 @@
     id="skills"
   >
     <div
-      class="bg-gradient-to-b from-cst-cyan/40 dark:from-cst-cyan/[.25] md:bg-none h-full flex w-full flex-col gap-y-10 md:w-full"
+      class="bg-gradient-to-b from-cst-cyan/50 dark:from-cst-cyan/[.25] md:bg-none h-full flex w-full flex-col gap-y-10 md:w-full"
     >
-      <h2
-        class="text-heading hidden title-colors mx-8 md:flex items-center"
-      >
-        Languages I speak
-      </h2>
-      <div class="relative">
+      <div class="relative md:my-auto">
         <programming-illustration
-          class="programming aspect-square mix-blend-darken dark:mix-blend-difference -mt-4 md:-mt-14 md:w-[35vmax] z-[-1] inset-0 -right-[5vh]"
+          class="programming aspect-square mix-blend-darken dark:mix-blend-difference h-min -mt-4 md:-mt-14 md:w-[35vmax] z-[-1] inset-0 -right-[5vh]"
           v-intersect="{
             callback: animateIllustration,
             once: true,
@@ -26,9 +21,7 @@
       class="w-11/12 self-start mb-auto md:justify-between mx-auto md:mr-0 md:w-full"
       ref="languages"
     >
-      <h3
-        class="text-heading md:hidden mx-auto text-center -mt-10 pb-10 dark:text-white"
-      >
+      <h3 class="text-heading mx-auto text-center md:mt-0 -mt-10 pb-10 dark:text-white">
         Languages I Speak
       </h3>
       <div
@@ -41,16 +34,13 @@
             <div>
               <font-awesome-icon :icon="`${languageUsed[title]['icon']}`" />
               <h2>{{ title }}</h2>
-              <font-awesome-icon
-                icon="fa-solid fa-caret-down"
-                class="ml-auto"
-              />
+              <font-awesome-icon icon="fa-solid fa-caret-down" class="ml-auto" />
             </div>
           </summary>
           <ul>
             <li
-              v-for="(name, index) in languageUsed[title]['language']"
-              :key="index"
+              v-for="(name, languageTitleIndex) in languageUsed[title]['language']"
+              :key="languageTitleIndex"
             >
               {{ name }}
             </li>
@@ -79,15 +69,17 @@ export default {
     el.style.opacity = 0;
   },
   methods: {
+    calculateAnimationDuration(n, time, maxTime) {
+      return n * time > maxTime ? maxTime : n * time;
+    },
     closeDetail(el) {
       const ul = el.querySelector("ul");
       const childrenCount = ul.children.length;
+
       anime({
         targets: ul,
         height: 0,
-        duration:
-          childrenCount > 3 ? 3500 / childrenCount : 1000 / childrenCount,
-        delay: 100 / childrenCount,
+        duration: this.calculateAnimationDuration(childrenCount, 150, 600),
         easing: "easeInOutQuad",
         complete: () => {
           el.open = false;
@@ -108,10 +100,9 @@ export default {
             duration: 0,
           },
           {
-            height: `${1.75 * childrenCount}rem`,
-            duration: 1000 / childrenCount,
+            height: `${1.8125 * childrenCount}em`,
+            duration: this.calculateAnimationDuration(childrenCount, 150, 600),
             easing: "easeOutCubic",
-            delay: 100 / childrenCount,
           },
         ],
       });

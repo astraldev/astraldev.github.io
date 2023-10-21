@@ -1,5 +1,6 @@
 {
-  "works": [{
+  "works": [
+    {
       "image": "/images/dualsight.jpg",
       "description": "Frontend developer",
       "name": "dualsight"
@@ -12,31 +13,36 @@
   ],
   "projects": [
     {
-      "name": "GLogic (Redesign)",
-      "description": "A redesign of the classic logic gate simulator (GLogic) application for Linux.",
-      "link": "https://github.com/astraldev/GLogic",
+      "name": "GGate",
+      "description": "A Gtk4 redesign of the classic logic gate simulator (gLogic) application for Linux.",
+      "link": "https://github.com/astraldev/GGate",
+      "featured": false,
       "languages": ["fa-brands fa-python"]
     },
     {
       "name": "TicTacToe",
       "link": "https://github.com/astraldev/TicTacToe",
-      "description": "A console (terminal) tic tac toe game made for 2 players.",
+      "description": "A console (terminal) offline multiplayer tic tac toe game.",
+      "featured": false,
       "languages": ["csharp"]
     },
     {
       "name": "Pynes",
       "description": "Classic minesweeper game for Linux.",
-      "link": "",
+      "link": "https://github.com/astraldev/pynes",
+      "featured": false,
       "languages": ["fa-brands fa-python"]
     },
     {
       "name": "v-calendar",
-      "description": "A fork of v-calendar version 0.9.7 by nathanreyes This version is fully compatible with Vue 3 (TS not supported)",
+      "description": "A fork of v-calendar version 0.9.7 by nathanreyes which is fully compatible with Vue 3. (TS not supported)",
       "link": "https://github.com/astraldev/v-calendar",
-      "languages": ["fa-regular fa-calendar"]
+      "featured": true,
+      "languages": ["fa-brands fa-vuejs"]
     }
   ],
-  "challenges": [{
+  "challenges": [
+    {
       "url": "https://astraldev.github.io/easybank-landing-page-master/",
       "link": "https://www.frontendmentor.io/solutions/easybank-landing-page-ObwljIGjig",
       "title": "Easy banking"
@@ -49,7 +55,15 @@
   ],
   "languages": {
     "Frontend": {
-      "language": ["HTML", "CSS", "TailwindCSS", "JavaScript", "VueJS", "ReactJS"],
+      "language": [
+        "HTML",
+        "CSS",
+        "TailwindCSS",
+        "JavaScript",
+        "VueJS",
+        "ReactJS",
+        "Qwik"
+      ],
       "icon": "fa-brands fa-chrome"
     },
     "Backend": {
@@ -57,7 +71,7 @@
       "icon": "fa-solid fa-server"
     },
     "Software": {
-      "language": ["Python", "C++"],
+      "language": ["Python"],
       "icon": "fa-solid fa-window-restore"
     }
   }

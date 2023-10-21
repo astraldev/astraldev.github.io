@@ -14,6 +14,7 @@ import {
   faInstagram,
   faWhatsapp,
   faPython,
+  faVuejs,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowUpRightFromSquare,
@@ -55,7 +56,8 @@ library.add(
   faArrowUpRightFromSquare,
   faTelegram,
   faWindowRestore,
-  faServer
+  faServer,
+  faVuejs,
 );
 
 createApp(App)
@@ -63,6 +65,7 @@ createApp(App)
   .use(Vue3SmoothScroll, {
     duration: 600,
     updateHistory: false,
+    offset: -250,
     easing: "easeInQuart",
   })
   .directive("typed", typed)
