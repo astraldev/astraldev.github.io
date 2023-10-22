@@ -42,7 +42,9 @@
                   <font-awesome-icon
                     v-else
                     :icon="`${language}`"
-                    :flip="project.featured && index === project.languages.length - 1"
+                    :flip="
+                      project.featured && languageIndex === project.languages.length - 1
+                    "
                     class="h-6 w-6"
                   />
                 </span>
@@ -56,7 +58,7 @@
           <span
             class="featured-project"
             v-if="project.featured"
-            v-anime="getFeaturedAnimationOptions()"
+            v-anime="getFeaturedAnimationOptions"
           ></span>
         </a>
       </div>
@@ -91,7 +93,7 @@ export default {
     };
   },
   components: { CSharp },
-  methods: {
+  computed: {
     getFeaturedAnimationOptions() {
       const featuredAnimationOptions = {
         keyframes: [{ left: "-10%" }, { left: "125%" }],
@@ -103,9 +105,14 @@ export default {
         loop: true,
       };
 
-      this.featuredCount += 1;
+      this.updateFeaturedCount();
 
       return featuredAnimationOptions;
+    },
+  },
+  methods: {
+    updateFeaturedCount() {
+      this.featuredCount += 1;
     },
     slideIn(el) {
       const index = Array.prototype.slice.call(el.parentNode.children).indexOf(el) + 1;

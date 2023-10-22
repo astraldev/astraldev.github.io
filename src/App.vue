@@ -40,11 +40,7 @@ export default {
     timeline,
   },
   mounted() {
-    if (
-      localStorage.theme &&
-      localStorage.theme === "dark" &&
-      document.documentElement
-    )
+    if (localStorage.theme && localStorage.theme === "dark" && document.documentElement)
       document.documentElement.classList.add("dark");
     window.addEventListener("resize", this.autoResizeTimeline);
     this.autoResizeTimeline();
@@ -53,8 +49,7 @@ export default {
     toggleTheme() {
       if (
         localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)"))
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)"))
       ) {
         document.documentElement.classList.remove("dark");
         localStorage.theme = "";
