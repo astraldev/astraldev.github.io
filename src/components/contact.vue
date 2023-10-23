@@ -1,8 +1,8 @@
 <template>
-  <section class="flex w-full pb-4 md:pb-5 lg:mt-32 md:mt-24" id="contact">
+  <section class="flex w-full pb-4 md:pb-5 lg:mt-32 md:mt-24 md:h-[60vh]" id="contact">
     <div class="flex md:grid grid-cols-2 w-full md:flex-row flex-col gap-x-10">
       <div
-        class="mx-auto w-11/12 md:w-1/2 relative md:order-1 flex items-center md:mb-0 mt-8 justify-center"
+        class="mx-auto w-11/12 md:w-1/2 relative flex items-center md:mb-0 mt-8 justify-center"
       >
         <contact-illustration
           class="contact illustration aspect-square mix-blend-darken dark:mix-blend-difference -mb-4 md:m-0 md:mx-0 mx-auto"
@@ -13,7 +13,7 @@
           }"
         />
       </div>
-      <div class="flex flex-col gap-y-10">
+      <div class="flex flex-col gap-y-10 md:my-auto">
         <div
           class="flex justify-center -mb-5 -mt-8 md:my-0 md:justify-between text-gray-700 px-4 top-0 items-center dark:text-white md:title-colors"
         >
@@ -89,16 +89,13 @@ export default {
       });
       timeline.add(
         {
-          targets: [
-            el.querySelector("g#background"),
-            el.querySelector("g#person"),
-          ],
+          targets: [el.querySelector("g#background"), el.querySelector("g#person")],
           scale: [1.3, 1],
           opacity: [0, 1],
           duration: 50,
           delay: anime.stagger(350, { start: 0 }),
         },
-        "-=1400",
+        "-=1400"
       );
       timeline.add(
         {
@@ -119,7 +116,7 @@ export default {
             });
           },
         },
-        "-=1000",
+        "-=1000"
       );
     },
   },
@@ -134,7 +131,7 @@ export default {
 .social-links
   @apply grid grid-cols-2 gap-4 md:grid-cols-2 mx-4
   &>a
-    @apply dark:bg-white/5 dark:text-gray-300 h-24 md:h-28 relative cursor-pointer bg-white shadow p-4 gap-y-2 flex flex-col items-center justify-center rounded-md
+    @apply dark:bg-white/5 dark:text-gray-300 h-24 md:h-28 lg:h-32 xl:h-44 relative cursor-pointer bg-white shadow p-4 gap-y-2 flex flex-col items-center justify-center rounded-md
     @apply after:absolute after:transition-colors overflow-hidden after:duration-500 after:inset-0
 
     &>svg

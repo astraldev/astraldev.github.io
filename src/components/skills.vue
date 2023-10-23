@@ -141,7 +141,7 @@ export default {
           },
           {
             translateY: 0,
-            opacity: 0.3,
+            opacity: this.$root.getTheme() === "dark" ? 0.4 : 1,
             scale: 1,
             duration: 800,
           },
@@ -235,7 +235,7 @@ details
   &>ul
     @apply flex flex-col divide-y divide-gray-200 dark:divide-zinc-400/10 overflow-y-clip
     &>li
-      @apply w-full px-6 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer text-xs text-gray-500 dark:text-gray-400 font-comfortaa py-1.5
+      @apply w-full px-6 hover:bg-gray-50/20 dark:hover:bg-white/5 cursor-pointer text-xs text-gray-500 dark:text-gray-400 font-comfortaa py-1.5
 
 g.screen-item, g#pc-screen, g#background, g.leafs
   @apply opacity-0

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col h-[calc(100dvh_-_3.6rem)] pt-[3rem] md:flex-row w-full items-center snap-center justify-center"
+    class="flex flex-col h-[calc(100dvh_-_3.6rem)] relative pt-[3rem] md:flex-row w-full items-center snap-center justify-center"
   >
     <div
       ref="logo"
@@ -26,39 +26,52 @@
         </span>
       </div>
       <a
-        ref="getInTouch"
+        ref="getInTouch2"
+        href="#work-seperate"
+        class="get-in-touch mx-auto font-comfortaa font-bold lowercase inline md:hidden"
+        v-smooth-scroll
+      >
+        <font-awesome-icon icon="fa-solid fa-down-long" /> My Works
+        <font-awesome-icon icon="fa-solid fa-down-long" />
+      </a>
+      <a
+        ref="getInTouch1"
         href="#works"
-        class="get-in-touch mx-auto font-comfortaa font-bold lowercase"
-        v-smooth-scroll="{ offset: -16 }"
+        class="get-in-touch mx-auto font-comfortaa font-bold lowercase hidden md:inline"
+        v-smooth-scroll
       >
         <font-awesome-icon icon="fa-solid fa-down-long" /> My Works
         <font-awesome-icon icon="fa-solid fa-down-long" />
       </a>
     </div>
+    <div ref="theme-switcher" class="floating-theme-switcher" style="opacity: 0">
+      <theme-switcher class="theme-switcher-control" />
+    </div>
   </section>
-  <navbar />
+  <navbar @showed="hideThemeSwitcher" @hidden="showThemeSwitcher" />
 </template>
 <script>
 import RoundLogo from "../assets/logo.svg";
 import Navbar from "./navbar.vue";
+import { screens } from "tailwindcss/defaultTheme";
 import anime from "animejs";
+import { thingsIDo } from "../data.json";
+import ThemeSwitcher from "./theme-switcher.vue";
+import { getPercentVisible, onSizeChange } from "../utils/document";
 
 export default {
-  components: { RoundLogo, Navbar },
+  components: { RoundLogo, Navbar, ThemeSwitcher },
   data() {
     return {
       typedOptions: {
-        strings: [
-          "I <b>love</b> creating intuitive <b>websites</b>",
-          "I <b>love</b> creating desktop <b>applications</b> for linux.",
-          "Freelancer and <b>Software developer</b>.",
-        ],
+        strings: thingsIDo,
         loop: true,
         typeSpeed: 50,
         backSpeed: 60,
-        backDelay: 500,
+        backDelay: 1000,
         startDelay: 2600,
       },
+      isNavbarHidden: false,
     };
   },
   mounted() {
@@ -98,7 +111,7 @@ export default {
           },
         ],
       },
-      "-=300",
+      "-=300"
     );
     timeline.add(
       {
@@ -118,25 +131,88 @@ export default {
         ],
         easing: "easeOutElastic(2,.6)",
       },
-      "+=100",
+      "+=100"
     );
-    timeline.add({
-      targets: this.$refs.getInTouch,
-      keyframes: [
-        {
-          opacity: 0,
+    timeline.add(
+      {
+        targets: [this.$refs.getInTouch1, this.$refs.getInTouch2],
+        keyframes: [
+          {
+            opacity: 0,
+            delay: 0,
+          },
+          {
+            opacity: 1,
+            duration: 400,
+          },
+        ],
+        complete: () => this.landingAnimationComplete(),
+      },
+      "-=100"
+    );
+
+    onSizeChange(this.autoColorThemeSwitcher);
+  },
+  methods: {
+    landingAnimationComplete() {
+      setTimeout(this.showThemeSwitcher, 100);
+    },
+    autoColorThemeSwitcher() {
+      const el = document.querySelector(".floating-theme-switcher > button");
+      const scrolled = getPercentVisible("#about > #about-bg");
+
+      if (scrolled === 0) return;
+
+      if (this.$root.getTheme() === "light" && !this.isNavbarHidden) {
+        if (scrolled < 24 && window.innerWidth < parseInt(screens.md))
+          el.classList.add("over-colored");
+        else {
+          el.classList.remove("over-colored");
+        }
+      }
+    },
+    hideThemeSwitcher() {
+      const el = this.$refs["theme-switcher"];
+      if (el) {
+        anime({
+          targets: el,
+          translateX: [0, "-5px"],
+          translateY: [0, "-150px"],
+          // easing: "easeInOutElastic(1, .6)",
           delay: 0,
-        },
-        {
-          opacity: 1,
-          duration: 400,
-        },
-      ],
-    });
+          opacity: [1, 0],
+        });
+      }
+
+      this.isNavbarHidden = true;
+    },
+    showThemeSwitcher() {
+      const el = this.$refs["theme-switcher"];
+      if (el) {
+        anime({
+          targets: el,
+          translateX: ["-5px", 0],
+          translateY: ["-150px", 0],
+          // easing: "easeInOutElastic(1, .6)",
+          opacity: [0, 1],
+        });
+      }
+
+      this.isNavbarHidden = false;
+    },
   },
 };
 </script>
 <style lang="sass" scoped>
+.floating-theme-switcher
+  @apply fixed right-4 md:right-14 lg:right-24 bottom-4 p-3 backdrop-blur-sm z-50 grid place-items-center aspect-square rounded-full border shadow
+  @apply bg-gray-200/30 dark:bg-gray-400/20 border-gray-200/80 dark:border-gray-400/30 dark:md:bg-gray-800/30 dark:md:border-gray-800/60
+
+.theme-switcher-control
+  @apply text-gray-400 dark:text-white transition-colors duration-100
+  &.over-colored
+    @apply text-white
+
 .get-in-touch
   &>svg
     @apply animate-bounce -mb-0.5 mx-0.5 text-current

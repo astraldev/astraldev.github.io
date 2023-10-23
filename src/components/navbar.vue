@@ -4,15 +4,16 @@
       class="md:flex md:flex-nowrap dark:bg-white/20 md:dark:bg-white/10 bg-white/40 backdrop-blur-md"
     >
       <div
-        class="py-3 w-full overflow-y-hidden px-6 md:pr-0 items-center flex text-gray-700 dark:text-white"
+        id="navbar-content"
+        class="py-3 w-full overflow-y-hidden px-6 md:pr-0 items-center flex text-gray-500 dark:text-white"
       >
         <div
           id="nav-title"
           class="flex-grow relative flex h-9 overflow-y-hidden flex-col mr-auto"
         >
-          <logo class="text-gray-500 dark:text-gray-200 w-max" />
+          <logo class="w-max" />
         </div>
-        <theme-switcher />
+        <theme-switcher class="theme-switcher" />
         <button
           class="flex-grow-0 md:hidden"
           @click="active = !active"
@@ -23,7 +24,7 @@
         </button>
       </div>
       <div
-        :class="`overflow-hidden nav-list max-h-0 md:max-h-[15rem] ${
+        :class="`overflow-hidden nav-list md:max-h-[15rem] ${
           active ? 'h-fit' : '!border-transparent'
         }`"
         ref="navlist"
@@ -60,15 +61,79 @@
 import anime from "animejs";
 import ThemeSwitcher from "./theme-switcher.vue";
 import Logo from "../assets/astraldev.svg";
+import { screens } from "tailwindcss/defaultTheme";
+import {
+  onSizeChange,
+  convertRemToPixels,
+  compensateScrollDifference,
+  getPercentVisible,
+} from "../utils/document";
 
 export default {
   components: { ThemeSwitcher, Logo },
+  emits: ["showed", "hidden"],
   data() {
-    return { active: false };
+    const navListHeight = convertRemToPixels(6) + 20 * 5;
+    return { active: false, navListHeight };
   },
   mounted() {
     this.$el.style.opacity = 0;
-    document.addEventListener("scroll", () => {
+    this.display();
+    this.showNavList();
+    document.addEventListener("scroll", this.display);
+    onSizeChange(this.autoColor);
+  },
+  watch: {
+    active(val) {
+      this.showNavList(val);
+    },
+  },
+  methods: {
+    showNavList(val = this.active) {
+      const prevDocumentHeight = document.documentElement.clientHeight;
+      if (!val) {
+        anime({
+          targets: this.$refs.navlist,
+          keyframes: [
+            {
+              height: `${this.navListHeight}px`,
+              delay: 0,
+              duration: 0,
+            },
+            {
+              height: 0,
+              delay: 0,
+              duration: 150,
+              easing: "easeInOutSine",
+            },
+          ],
+          update: () => {
+            window.scrollTo(0, compensateScrollDifference(prevDocumentHeight));
+          },
+        });
+      } else {
+        anime({
+          targets: this.$refs.navlist,
+          keyframes: [
+            {
+              height: 0,
+              delay: 0,
+              duration: 0,
+            },
+            {
+              height: `${this.navListHeight}px`,
+              delay: 0,
+              duration: 150,
+              easing: "easeInOutSine",
+            },
+          ],
+          update: () => {
+            window.scrollTo(0, compensateScrollDifference(prevDocumentHeight));
+          },
+        });
+      }
+    },
+    display() {
       if (Math.abs(this.$el.offsetTop - window.scrollY) < 5) {
         if (this.$el.style.opacity == 0) {
           anime({
@@ -76,6 +141,7 @@ export default {
             opacity: [0, 1],
             easing: "linear",
             duration: 150,
+            complete: () => this.$emit("showed"),
           });
         }
       } else {
@@ -85,48 +151,25 @@ export default {
             opacity: [1, 0],
             easing: "linear",
             duration: 150,
+            complete: () => this.$emit("hidden"),
           });
         }
       }
-    });
-  },
-  watch: {
-    active(val) {
-      // if (window.visualViewport.width >= 768) return
-      if (!val) {
-        anime({
-          targets: this.$refs.navlist,
-          keyframes: [
-            {
-              maxHeight: "100dvh",
-              delay: 0,
-              duration: 0,
-            },
-            {
-              maxHeight: 0,
-              delay: 100,
-              duration: 200,
-              easing: "easeOutCubic",
-            },
-          ],
-        });
-      } else {
-        anime({
-          targets: this.$refs.navlist,
-          keyframes: [
-            {
-              maxHeight: 0,
-              delay: 0,
-              duration: 0,
-            },
-            {
-              maxHeight: "100vh",
-              delay: 100,
-              duration: 200,
-              easing: "easeOutCubic",
-            },
-          ],
-        });
+    },
+    autoColor() {
+      const el = document.querySelector("#navbar-content");
+      const scrolled = getPercentVisible("#about > #about-bg");
+
+      if (this.$root.getTheme() === "light") {
+        if (
+          scrolled < -45 &&
+          scrolled > -90 &&
+          window.innerWidth < parseInt(screens.md)
+        ) {
+          el.classList.add("over-colored");
+        } else {
+          el.classList.remove("over-colored");
+        }
       }
     },
   },
@@ -134,9 +177,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+#navbar-content
+  .theme-switcher
+    @apply border-r border-gray-400 pr-2 mr-2
+  &.over-colored
+    @apply text-gray-200
 
-div#nav-title > h1
-  text-shadow: 2px 2px #fff6
+    .theme-switcher
+      @apply border-gray-200
 .nav-list
   // small screens
   & > ul

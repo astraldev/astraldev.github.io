@@ -37,6 +37,11 @@ import typed from "./directives/typed";
 import anime from "./directives/anime";
 import intersect from "./directives/intersect";
 
+// Event handling
+// import mitt from "mitt";
+
+// const emitter = mitt();
+
 library.add(
   faCalendar,
   faCloudArrowDown,
@@ -60,15 +65,17 @@ library.add(
   faVuejs,
 );
 
-createApp(App)
-  .component("font-awesome-icon", FontAwesomeIcon)
-  .use(Vue3SmoothScroll, {
-    duration: 600,
-    updateHistory: false,
-    offset: -250,
-    easing: "easeInQuart",
-  })
-  .directive("typed", typed)
-  .directive("anime", anime)
-  .directive("intersect", intersect)
-  .mount("#app");
+const app = createApp(App);
+
+app.component("FontAwesomeIcon", FontAwesomeIcon);
+app.use(Vue3SmoothScroll, {
+  duration: 600,
+  updateHistory: false,
+  offset: -250,
+  easing: "easeInQuart",
+});
+app.directive("typed", typed);
+app.directive("anime", anime);
+app.directive("intersect", intersect);
+app.mount("#app");
+// app.config.globalProperties.$bus = emitter;

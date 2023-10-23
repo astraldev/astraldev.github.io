@@ -8,6 +8,10 @@
   <div
     class="fixed inset-x-1.5 md:inset-x-8 lg:inset-x-16 inset-y-0 pointer-events-none border-x glass-border"
   ></div>
+  <dots
+    class="fixed -z-20 left-[4.5%] w-[15vh] h-[15vh] md:w-[15vw] md:h-[15vw]"
+    colors="from-white to-cst-green dark:from-gray-900 dark:to-cst-cyan"
+  />
   <landing />
   <about-me />
   <timeline class="md:hidden" />
@@ -28,8 +32,14 @@ import projects from "./components/projects.vue";
 import AboutMe from "./components/about-me.vue";
 import contact from "./components/contact.vue";
 import CustomFooter from "./components/custom-footer.vue";
+import dots from "./components/icons/dots.vue";
 
 export default {
+  data() {
+    return {
+      afterThemeChange: () => {},
+    };
+  },
   components: {
     landing,
     AboutMe,
@@ -37,6 +47,7 @@ export default {
     contact,
     CustomFooter,
     projects,
+    dots,
     timeline,
   },
   mounted() {
@@ -44,6 +55,7 @@ export default {
       document.documentElement.classList.add("dark");
     window.addEventListener("resize", this.autoResizeTimeline);
     this.autoResizeTimeline();
+    this.afterThemeChange();
   },
   methods: {
     toggleTheme() {
@@ -51,11 +63,13 @@ export default {
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)"))
       ) {
-        document.documentElement.classList.remove("dark");
         localStorage.theme = "";
+        this.afterThemeChange();
+        document.documentElement.classList.remove("dark");
         return true;
       } else {
         localStorage.theme = "dark";
+        this.afterThemeChange();
         document.documentElement.classList.add("dark");
         return false;
       }
@@ -67,6 +81,10 @@ export default {
       if (pr && tl) {
         tl.$el.style.height = `${pr.$el.clientHeight}px`;
       }
+    },
+    getTheme() {
+      if (localStorage.theme === "dark") return "dark";
+      return "light";
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <button
     @click="toggleTheme"
-    class="dark:text-gray-200 text-gray-500 grid place-items-center pr-2 mr-2 border-r border-gray-400"
+    class="grid place-items-center"
     aria-label="Theme switcher"
   >
     <svg
@@ -26,18 +26,52 @@
         />
         <mask class="moon" id="moon-mask">
           <rect x="0" y="0" width="100%" height="100%" fill="white" />
-          <circle cx="36" cy="13" r="8.5265245" fill="black" />
+          <circle cx="36" cy="13" r="8.5265245" fill="black" ref="moon-circle" />
         </mask>
       </g>
     </svg>
   </button>
 </template>
 <script>
+// import anime from "animejs";
+
 export default {
+  // mounted() {
+  //   this.$root.afterThemeChange = this.animateMoon;
+  // },
   methods: {
     toggleTheme() {
       if (this.$root.toggleTheme()) localStorage.theme = "";
       else localStorage.theme = "dark";
+    },
+    animateMoon() {
+      // const el = this.$refs["moon-circle"];
+      // const target = { cx: el.cx };
+      // if (this.$root.getTheme() === "dark") {
+      //   anime({
+      //     targets: target,
+      //     cx: [21, 36],
+      //     round: 1,
+      //     delay: 0,
+      //     easing: "linear",
+      //     update: () => {
+      //       const e = this.$refs["moon-circle"];
+      //       e.setAttribute("cx", target.cx);
+      //     },
+      //   });
+      // } else {
+      //   anime({
+      //     targets: target,
+      //     delay: 0,
+      //     round: 1,
+      //     cx: [36, 21],
+      //     easing: "linear",
+      //     update: () => {
+      //       const e = this.$refs["moon-circle"];
+      //       e.setAttribute("cx", target.cx);
+      //     },
+      //   });
+      // }
     },
   },
 };

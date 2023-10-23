@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full pt-3 md:h-[100dvh] md:-mt-18 lg:-mt-24 about-me relative snap-start"
+    class="w-full pt-3 md:h-[63 dvh] md:mb-44 md:-mt-18 lg:-mt-24 about-me relative snap-center"
     id="about"
   >
     <div class="illustration my-auto">
@@ -17,11 +17,7 @@
         <h1 class="font-bold title-colors text-5xl pt-16 px-4 py-2 font-comfortaa">
           Hello, I am AstralDev
         </h1>
-        <span class="py-8 px-4 font-asap md:subtitle-colors">
-          Fueled by a passion for web development, I am propelled by over
-          <b>4</b> years of expertise in <b>full-stack development</b> and crafting
-          <b>desktop applications</b> tailored for Linux.
-        </span>
+        <span class="py-8 px-4 font-asap md:subtitle-colors" v-html="aboutMeText" />
         <div class="px-4 md:-mt-3">
           <button
             class="border rounded-md py-2 px-4 shadow-sm flex gap-x-2 items-center text-gray-100 md:text-gray-600 dark:text-cyan-500 hover:dark:text-cyan-400 hover:dark:border-cyan-300/40 shadow-cyan-300/5 font-asap glass-border dark:border-cyan-300/20"
@@ -33,17 +29,17 @@
       </div>
     </div>
     <div
+      id="about-bg"
       class="p-4 flex items-center flex-col -mt-20 md:mt-0 rounded-t-2xl bg-gradient-to-b from-cst-cyan to-cst-cyan/75 dark:from-cst-cyan/40 dark:to-cst-cyan/[.35] md:bg-none justify-center"
     >
       <div class="flex flex-col pb-4 md:hidden text-center">
         <h2 class="font-bold text-2xl pt-16 px-4 py-2 text-white font-comfortaa">
           Hello, I am AstralDev
         </h2>
-        <span class="py-8 px-4 font-asap text-slate-200 md:subtitle-colors">
-          Fueled by a passion for web development, I am propelled by over
-          <b>4</b> years of expertise in <b>full-stack development</b> and crafting
-          <b>desktop applications</b> tailored for Linux.
-        </span>
+        <span
+          class="py-8 px-4 font-asap text-slate-200 md:subtitle-colors"
+          v-html="aboutMeText"
+        />
         <div class="mx-auto">
           <button
             class="border rounded-md py-2 px-4 shadow-sm flex gap-x-2 items-center text-gray-200 border-gray-200 md:border-gray-400 hover:text-gray-100 hover:border-gray-300/80 md:text-gray-600 md:hover:text-gray-400 shadow-gray-300/10 font-asap dark:border-gray-200/50"
@@ -63,8 +59,12 @@
 <script>
 import CodingIllustration from "../assets/coding-illustration.svg?component";
 import anime from "animejs";
+import { about as aboutMeText } from "../data.json";
 
 export default {
+  data() {
+    return { aboutMeText };
+  },
   components: { CodingIllustration },
   mounted() {
     const el = this.$el.querySelector(".illustration");

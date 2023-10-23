@@ -65,7 +65,7 @@
     </div>
 
     <div
-      class="p-2 mx-auto mt-3 gap-2 flex items-center text-gray-200 hover:text-gray-100 md:mr-0"
+      class="p-2 mx-auto mt-3 gap-2 flex items-center text-gray-200 md:text-gray-500 dark:text-gray-200 hover:text-gray-100 md:mr-0"
     >
       <a href="https://github.com/astraldev?tab=repositories">
         <font-awesome-icon :icon="['fab', 'github']" /> See more at GitHub

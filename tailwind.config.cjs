@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["*.html", "src/**/*.(vue|svg)"],
   darkMode: "class",
