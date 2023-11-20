@@ -81,14 +81,21 @@ export default {
     this.display();
     this.showNavList();
     document.addEventListener("scroll", this.display);
+    window.addEventListener("resize", this.adjustMenuForLargeScreens)
     onSizeChange(this.autoColor);
   },
   watch: {
-    active(val) {
+    active(val, oldVal) {
       this.showNavList(val);
     },
   },
   methods: {
+    adjustMenuForLargeScreens(){
+      if((window.innerWidth > parseInt(screens.md)) && this.$refs.navlist) {
+        this.$refs.navlist.style.height = ''
+      }
+      this.active = false
+    },
     showNavList(val = this.active) {
       const prevDocumentHeight = document.documentElement.clientHeight;
       if (!val) {
@@ -101,7 +108,7 @@ export default {
               duration: 0,
             },
             {
-              height: 0,
+              height: window.innerWidth > parseInt(screens.md) ? undefined : 0,
               delay: 0,
               duration: 150,
               easing: "easeInOutSine",
@@ -116,7 +123,7 @@ export default {
           targets: this.$refs.navlist,
           keyframes: [
             {
-              height: 0,
+              height: window.innerWidth > parseInt(screens.md) ? undefined : 0,
               delay: 0,
               duration: 0,
             },

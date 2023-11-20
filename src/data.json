@@ -23,28 +23,36 @@
       "description": "A Gtk4 redesign of the classic logic gate simulator (gLogic) application for Linux.",
       "link": "https://github.com/astraldev/GGate",
       "featured": false,
-      "languages": ["fa-brands fa-python"]
+      "languages": [
+        "fa-brands fa-python"
+      ]
     },
     {
       "name": "TicTacToe",
       "link": "https://github.com/astraldev/TicTacToe",
       "description": "A console (terminal) offline multiplayer tic tac toe game.",
       "featured": false,
-      "languages": ["csharp"]
-    },
-    {
-      "name": "Pynes",
-      "description": "Classic minesweeper game for Linux.",
-      "link": "https://github.com/astraldev/pynes",
-      "featured": false,
-      "languages": ["fa-brands fa-python"]
+      "languages": [
+        "csharp"
+      ]
     },
     {
       "name": "v-calendar",
       "description": "A fork of v-calendar version 0.9.7 by nathanreyes which is fully compatible with Vue 3. (TS not supported)",
       "link": "https://github.com/astraldev/v-calendar",
+      "featured": false,
+      "languages": [
+        "fa-brands fa-vuejs"
+      ]
+    },
+    {
+      "name": "Pynes",
+      "description": "Classic minesweeper game for Linux.",
+      "link": "https://github.com/astraldev/pynes",
       "featured": true,
-      "languages": ["fa-brands fa-vuejs"]
+      "languages": [
+        "fa-brands fa-python"
+      ]
     }
   ],
   "challenges": [
@@ -73,11 +81,16 @@
       "icon": "fa-brands fa-chrome"
     },
     "Backend": {
-      "language": ["JavaScript (NodeJS)", "C# (.NET)"],
+      "language": [
+        "JavaScript (NodeJS)",
+        "C# (.NET)"
+      ],
       "icon": "fa-solid fa-server"
     },
     "Software": {
-      "language": ["Python"],
+      "language": [
+        "Python"
+      ],
       "icon": "fa-solid fa-window-restore"
     }
   }
