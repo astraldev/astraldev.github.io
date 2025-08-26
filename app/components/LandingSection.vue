@@ -12,7 +12,7 @@
       <div class="h-fit flex flex-col">
         <h2
           ref="header"
-          class="text-heading text-6xl lg:text-7xl 2xl:text-8xl lg:leading-none overflow-clip md:my-0 md:h-fit md:block inline text-center dark:text-white mb-5"
+          class="text-heading text-6xl lg:text-7xl 2xl:text-8xl lg:leading-none overflow-clip md:my-0 md:h-fit md:block inline text-center dark:text-white mb-5 origin-top"
         >
           Web & Software Developer
         </h2>

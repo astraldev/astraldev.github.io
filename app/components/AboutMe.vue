@@ -16,7 +16,7 @@
         class="aspect-square"
       />
 
-      <div class="flex-col pb-4 -mt-8 md:w-2/3 md:flex text-left">
+      <div class="flex-col pb-4 -mt-8 md:w-3/5 md:flex text-left">
         <h1 class="font-bold title-colors text-5xl pt-16 py-2 font-zain">
           Hello, I am AstralDev
         </h1>
