@@ -1,9 +1,9 @@
 {
-  "about": "Fueled by a passion for web development, I am propelled by over <b>4</b> years of expertise in <b>full-stack development</b> and crafting <b>desktop applications</b> tailored for Linux.",
+  "about": "Fueled by a passion for web development, I am propelled by over <b>6</b> years of expertise in <b>full-stack development</b> and crafting <b>desktop applications</b> tailored for Linux.",
   "thingsIDo": [
     "I <b>love</b> creating intuitive <b>websites</b>",
     "I <b>love</b> creating desktop <b>applications</b> for linux.",
-    "<b> Frontend </b> and <b>Software</b> developer."
+    "<b>Frontend</b> and <b>Software</b> developer."
   ],
   "works": [
     {
@@ -72,11 +72,11 @@
       "language": [
         "HTML",
         "CSS",
-        "TailwindCSS",
         "JavaScript",
+        "TailwindCSS",
+        "TypeScript",
         "VueJS",
-        "ReactJS",
-        "Qwik"
+        "NuxtJS"
       ],
       "icon": "fa-brands fa-chrome"
     },

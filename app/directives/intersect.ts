@@ -1,6 +1,8 @@
+import type { DirectiveBinding } from "vue";
+
 export default {
-  mounted(el, binding) {
-    const callback = binding.value.callback || (() => {});
+  mounted(el: HTMLElement, binding: DirectiveBinding) {
+    const callback = binding.value.callback || (() => { });
     delete binding.value.callback;
     const options = {
       threshold: 0.2,
