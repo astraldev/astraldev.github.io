@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col h-[calc(100dvh_-_3.6rem)] relative pt-[3rem] md:flex-row w-full items-center snap-center justify-center"
+    class="flex flex-col h-[calc(100dvh-3.6rem)] relative pt-[3rem] md:flex-row w-full items-center snap-center justify-center"
   >
     <div
       ref="logo"
@@ -20,7 +20,7 @@
 
       <div
         ref="caption"
-        class="h-[calc((0.875rem_+_1.25rem)*2)] text-center lg:text-xl mx-4 text-gray-500 dark:text-gray-300 p-2 relative"
+        class="h-[calc((0.875rem+1.25rem)*2)] text-center lg:text-xl mx-4 text-gray-500 dark:text-gray-300 p-2 relative"
       >
         <span class="inline absolute top-0 w-full right-0">
           <span
@@ -134,7 +134,7 @@ onMounted(sequenceAnimation);
 
 .get-in-touch {
   @apply opacity-0 text-gray-400 dark:text-gray-300 px-5;
-  @apply mx-auto font-zain font-extrabold uppercase relative py-3;
+  @apply mx-auto font-sans font-extrabold uppercase relative py-3;
 
   @apply after:absolute after:border after:bg-white/5 after:inset-0 after:glass-border after:rounded-xl;
   @apply hover:after:blur-none after:transition-all after:scale-y-0 hover:after:scale-y-100 after:duration-300;

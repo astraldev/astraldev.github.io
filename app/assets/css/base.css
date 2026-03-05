@@ -1,7 +1,7 @@
 @reference "./tailwind.css";
 
 html {
-  @apply dark:bg-gradient-to-br bg-white min-h-screen;
+  @apply dark:bg-linear-to-br bg-white min-h-screen;
   @apply to-deep-teal from-deep-purple transition-colors duration-75;
 }
 
@@ -43,5 +43,5 @@ body {
 }
 
 .text-heading {
-  @apply font-zain font-bold text-gray-600 dark:text-gray-400;
+  @apply font-bold text-gray-600 dark:text-gray-400;
 }

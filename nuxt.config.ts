@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   modules: [
+    "@nuxt/ui",
     "@nuxt/content",
     "@nuxt/eslint",
     "@nuxt/fonts",
@@ -14,7 +15,10 @@ export default defineNuxtConfig({
   ],
 
   devtools: { enabled: true },
-  css: ["~/assets/css/tailwind.css"],
+  css: [
+    "~/assets/css/tailwind.css",
+    "~/assets/css/base.css",
+  ],
   colorMode: {
     fallback: "dark",
     storage: "cookie",

@@ -29,5 +29,4 @@
 </script>
 
 <style lang="css">
-@import "~/assets/css/base.css";
 </style>
