@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nuxt-dev",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/ekureedem/Documents/Projects/astraldev.github.io && exec pnpm dev"
+      ],
+      "port": 3000
+    }
+  ]
+}
