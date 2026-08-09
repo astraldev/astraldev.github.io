@@ -5,9 +5,9 @@ const IndexStyle = {
     description: "subtitle-colors",
   },
   card: {
-    root: "w-full max-w-[375px]",
+    root: "w-full max-w-[375px] bg-elevated/40 backdrop-blur-sm",
     title: "title-colors",
-    description: "subtitle-colors",
+    description: "subtitle-colors line-clamp-4",
   },
 } as const;
 
@@ -79,7 +79,7 @@ useSeoMeta({
                 :label="tag"
                 color="primary"
                 variant="soft"
-                size="sm"
+                size="lg"
               />
             </div>
           </template>

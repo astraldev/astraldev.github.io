@@ -1,20 +1,23 @@
 <script lang="ts" setup>
 const PostStyle = {
+  backLink: {
+    base: "gap-2 rounded-full px-4 py-2 hover:text-primary",
+    leadingIcon: "size-4 -translate-y-px",
+  },
   header: {
     root: "border-b-0 pb-0",
     title: "title-colors text-3xl sm:text-4xl",
-    description: "subtitle-colors text-base sm:text-lg",
+    description: "subtitle-colors text-lg",
   },
   toc: "static lg:sticky mx-0 px-4 sm:mx-0 sm:px-4 lg:-mx-4 rounded-lg lg:rounded-none"
     + " border lg:border-0 border-zinc-500/20"
     + " bg-zinc-300/40 dark:bg-white/5 lg:bg-transparent lg:dark:bg-transparent",
   surround: {
     root: "gap-4",
-    link: "px-5 py-6 rounded-xl border-zinc-500/20 bg-zinc-200/30 dark:bg-white/[0.03]"
-      + " hover:border-primary/40 hover:bg-primary/5",
-    linkLeading: "mb-3 bg-transparent ring-zinc-500/20 group-hover:ring-primary/50",
-    linkLeadingIcon: "size-4 group-hover:-translate-x-0.5",
-    linkTitle: "title-colors text-base mb-0 group-hover:text-primary",
+    link: "px-5 py-6 rounded-lg border-default bg-elevated/40 backdrop-blur-sm hover:bg-elevated/50",
+    linkLeading: "mb-3 bg-transparent ring-default group-hover:ring-accented",
+    linkLeadingIcon: "size-4 text-highlighted",
+    linkTitle: "title-colors text-lg mb-0",
     linkDescription: "hidden",
   },
 } as const;
@@ -58,9 +61,10 @@ useSeoMeta({
       to="/blog"
       icon="i-lucide-arrow-left"
       color="neutral"
-      variant="link"
-      size="sm"
-      class="-ms-2 mb-4 px-2"
+      variant="ghost"
+      size="md"
+      :ui="PostStyle.backLink"
+      class="-ms-4 mb-4"
     >
       Back to all posts
     </UButton>

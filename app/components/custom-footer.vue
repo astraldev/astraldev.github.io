@@ -38,7 +38,7 @@ const currentYear = new Date().getFullYear();
       <div class="flex flex-col gap-10 md:flex-row md:justify-between">
         <div class="max-w-xs">
           <logo class="w-32 text-gray-700 dark:text-white" />
-          <p class="mt-3 text-sm subtitle-colors">
+          <p class="mt-3 text-lg subtitle-colors">
             Frontend and software developer, building for the web and the Linux desktop.
           </p>
         </div>
@@ -47,7 +47,7 @@ const currentYear = new Date().getFullYear();
           <nav aria-labelledby="footer-site-heading">
             <h2
               id="footer-site-heading"
-              class="text-xs font-semibold uppercase tracking-wider title-colors"
+              class="text-sm font-semibold uppercase tracking-wider title-colors"
             >
               Site
             </h2>
@@ -58,7 +58,7 @@ const currentYear = new Date().getFullYear();
               >
                 <ULink
                   :to="link.to"
-                  class="text-sm subtitle-colors hover:text-primary"
+                  class="text-lg subtitle-colors hover:text-primary"
                 >
                   {{ link.label }}
                 </ULink>
@@ -69,7 +69,7 @@ const currentYear = new Date().getFullYear();
           <nav aria-labelledby="footer-writing-heading">
             <h2
               id="footer-writing-heading"
-              class="text-xs font-semibold uppercase tracking-wider title-colors"
+              class="text-sm font-semibold uppercase tracking-wider title-colors"
             >
               Writing
             </h2>
@@ -80,7 +80,7 @@ const currentYear = new Date().getFullYear();
               >
                 <ULink
                   :to="link.to"
-                  class="text-sm subtitle-colors hover:text-primary"
+                  class="text-lg subtitle-colors hover:text-primary"
                 >
                   {{ link.label }}
                 </ULink>
@@ -93,7 +93,7 @@ const currentYear = new Date().getFullYear();
       <div
         class="mt-10 flex flex-col-reverse items-center gap-4 border-t border-zinc-500/20 pt-6 sm:flex-row sm:justify-between"
       >
-        <small class="text-xs subtitle-colors">
+        <small class="text-sm subtitle-colors">
           © 2019 - {{ currentYear }} Ekure Edem. All rights reserved.
         </small>
 
