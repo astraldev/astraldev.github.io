@@ -1,0 +1,1 @@
+../../../dotfiles/.agents/rules/writing-voice.md

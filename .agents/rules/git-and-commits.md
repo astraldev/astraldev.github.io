@@ -1,0 +1,1 @@
+../../../dotfiles/.agents/rules/git-and-commits.md

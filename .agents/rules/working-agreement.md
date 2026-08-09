@@ -1,0 +1,1 @@
+../../../dotfiles/.agents/rules/working-agreement.md
