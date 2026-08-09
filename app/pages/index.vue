@@ -1,32 +1,49 @@
-<template>
-  <div>
-    <div class="accented-bg -z-20 fixed inset-0 pointer-events-none">
-      <span class="blur-2xl" />
-      <span class="blur-2xl" />
-      <span class="blur-2xl" />
-    </div>
-    <div class="-z-10 fixed inset-0 pointer-events-none backdrop-blur-lg" />
-    <div class="fixed inset-x-1.5 md:inset-x-8 lg:inset-x-16 inset-y-0 pointer-events-none border-x glass-border" />
-
-    <main class="px-8 md:px-16 lg:px-24">
-      <LandingSection />
-      <AboutMe />
-    </main>
-    <!--
-  <timeline class="md:hidden" />
-  <projects class="md:hidden" />
-  <skills />
-  <div class="hidden md:flex items-center justify-center" id="works">
-    <timeline ref="tl" no-id />
-    <projects ref="pr" no-id />
-  </div>
-  <contact />
-  <custom-footer /> -->
-  </div>
-</template>
-
 <script setup lang="ts">
+const { data: posts } = await useAsyncData("documents-list", () => {
+  return queryCollection("blog")
+    .select("title", "path", "description")
+    .all();
+});
 </script>
 
-<style lang="css">
-</style>
+<template>
+  <div>
+    <section>
+      <div>
+        <span>
+          Hi there
+        </span>
+        <span>
+          I'm astraldev
+        </span>
+      <!-- Animate through texts, like my works, what I do, what I like doing -->
+      </div>
+      <div>
+        <UButton>
+          <!-- Download button icon -->
+          <UIcon name="" />
+          Resume
+        </UButton>
+
+        <UButton>
+          <!-- Article icon -->
+          <UIcon name="" />
+          Blog
+        </UButton>
+      </div>
+    </section>
+    <section>
+      <h2>Projects</h2>
+      <p>I love creating and working on open source projects, like the ones listed below</p>
+      <div>
+        <!-- <UPageCard></UPageCard> -->
+      </div>
+    </section>
+    <section>
+      <h2>Blog posts</h2>
+      <div>
+        <!-- <UPageCard></UPageCard> -->
+      </div>
+    </section>
+  </div>
+</template>
