@@ -1,8 +1,13 @@
 @reference "./tailwind.css";
 
 html {
-  @apply dark:bg-linear-to-br bg-white min-h-screen;
+  @apply dark:bg-linear-to-br bg-white dark:bg-base min-h-screen;
   @apply to-deep-teal from-deep-purple transition-colors duration-75;
+  color-scheme: light;
+
+  &.dark {
+    color-scheme: dark;
+  }
 }
 
 body {
@@ -40,6 +45,27 @@ body {
       @apply translate-y-[20%] lg:translate-x-[-100%] translate-x-[-170%];
     }
   }
+}
+
+.page-grid {
+  @apply relative isolate;
+
+  --grid-line: rgb(113 113 122 / 0.14);
+  --grid-size: 4rem;
+
+  &::before {
+    @apply pointer-events-none absolute inset-0 -z-10;
+    content: "";
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+}
+
+.dark .page-grid {
+  --grid-line: rgb(244 244 245 / 0.06);
 }
 
 .text-heading {

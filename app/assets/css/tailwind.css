@@ -3,6 +3,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme static {
+    --color-brand-50: #ecfdf5;
+    --color-brand-100: #d5fbe8;
+    --color-brand-200: #abf7d1;
+    --color-brand-300: #72f3b3;
+    --color-brand-400: #36f294;
+    --color-brand-500: #0adb72;
+    --color-brand-600: #0bb15e;
+    --color-brand-700: #0a8a4a;
+    --color-brand-800: #0b6f3d;
+    --color-brand-900: #0a5c33;
+    --color-brand-950: #04341c;
+}
+
 @theme {
     --color-base: #040008;
     --color-cst-cyan: #0a63d9;
