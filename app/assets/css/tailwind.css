@@ -4,21 +4,21 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme static {
-    --color-brand-50: #ecfdf5;
-    --color-brand-100: #d5fbe8;
-    --color-brand-200: #abf7d1;
-    --color-brand-300: #72f3b3;
-    --color-brand-400: #36f294;
-    --color-brand-500: #0adb72;
-    --color-brand-600: #0bb15e;
-    --color-brand-700: #0a8a4a;
-    --color-brand-800: #0b6f3d;
-    --color-brand-900: #0a5c33;
-    --color-brand-950: #04341c;
+    --color-brand-50: #ecf4fe;
+    --color-brand-100: #d3e5fd;
+    --color-brand-200: #adcefb;
+    --color-brand-300: #77aff8;
+    --color-brand-400: #3d8df5;
+    --color-brand-500: #0a63d9;
+    --color-brand-600: #0a55b8;
+    --color-brand-700: #094695;
+    --color-brand-800: #0a3b7b;
+    --color-brand-900: #0a3266;
+    --color-brand-950: #051d3d;
 }
 
 @theme {
-    --color-base: #040008;
+    --color-canvas: #040008;
     --color-cst-cyan: #0a63d9;
     --color-cst-green: #0adb72;
 
@@ -36,6 +36,17 @@
 
 .dark {
     --ui-bg: transparent;
+    --ui-bg-muted: rgb(255 255 255 / 0.03);
+    --ui-bg-elevated: rgb(255 255 255 / 0.06);
+    --ui-bg-accented: rgb(255 255 255 / 0.1);
+    --ui-border: rgb(113 113 122 / 0.25);
+    --ui-border-muted: rgb(113 113 122 / 0.2);
+    --ui-border-accented: rgb(113 113 122 / 0.3);
+
+    --ui-text-dimmed: rgb(228 228 231 / 0.45);
+    --ui-text-muted: rgb(228 228 231 / 0.65);
+    --ui-text-toned: rgb(228 228 231 / 0.8);
+    --ui-text: rgb(244 244 245 / 0.9);
 }
 
 @utility no-scrollbar {

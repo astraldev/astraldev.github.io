@@ -1,7 +1,7 @@
 @reference "./tailwind.css";
 
 html {
-  @apply dark:bg-linear-to-br bg-white dark:bg-base min-h-screen;
+  @apply dark:bg-linear-to-tl bg-white dark:bg-canvas min-h-screen;
   @apply to-deep-teal from-deep-purple transition-colors duration-75;
   color-scheme: light;
 
