@@ -8,6 +8,6 @@
 
 <script lang="ts" setup>
 useHead({
-  meta: [{ name: "darkreader-lock" }],
+  meta: [{ name: "darkreader-lock", content: "" }],
 });
 </script>
