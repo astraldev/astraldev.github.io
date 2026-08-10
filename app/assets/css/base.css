@@ -50,7 +50,7 @@ body {
 .page-grid {
   @apply relative isolate;
 
-  --grid-line: rgb(113 113 122 / 0.14);
+  --grid-line: rgb(113 113 122 / 0.08);
   --grid-size: 4rem;
 
   &::before {
@@ -65,7 +65,7 @@ body {
 }
 
 .dark .page-grid {
-  --grid-line: rgb(244 244 245 / 0.06);
+  --grid-line: rgb(244 244 245 / 0.03);
 }
 
 .text-heading {

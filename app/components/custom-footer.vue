@@ -25,11 +25,11 @@ const writingLinks: FooterLink[] = [
 const socialLinks: SocialLink[] = [
   { label: "GitHub", to: "https://github.com/astraldev", icon: "i-simple-icons-github" },
   { label: "Telegram", to: "https://t.me/+2349049821801", icon: "i-simple-icons-telegram" },
-  { label: "Instagram", to: "https://instagram.com/just_ekure", icon: "i-simple-icons-instagram" },
+  { label: "Instagram", to: "https://instagram.com/ekureedem_", icon: "i-simple-icons-instagram" },
   { label: "WhatsApp", to: "https://wa.me/2349049821801", icon: "i-simple-icons-whatsapp" },
 ];
 
-const currentYear = new Date().getFullYear();
+const currentYear = useState(() => new Date().getFullYear());
 </script>
 
 <template>
