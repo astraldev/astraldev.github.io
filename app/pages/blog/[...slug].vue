@@ -9,7 +9,7 @@ const PostStyle = {
     title: "title-colors text-3xl sm:text-4xl",
     description: "subtitle-colors text-lg",
   },
-  toc: "static lg:sticky mx-0 px-4 sm:mx-0 sm:px-4 lg:-mx-4 rounded-lg lg:rounded-none"
+  toc: "static lg:sticky mx-0 px-4 sm:mx-0 sm:px-4 lg:mx-0 lg:px-0 rounded-lg lg:rounded-none"
     + " border lg:border-0 border-zinc-500/20"
     + " bg-zinc-300/40 dark:bg-white/5 lg:bg-transparent lg:dark:bg-transparent",
   surround: {
@@ -30,10 +30,19 @@ const { data: page } = await useAsyncData(route.path, () => {
   return queryCollection("blog").path(route.path).first();
 });
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings("blog", route.path, {
-    fields: ["title"],
+const { data: surround } = await useAsyncData(`${route.path}-surround`, async () => {
+  const neighbours = await queryCollectionItemSurroundings("blog", route.path, {
+    fields: ["title", "draft"],
   });
+
+  if (import.meta.dev) {
+    return neighbours;
+  }
+
+  const published = neighbours.map(neighbour => (neighbour?.draft ? undefined : neighbour));
+
+  // Both ends of the collection already yield empty slots at runtime, which the published type omits.
+  return published as typeof neighbours;
 });
 
 if (!page.value) {
@@ -75,22 +84,24 @@ useSeoMeta({
       :ui="PostStyle.header"
     />
 
-    <USeparator class="mt-8" />
-
-    <UPage>
+    <UPage class="mt-8">
       <UPageBody>
         <ContentRenderer :value="page" />
 
-        <template v-if="hasSurround">
-          <USeparator class="my-12" />
+        <SharePost
+          :title="page.title"
+          :path="page.path"
+          wrapper-class="mt-12 lg:hidden"
+        />
 
-          <UContentSurround
-            :surround="surround"
-            :ui="PostStyle.surround"
-            prev-icon="i-lucide-arrow-left"
-            next-icon="i-lucide-arrow-right"
-          />
-        </template>
+        <UContentSurround
+          v-if="hasSurround"
+          class="mt-12"
+          :surround="surround"
+          :ui="PostStyle.surround"
+          prev-icon="i-lucide-arrow-left"
+          next-icon="i-lucide-arrow-right"
+        />
       </UPageBody>
 
       <template #right>
@@ -99,7 +110,16 @@ useSeoMeta({
           highlight
           :links="page.body?.toc?.links"
           :class="PostStyle.toc"
-        />
+        >
+          <template #bottom>
+            <SharePost
+              :title="page.title"
+              :path="page.path"
+            />
+
+            <FollowIt />
+          </template>
+        </UContentToc>
       </template>
     </UPage>
   </UContainer>

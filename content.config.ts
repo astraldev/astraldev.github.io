@@ -4,10 +4,14 @@ export default defineContentConfig({
   collections: {
     blog: defineCollection({
       type: "page",
-      source: "**",
+      source: {
+        include: "**",
+        exclude: ["**/_drafts/**"],
+      },
       schema: z.object({
         date: z.string().optional(),
         tags: z.array(z.string()).default([]),
+        draft: z.boolean().default(false),
       }),
     }),
   },

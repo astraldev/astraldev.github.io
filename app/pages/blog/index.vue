@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const IndexStyle = {
   header: {
+    root: "border-b-0",
     title: "title-colors",
     description: "subtitle-colors",
   },
@@ -13,11 +14,17 @@ const IndexStyle = {
 
 definePageMeta({ layout: "blog" });
 
-const { data: posts } = await useAsyncData("blog-posts", () => {
-  return queryCollection("blog")
-    .select("title", "path", "description", "date", "tags")
+const { data: posts } = await useAsyncData("blog-posts", async () => {
+  const all = await queryCollection("blog")
+    .select("title", "path", "description", "date", "tags", "draft")
     .order("path", "DESC")
     .all();
+
+  if (import.meta.dev) {
+    return all;
+  }
+
+  return all.filter(post => !post.draft);
 });
 
 const postYears = computed(() => {
@@ -33,12 +40,11 @@ const postYears = computed(() => {
 
   return [...grouped.entries()].map(([year, yearPosts]) => ({
     year,
-    posts: yearPosts.map(post => ({
+    posts: (yearPosts || []).map(post => ({
       title: post.title,
       description: post.description,
       to: post.path,
       tags: post.tags,
-      ui: IndexStyle.card,
     })),
   }));
 });
@@ -70,19 +76,28 @@ useSeoMeta({
           {{ group.year }}
         </h2>
 
-        <UBlogPosts :posts="group.posts">
-          <template #badge="{ post }">
-            <div class="flex flex-wrap gap-1.5">
-              <UBadge
-                v-for="tag in post.tags"
-                :key="tag"
-                :label="tag"
-                color="primary"
-                variant="soft"
-                size="lg"
-              />
-            </div>
-          </template>
+        <UBlogPosts>
+          <UBlogPost
+            v-for="post in group.posts"
+            :key="post.to"
+            :title="post.title"
+            :description="post.description"
+            :to="post.to"
+            :ui="IndexStyle.card"
+          >
+            <template #badge>
+              <div class="flex flex-wrap gap-1.5">
+                <UBadge
+                  v-for="tag in post.tags"
+                  :key="tag"
+                  :label="tag"
+                  color="primary"
+                  variant="soft"
+                  size="lg"
+                />
+              </div>
+            </template>
+          </UBlogPost>
         </UBlogPosts>
       </section>
     </div>

@@ -25,6 +25,13 @@ export default defineNuxtConfig({
     storageKey: "app-theme",
   },
 
+  runtimeConfig: {
+    public: {
+      siteUrl: "https://astraldev.github.io",
+      followItUrl: "",
+    },
+  },
+
   compatibilityDate: "2025-07-15",
 
   nitro: {
