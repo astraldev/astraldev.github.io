@@ -24,7 +24,10 @@
       "link": "https://github.com/astraldev/GGate",
       "featured": false,
       "languages": [
-        "fa-brands fa-python"
+        {
+          "label": "Python",
+          "icon": "i-simple-icons-python"
+        }
       ]
     },
     {
@@ -33,7 +36,10 @@
       "description": "A console (terminal) offline multiplayer tic tac toe game.",
       "featured": false,
       "languages": [
-        "csharp"
+        {
+          "label": "C#",
+          "icon": "i-simple-icons-csharp"
+        }
       ]
     },
     {
@@ -42,7 +48,10 @@
       "link": "https://github.com/astraldev/v-calendar",
       "featured": false,
       "languages": [
-        "fa-brands fa-vuejs"
+        {
+          "label": "Vue",
+          "icon": "i-simple-icons-vuedotjs"
+        }
       ]
     },
     {
@@ -51,7 +60,10 @@
       "link": "https://github.com/astraldev/pynes",
       "featured": true,
       "languages": [
-        "fa-brands fa-python"
+        {
+          "label": "Python",
+          "icon": "i-simple-icons-python"
+        }
       ]
     }
   ],
@@ -78,20 +90,20 @@
         "VueJS",
         "NuxtJS"
       ],
-      "icon": "fa-brands fa-chrome"
+      "icon": "i-simple-icons-googlechrome"
     },
     "Backend": {
       "language": [
         "JavaScript (NodeJS)",
         "C# (.NET)"
       ],
-      "icon": "fa-solid fa-server"
+      "icon": "i-lucide-server"
     },
     "Software": {
       "language": [
         "Python"
       ],
-      "icon": "fa-solid fa-window-restore"
+      "icon": "i-lucide-app-window"
     }
   }
 }

@@ -12,8 +12,6 @@ const IndexStyle = {
   },
 } as const;
 
-definePageMeta({ layout: "blog" });
-
 const { data: posts } = await useAsyncData("blog-posts", async () => {
   const all = await queryCollection("blog")
     .select("title", "path", "description", "date", "tags", "draft")

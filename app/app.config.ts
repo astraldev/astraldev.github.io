@@ -4,5 +4,10 @@ export default defineAppConfig({
       primary: "brand",
       neutral: "zinc",
     },
+    button: {
+      slots: {
+        base: "rounded-full",
+      },
+    },
   },
 });

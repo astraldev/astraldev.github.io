@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const PostStyle = {
   backLink: {
-    base: "gap-2 rounded-full px-4 py-2 hover:text-primary",
-    leadingIcon: "size-4 -translate-y-px",
+    base: "gap-2 px-4 py-2 hover:text-primary",
+    leadingIcon: "size-4",
   },
   header: {
     root: "border-b-0 pb-0",
@@ -21,8 +21,6 @@ const PostStyle = {
     linkDescription: "hidden",
   },
 } as const;
-
-definePageMeta({ layout: "blog" });
 
 const route = useRoute();
 
