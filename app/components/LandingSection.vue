@@ -63,9 +63,6 @@ useTyped(
   {
     strings: thingsIDo,
     initialDelay: 2600,
-    backspace: true,
-    deleteDuration: 2000,
-    typeDuration: 1000,
     pauseBetween: 3500,
     autoPlay: true,
     loop: true,

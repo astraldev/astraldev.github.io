@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 const PostStyle = {
-  backLink: {
-    base: "gap-2 px-4 py-2 hover:text-primary",
-    leadingIcon: "size-4",
-  },
   header: {
     root: "border-b-0 pb-0",
     title: "title-colors text-3xl sm:text-4xl",
@@ -56,7 +52,17 @@ const hasSurround = computed(() => surround.value?.some(Boolean) ?? false);
 useSeoMeta({
   title: page.value?.title,
   description: page.value?.description,
+  ogType: "article",
+  articleAuthor: ["Ekure Edem"],
+  articlePublishedTime: page.value?.date,
+  articleTag: page.value?.tags,
+  twitterCard: "summary_large_image",
 });
+
+// Drafts stay out of search results even if a link leaks.
+if (page.value?.draft) {
+  useHead({ meta: [{ name: "robots", content: "noindex, nofollow" }] });
+}
 </script>
 
 <template>
@@ -64,18 +70,6 @@ useSeoMeta({
     v-if="page"
     class="py-12 md:py-20"
   >
-    <UButton
-      to="/blog"
-      icon="i-lucide-arrow-left"
-      color="neutral"
-      variant="ghost"
-      size="md"
-      :ui="PostStyle.backLink"
-      class="-ms-4 mb-4"
-    >
-      Back to all posts
-    </UButton>
-
     <UPageHeader
       :title="page.title"
       :description="page.description"

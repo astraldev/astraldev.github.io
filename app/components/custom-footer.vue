@@ -11,12 +11,15 @@ type SocialLink = FooterLink & {
 };
 
 const siteLinks: FooterLink[] = [
-  { label: "About me", to: "/#about" },
-  { label: "Works", to: "/#works" },
-  { label: "Projects", to: "/#projects" },
-  { label: "Skills", to: "/#skills" },
-  { label: "Contact", to: "/#contact" },
+  { label: "Home", to: "/" },
+  { label: "Projects", to: "/projects" },
 ];
+
+// Disabled until the sections they point at exist again on the homepage.
+// { label: "About me", to: "/#about" },
+// { label: "Works", to: "/#works" },
+// { label: "Skills", to: "/#skills" },
+// { label: "Contact", to: "/#contact" },
 
 const writingLinks: FooterLink[] = [
   { label: "All posts", to: "/blog" },

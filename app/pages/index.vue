@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "astraldev",
+  title: "Frontend and software developer",
   description: "Frontend and software developer, building for the web and the Linux desktop.",
 });
 </script>
@@ -9,6 +9,5 @@ useSeoMeta({
   <UContainer>
     <HomeHero />
     <HomeProjects />
-    <HomeLatestPosts />
   </UContainer>
 </template>

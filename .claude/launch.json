@@ -3,12 +3,12 @@
   "configurations": [
     {
       "name": "nuxt-dev",
-      "runtimeExecutable": "sh",
+      "runtimeExecutable": "pnpm",
       "runtimeArgs": [
-        "-c",
-        "cd /Users/ekureedem/Documents/Projects/astraldev.github.io && exec pnpm dev"
+        "dev"
       ],
-      "port": 3000
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

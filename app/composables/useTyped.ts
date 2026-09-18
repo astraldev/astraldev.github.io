@@ -1,12 +1,21 @@
-import type { Timeline, TextSplitter, AnimationParams } from "animejs";
-import { createTimeline, text, stagger } from "animejs";
+import type { ScrambleTextParams } from "animejs";
 
 export type TypedSplitOptions = {
   strings: string[] | string
-  typeDuration?: number
-  deleteDuration?: number
+  /** Characters cycled while a glyph is still scrambling. Named animejs sets: 'blocks', 'shades', 'braille', ... */
+  chars?: ScrambleTextParams["chars"]
+  /** Where the reveal wave starts from. */
+  from?: ScrambleTextParams["from"]
+  /** Characters per second entering the active zone. */
+  revealRate?: number
+  /** Time in ms each character spends scrambling before settling. */
+  settleDuration?: number
+  /** How many times per second scramble characters cycle. */
+  settleRate?: number
+  /** Random timing offset per character, for a less mechanical reveal. */
+  perturbation?: number
+  /** Idle time in ms on a settled phrase before moving to the next. */
   pauseBetween?: number
-  backspace?: boolean
   initialDelay?: number
   autoPlay?: boolean
   loop?: boolean
@@ -16,108 +25,70 @@ export function useTyped(
   target: MaybeRef<HTMLElement | null>,
   options: TypedSplitOptions,
 ) {
+  const strings = Array.isArray(options.strings) ? options.strings : [options.strings];
+
   const opts = {
-    strings: Array.isArray(options.strings) ? options.strings : [options.strings],
-    typeDuration: options.typeDuration ?? 600,
-    deleteDuration: options.deleteDuration ?? 400,
-    pauseBetween: options.pauseBetween ?? 800,
-    backspace: options.backspace ?? true,
-    loop: options.loop ?? true,
-    autoPlay: options.autoPlay ?? true,
+    chars: options.chars ?? "shades",
+    from: options.from ?? "left",
+    revealRate: options.revealRate ?? 34,
+    settleDuration: options.settleDuration ?? 420,
+    settleRate: options.settleRate ?? 24,
+    perturbation: options.perturbation ?? 0.7,
+    pauseBetween: options.pauseBetween ?? 1600,
     initialDelay: options.initialDelay ?? 0,
+    loop: options.loop ?? true,
   };
 
-  let destroyed = false;
+  const index = ref(0);
+  const isRunning = ref(options.autoPlay ?? true);
 
-  let activeTl: Timeline;
-  let activeSplit: TextSplitter;
+  let queued: ReturnType<typeof setTimeout> | undefined;
 
-  const isRunning = ref(false);
+  function clearQueued() {
+    if (queued) clearTimeout(queued);
+    queued = undefined;
+  }
 
-  async function typeBackspacePhrase(target: HTMLElement) {
-    const tl = createTimeline();
-
-    const split = text.split(target, { chars: true });
-    const chars = split.chars;
-
-    const enterAnimation: AnimationParams = {
-      z: 0,
-      opacity: { from: 0 },
-      filter: { from: "blur(2px)" },
-      x: [10, -10, 0],
-      ease: "outSine",
-    };
-    const leaveAnimation: AnimationParams = {
-      z: 0,
-      opacity: { to: 0 },
-      filter: { to: "blur(2px)" },
-      x: [0, 10],
-      ease: "outBounce",
-    };
-
-    // Typing in (fade in chars)
-    tl.add(chars, enterAnimation, stagger(opts.typeDuration / chars.length));
-
-    // Pause
-    tl.add({}, {}, opts.typeDuration + opts.pauseBetween);
-
-    // Backspace (fade out if desired)
-    if (opts.backspace) {
-      tl.add(chars, leaveAnimation, stagger(opts.deleteDuration / chars.length, { from: "last" }));
+  function advance() {
+    const last = index.value === strings.length - 1;
+    if (last && !opts.loop) {
+      isRunning.value = false;
+      return;
     }
-
-    tl.init();
-
-    activeTl = tl;
-    activeSplit = split;
-
-    return tl.then().then(() => split.revert());
+    index.value = (index.value + 1) % strings.length;
   }
 
-  async function runLoop() {
-    const elm = unref(target);
-    if (!elm) return;
+  const animation = useScrambleText(
+    () => (isRunning.value ? unref(target) : null),
+    () => ({
+      // Only the very first phrase waits; later ones are paced by `pauseBetween`.
+      delay: index.value === 0 ? opts.initialDelay : 0,
+      onComplete: () => {
+        clearQueued();
+        queued = setTimeout(advance, opts.pauseBetween);
+      },
+    }),
+    () => ({
+      text: strings[index.value],
+      chars: opts.chars,
+      from: opts.from,
+      revealRate: opts.revealRate,
+      settleDuration: opts.settleDuration,
+      settleRate: opts.settleRate,
+      perturbation: opts.perturbation,
+    }),
+  );
 
+  function start() {
     isRunning.value = true;
-    const stringSeq = Array.isArray(options.strings) ? options.strings : [options.strings];
-
-    if (opts.initialDelay)
-      await waitTime(opts.initialDelay);
-
-    do {
-      for (const phrase of stringSeq) {
-        if (destroyed) return;
-        elm.innerHTML = phrase;
-        await typeBackspacePhrase(elm).catch();
-      }
-    } while (opts.loop && !destroyed);
-    isRunning.value = false;
-  }
-
-  async function start() {
-    await nextTick();
-    if (!unref(target) || isRunning.value) return;
-    destroyed = false;
-    runLoop();
   }
 
   function stop() {
-    activeTl && activeTl.revert();
-    activeSplit && activeSplit.revert();
-    destroyed = true;
+    clearQueued();
+    isRunning.value = false;
   }
 
-  if (options.autoPlay) {
-    watch(
-      () => unref(target),
-      () => {
-        stop();
-        start();
-      },
-    );
-  }
+  tryOnScopeDispose(clearQueued);
 
-  onBeforeUnmount(stop);
-
-  return { start, stop, isRunning };
+  return { start, stop, isRunning, animation };
 }

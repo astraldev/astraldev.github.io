@@ -13,9 +13,24 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-svgo",
     "nanime",
+    "@nuxtjs/seo",
   ],
 
   devtools: { enabled: true },
+
+  app: {
+    head: {
+      htmlAttrs: { lang: "en" },
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+    },
+  },
+
+  site: {
+    url: "https://astraldev.github.io",
+    name: "astraldev",
+    description: "Frontend and software developer, building for the web and the Linux desktop.",
+    defaultLocale: "en",
+  },
   css: [
     "~/assets/css/tailwind.css",
     "~/assets/css/base.css",
@@ -27,6 +42,8 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    // NUXT_GITHUB_TOKEN — lifts the API rate limit while prerendering.
+    githubToken: "",
     public: {
       siteUrl: "https://astraldev.github.io",
       followItUrl: "",
@@ -38,13 +55,22 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/blog"],
+      routes: ["/", "/blog", "/projects"],
       failOnError: true,
     },
   },
 
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  sitemap: {
+    // Drafts are excluded from the collection query, so nothing extra leaks in.
+    exclude: ["/_nuxt/**"],
+  },
+
+  robots: {
+    disallow: [],
   },
 
   eslint: {

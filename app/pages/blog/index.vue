@@ -6,9 +6,13 @@ const IndexStyle = {
     description: "subtitle-colors",
   },
   card: {
-    root: "w-full max-w-[375px] bg-elevated/40 backdrop-blur-sm",
-    title: "title-colors",
-    description: "subtitle-colors line-clamp-4",
+    root: "h-full w-full bg-elevated/40 ring ring-default backdrop-blur-sm"
+      + " transition-colors hover:bg-elevated/60",
+    body: "flex flex-col gap-2 p-5",
+    meta: "order-last mt-3 flex flex-wrap items-center gap-2",
+    date: "text-sm subtitle-colors",
+    title: "title-colors text-lg",
+    description: "subtitle-colors line-clamp-3",
   },
 } as const;
 
@@ -43,6 +47,7 @@ const postYears = computed(() => {
       description: post.description,
       to: post.path,
       tags: post.tags,
+      date: post.date,
     })),
   }));
 });
@@ -80,7 +85,9 @@ useSeoMeta({
             :key="post.to"
             :title="post.title"
             :description="post.description"
+            :date="post.date"
             :to="post.to"
+            variant="subtle"
             :ui="IndexStyle.card"
           >
             <template #badge>
@@ -91,7 +98,7 @@ useSeoMeta({
                   :label="tag"
                   color="primary"
                   variant="soft"
-                  size="lg"
+                  size="sm"
                 />
               </div>
             </template>

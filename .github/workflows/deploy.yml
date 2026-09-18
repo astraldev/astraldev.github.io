@@ -1,0 +1,71 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+# Pages needs these; the build job is happy with the defaults.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One live deploy at a time. In-flight runs finish so a tag push cannot land
+# behind the branch push it followed.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm exec eslint .
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build static site
+        run: pnpm generate
+        env:
+          NUXT_PUBLIC_SITE_URL: https://astraldev.github.io
+          # Lifts the GitHub API rate limit while prerendering project stats.
+          NUXT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+
+  deploy:
+    # Pull requests build only; nothing they push reaches the live site.
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
