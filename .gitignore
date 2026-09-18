@@ -31,6 +31,9 @@ dist-ssr
 .cache
 dist
 
+# Plaintext of the encrypted voice guide (content/TONE.md.gpg is committed)
+content/TONE.md
+
 # Local env files
 .env
 .env.*

@@ -26,6 +26,7 @@
     "@vueuse/nuxt": "14.4.0",
     "animejs": "^4.5.0",
     "better-sqlite3": "^12.11.1",
+    "date-fns": "^4.4.0",
     "eslint": "^10.8.1",
     "nanime": "0.0.11",
     "nuxt": "^4.5.2",

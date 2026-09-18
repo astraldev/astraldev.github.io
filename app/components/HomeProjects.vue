@@ -5,11 +5,11 @@ const ProjectsItem = "home-projects-item";
 
 const ProjectsStyle = {
   section: "min-h-[75vh] py-16",
-  header: `${ProjectsItem} flex flex-wrap items-end justify-between gap-4`,
+  header: `${ProjectsItem} reveal flex flex-wrap items-end justify-between gap-4`,
   heading: "text-3xl font-bold title-colors sm:text-4xl",
   intro: "mt-3 max-w-2xl text-lg subtitle-colors",
   grid: "mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
-  card: ProjectsItem,
+  card: `${ProjectsItem} reveal`,
 } as const;
 
 // The directive deletes `callback` off this object, so it cannot be readonly.
@@ -20,10 +20,6 @@ const RevealOptions = {
 };
 
 const projects = useProjects(3);
-
-useHead({
-  noscript: [{ innerHTML: `<style>.${ProjectsItem} { opacity: 1 !important; }</style>` }],
-});
 
 const reveal = useAnimate(`.${ProjectsItem}`, {
   opacity: [0, 1],
@@ -73,10 +69,3 @@ const reveal = useAnimate(`.${ProjectsItem}`, {
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Start state for the reveal, so SSR doesn't paint it visible first. */
-.home-projects-item {
-  opacity: 0;
-}
-</style>

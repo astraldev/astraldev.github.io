@@ -22,6 +22,9 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: "en" },
       link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      noscript: [{
+        innerHTML: "<style>.reveal, .stagger-pending .stagger-in { opacity: 1 !important; translate: none !important; }</style>",
+      }],
     },
   },
 

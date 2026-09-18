@@ -7,19 +7,15 @@ const HeroItem = "home-hero-item";
 const HeroStyle = {
   section: "relative flex min-h-[calc(100dvh-6rem)] flex-col justify-center py-16",
   grid: "grid gap-12 lg:grid-cols-2 lg:items-center",
-  eyebrow: `${HeroItem} font-semibold text-primary`,
-  title: `${HeroItem} mt-3 text-5xl font-bold text-pretty title-colors sm:text-6xl lg:text-7xl`,
-  caption: `${HeroItem} mt-6 min-h-14 font-mono text-lg subtitle-colors`,
-  actions: `${HeroItem} mt-10 flex flex-wrap items-center gap-3`,
+  eyebrow: `${HeroItem} reveal font-semibold text-primary`,
+  title: `${HeroItem} reveal mt-3 text-5xl font-bold text-pretty title-colors sm:text-6xl lg:text-7xl`,
+  caption: `${HeroItem} reveal mt-6 min-h-14 font-mono text-lg subtitle-colors`,
+  actions: `${HeroItem} reveal mt-10 flex flex-wrap items-center gap-3`,
   cta: {
     trailingIcon: "size-4 opacity-60",
+    base: "py-2.5 px-4"
   },
 } as const;
-
-// Without JS the intro animation never runs, so undo its CSS start state.
-useHead({
-  noscript: [{ innerHTML: `<style>.${HeroItem} { opacity: 1 !important; }</style>` }],
-});
 
 const typedRef = useTemplateRef("typed");
 
@@ -61,15 +57,14 @@ useAnimate(`.${HeroItem}`, {
         <div :class="HeroStyle.actions">
           <UButton
             to="/blog"
-            icon="i-lucide-arrow-right"
-            trailing
+            icon="i-lucide-book-open"
             color="primary"
             variant="solid"
             size="xl"
             :ui="HeroStyle.cta"
             class="text-white"
           >
-            Read the blog
+            Bloggg
           </UButton>
 
           <UButton
@@ -81,17 +76,10 @@ useAnimate(`.${HeroItem}`, {
             size="xl"
             :ui="HeroStyle.cta"
           >
-            See projects
+            What have I built?
           </UButton>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-/* Start state for the intro animation, so SSR doesn't paint it visible first. */
-.home-hero-item {
-  opacity: 0;
-}
-</style>
