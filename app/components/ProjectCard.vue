@@ -3,6 +3,7 @@ type Project = {
   name: string
   description: string
   link: string
+  page?: string
   featured: boolean
   languages: { label: string, icon: string }[]
 };
@@ -21,37 +22,24 @@ const HeaderStyle = {
   arrow: "ml-auto size-4 shrink-0 subtitle-colors transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5",
 } as const;
 
-const FooterStyle = {
-  row: "flex flex-wrap items-center gap-x-4 gap-y-2",
-  stack: "flex flex-wrap items-center gap-2",
-  chip: "flex items-center gap-1.5 text-xs subtitle-colors",
-  chipIcon: "size-3.5",
-  meta: "ml-auto flex items-center gap-3 text-xs subtitle-colors",
-  metaItem: "flex items-center gap-1",
-  metaIcon: "size-3.5",
-} as const;
-
 const props = defineProps<{ project: Project }>();
 
-const { stats, repoPath } = useProjectStats();
+// Projects with their own page stay on the site; the rest go straight to GitHub.
+const cardLink = computed(() => {
+  if (props.project.page) {
+    return { to: props.project.page, arrow: "i-lucide-arrow-right" };
+  }
 
-const projectStats = computed(() => stats.value[repoPath(props.project.link)]);
-
-const updatedLabel = computed(() => {
-  const pushedAt = projectStats.value?.pushedAt;
-  if (!pushedAt) return null;
-
-  return new Intl.DateTimeFormat("en", { month: "short", year: "numeric" })
-    .format(new Date(pushedAt));
+  return { to: props.project.link, target: "_blank", rel: "noopener", arrow: "i-lucide-arrow-up-right" };
 });
 </script>
 
 <template>
   <UPageCard
-    :to="project.link"
+    :to="cardLink.to"
+    :target="cardLink.target"
+    :rel="cardLink.rel"
     :ui="CardStyle"
-    target="_blank"
-    rel="noopener"
   >
     <template #title>
       <span :class="HeaderStyle.row">
@@ -67,7 +55,7 @@ const updatedLabel = computed(() => {
         />
 
         <UIcon
-          name="i-lucide-arrow-up-right"
+          :name="cardLink.arrow"
           :class="HeaderStyle.arrow"
         />
       </span>
@@ -78,49 +66,10 @@ const updatedLabel = computed(() => {
     </template>
 
     <template #footer>
-      <div :class="FooterStyle.row">
-        <ul
-          v-if="project.languages.length"
-          :class="FooterStyle.stack"
-        >
-          <li
-            v-for="tech in project.languages"
-            :key="tech.icon"
-            :class="FooterStyle.chip"
-          >
-            <UIcon
-              :name="tech.icon"
-              :class="FooterStyle.chipIcon"
-            />
-            {{ tech.label }}
-          </li>
-        </ul>
-
-        <div
-          v-if="projectStats"
-          :class="FooterStyle.meta"
-        >
-          <span :class="FooterStyle.metaItem">
-            <UIcon
-              name="i-lucide-star"
-              :class="FooterStyle.metaIcon"
-            />
-            {{ projectStats.stars }}
-          </span>
-
-          <span
-            v-if="updatedLabel"
-            :class="FooterStyle.metaItem"
-            :title="`Last pushed ${updatedLabel}`"
-          >
-            <UIcon
-              name="i-lucide-history"
-              :class="FooterStyle.metaIcon"
-            />
-            {{ updatedLabel }}
-          </span>
-        </div>
-      </div>
+      <ProjectMeta
+        :link="project.link"
+        :languages="project.languages"
+      />
     </template>
   </UPageCard>
 </template>

@@ -5,11 +5,30 @@ const ProjectsStyle = {
     title: "title-colors",
     description: "subtitle-colors",
   },
-  grid: "mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
+  features: "mt-12 grid gap-4 md:grid-cols-2",
+  grid: "mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
   more: "mt-12 flex justify-center",
 } as const;
 
 const projects = useProjects();
+
+const { data: details } = await useAsyncData("project-details", async () => {
+  const pages = await queryCollection("projects")
+    .select("path", "icon", "version", "license")
+    .all();
+
+  return Object.fromEntries(pages.map(page => [page.path, page]));
+}, { default: () => ({}) });
+
+// Projects with their own page get the larger card; the rest stay in the grid.
+const featured = computed(() => projects
+  .filter(project => project.page)
+  .map(project => ({
+    project,
+    details: details.value[project.page ?? ""],
+  })));
+
+const others = computed(() => projects.filter(project => !project.page));
 
 useSeoMeta({
   title: "Projects",
@@ -26,9 +45,18 @@ useSeoMeta({
       :ui="ProjectsStyle.header"
     />
 
+    <div :class="ProjectsStyle.features">
+      <ProjectFeatureCard
+        v-for="item in featured"
+        :key="item.project.name"
+        :project="item.project"
+        :details="item.details"
+      />
+    </div>
+
     <div :class="ProjectsStyle.grid">
       <ProjectCard
-        v-for="project in projects"
+        v-for="project in others"
         :key="project.name"
         :project="project"
       />

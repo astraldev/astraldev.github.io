@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { animate, stagger } from "animejs";
 import Logo from "../assets/astraldev.svg";
+import { socials as socialLinks } from "~/data/data.json";
 
 type NavLink = {
   label: string
@@ -13,7 +14,7 @@ const HeaderStyle = {
   left: "col-start-1 flex items-center justify-self-start",
   logo: "w-24 text-gray-700 dark:text-white",
   back: {
-    base: "gap-2 rounded-none px-3 py-2 hover:text-primary",
+    base: "gap-1.5 px-0 text-sm font-medium subtitle-colors hover:text-primary",
     leadingIcon: "size-4",
   },
   inlineLinks: "col-start-2 hidden items-center gap-6 justify-self-center sm:flex",
@@ -36,13 +37,7 @@ const navLinks: NavLink[] = [
   { label: "Home", to: "/" },
   { label: "Blog", to: "/blog" },
   { label: "Projects", to: "/projects" },
-];
-
-const socialLinks = [
-  { label: "GitHub", to: "https://github.com/astraldev", icon: "i-simple-icons-github" },
-  { label: "Telegram", to: "https://t.me/+2349049821801", icon: "i-simple-icons-telegram" },
-  { label: "Instagram", to: "https://instagram.com/ekureedem_", icon: "i-simple-icons-instagram" },
-  { label: "WhatsApp", to: "https://wa.me/2349049821801", icon: "i-simple-icons-whatsapp" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const route = useRoute();
@@ -88,7 +83,7 @@ watch(open, (isOpen) => {
             :to="back.to"
             icon="i-lucide-arrow-left"
             color="neutral"
-            variant="ghost"
+            variant="link"
             size="md"
             :ui="HeaderStyle.back"
           >

@@ -1,35 +1,25 @@
 <script setup lang="ts">
 import Logo from "../assets/astraldev-footer.svg";
+import { socials as socialLinks } from "~/data/data.json";
 
 type FooterLink = {
   label: string
   to: string
 };
 
-type SocialLink = FooterLink & {
-  icon: string
-};
-
 const siteLinks: FooterLink[] = [
   { label: "Home", to: "/" },
   { label: "Projects", to: "/projects" },
+  { label: "Contact", to: "/contact" },
 ];
 
 // Disabled until the sections they point at exist again on the homepage.
 // { label: "About me", to: "/#about" },
 // { label: "Works", to: "/#works" },
 // { label: "Skills", to: "/#skills" },
-// { label: "Contact", to: "/#contact" },
 
 const writingLinks: FooterLink[] = [
   { label: "All posts", to: "/blog" },
-];
-
-const socialLinks: SocialLink[] = [
-  { label: "GitHub", to: "https://github.com/astraldev", icon: "i-simple-icons-github" },
-  { label: "Telegram", to: "https://t.me/+2349049821801", icon: "i-simple-icons-telegram" },
-  { label: "Instagram", to: "https://instagram.com/ekureedem_", icon: "i-simple-icons-instagram" },
-  { label: "WhatsApp", to: "https://wa.me/2349049821801", icon: "i-simple-icons-whatsapp" },
 ];
 
 const currentYear = useState(() => new Date().getFullYear());

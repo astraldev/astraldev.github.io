@@ -5,6 +5,29 @@
     "I love creating desktop applications for linux.",
     "Frontend and Software developer."
   ],
+  "email": "ekureedem@gmail.com",
+  "socials": [
+    {
+      "label": "GitHub",
+      "to": "https://github.com/astraldev",
+      "icon": "i-simple-icons-github"
+    },
+    {
+      "label": "Telegram",
+      "to": "https://t.me/+2349049821801",
+      "icon": "i-simple-icons-telegram"
+    },
+    {
+      "label": "Instagram",
+      "to": "https://instagram.com/ekureedem_",
+      "icon": "i-simple-icons-instagram"
+    },
+    {
+      "label": "WhatsApp",
+      "to": "https://wa.me/2349049821801",
+      "icon": "i-simple-icons-whatsapp"
+    }
+  ],
   "works": [
     {
       "image": "/images/dualsight.jpg",
@@ -20,8 +43,9 @@
   "projects": [
     {
       "name": "GGate",
-      "description": "A Gtk4 redesign of the classic logic gate simulator (gLogic) application for Linux.",
+      "description": "A logic circuit simulator for Linux. Wire up gates, run the simulation, and watch the signals change. A GTK 4 rebuild of GLogic.",
       "link": "https://github.com/astraldev/GGate",
+      "page": "/projects/ggate",
       "featured": false,
       "languages": [
         {
@@ -33,7 +57,7 @@
     {
       "name": "TicTacToe",
       "link": "https://github.com/astraldev/TicTacToe",
-      "description": "A console (terminal) offline multiplayer tic tac toe game.",
+      "description": "Tic tac toe in your terminal, for two players sharing one keyboard. No internet needed.",
       "featured": false,
       "languages": [
         {
@@ -44,7 +68,7 @@
     },
     {
       "name": "v-calendar",
-      "description": "A fork of v-calendar version 0.9.7 by nathanreyes which is fully compatible with Vue 3. (TS not supported)",
+      "description": "A fork of v-calendar 0.9.7 by nathanreyes, updated to work with Vue 3. No TypeScript support yet.",
       "link": "https://github.com/astraldev/v-calendar",
       "featured": false,
       "languages": [
@@ -55,9 +79,26 @@
       ]
     },
     {
+      "name": "nanime",
+      "description": "A Nuxt module for AnimeJS, with SSR safe composables and cleanup handled for you. It animates this site.",
+      "link": "https://github.com/astraldev/nanime",
+      "featured": false,
+      "languages": [
+        {
+          "label": "TypeScript",
+          "icon": "i-simple-icons-typescript"
+        },
+        {
+          "label": "Nuxt",
+          "icon": "i-simple-icons-nuxtdotjs"
+        }
+      ]
+    },
+    {
       "name": "Pynes",
-      "description": "Classic minesweeper game for Linux.",
+      "description": "The classic minesweeper game for the Linux desktop, with custom board sizes, your own colors, and a leaderboard.",
       "link": "https://github.com/astraldev/pynes",
+      "page": "/projects/pynes",
       "featured": true,
       "languages": [
         {
