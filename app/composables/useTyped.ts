@@ -41,6 +41,7 @@ export function useTyped(
 
   const index = ref(0);
   const isRunning = ref(options.autoPlay ?? true);
+  const reducedMotion = usePreferredReducedMotion();
 
   let queued: ReturnType<typeof setTimeout> | undefined;
 
@@ -59,7 +60,7 @@ export function useTyped(
   }
 
   const animation = useScrambleText(
-    () => (isRunning.value ? unref(target) : null),
+    () => (isRunning.value && reducedMotion.value !== "reduce" ? unref(target) : null),
     () => ({
       // Only the very first phrase waits; later ones are paced by `pauseBetween`.
       delay: index.value === 0 ? opts.initialDelay : 0,
@@ -87,6 +88,15 @@ export function useTyped(
     clearQueued();
     isRunning.value = false;
   }
+
+  // No scramble under reduced motion: show the first phrase as plain text.
+  watchEffect(() => {
+    const el = unref(target);
+    if (el && reducedMotion.value === "reduce") {
+      clearQueued();
+      el.textContent = strings[0] ?? "";
+    }
+  });
 
   tryOnScopeDispose(clearQueued);
 

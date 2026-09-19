@@ -24,7 +24,6 @@ const HeaderStyle = {
 
 const props = defineProps<{ project: Project }>();
 
-// Projects with their own page stay on the site; the rest go straight to GitHub.
 const cardLink = computed(() => {
   if (props.project.page) {
     return { to: props.project.page, arrow: "i-lucide-arrow-right" };

@@ -7,7 +7,6 @@ type GithubRepo = {
 const GITHUB_USER = "astraldev";
 
 /**
- * Star counts and last-push dates, keyed by lowercased `owner/repo`.
  * Cached for an hour so dev reloads don't burn GitHub's 60/hour anonymous limit.
  * A failed fetch throws, and Nitro never caches error responses, so the next request retries.
  */

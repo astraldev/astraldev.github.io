@@ -27,6 +27,10 @@ export default defineNuxtConfig({
       }],
     },
   },
+  css: [
+    "~/assets/css/tailwind.css",
+    "~/assets/css/base.css",
+  ],
 
   site: {
     url: "https://astraldev.github.io",
@@ -34,10 +38,6 @@ export default defineNuxtConfig({
     description: "Frontend and software developer, building for the web and the Linux desktop.",
     defaultLocale: "en",
   },
-  css: [
-    "~/assets/css/tailwind.css",
-    "~/assets/css/base.css",
-  ],
   colorMode: {
     fallback: "dark",
     storage: "cookie",
@@ -67,19 +67,19 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  sitemap: {
-    // Drafts are excluded from the collection query, so nothing extra leaks in.
-    exclude: ["/_nuxt/**"],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
   },
 
   robots: {
     disallow: [],
   },
 
-  eslint: {
-    config: {
-      stylistic: true,
-    },
+  sitemap: {
+    // Drafts are excluded from the collection query, so nothing extra leaks in.
+    exclude: ["/_nuxt/**"],
   },
 
   svgo: {

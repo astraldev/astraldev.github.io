@@ -18,14 +18,13 @@ const { data: details } = await useAsyncData("project-details", async () => {
     .all();
 
   return Object.fromEntries(pages.map(page => [page.path, page]));
-}, { default: () => ({}) });
+});
 
-// Projects with their own page get the larger card; the rest stay in the grid.
 const featured = computed(() => projects
   .filter(project => project.page)
   .map(project => ({
     project,
-    details: details.value[project.page ?? ""],
+    details: details.value?.[project.page ?? ""],
   })));
 
 const others = computed(() => projects.filter(project => !project.page));

@@ -14,6 +14,9 @@ type FollowerBox = {
   height: number
 };
 
+type YearItem = TimelineItem & { slot: "year" };
+type PostItem = TimelineItem & { slot: "post", to: string, tags: string[] };
+
 const IndexStyle = {
   header: "max-w-2xl",
   eyebrow: `${BlogItem} reveal font-semibold text-primary`,
@@ -32,29 +35,32 @@ const IndexStyle = {
     hidden: "opacity-0",
   },
   filter: {
-    root: "mt-10 text-sm subtitle-colors",
+    root: "mt-14 -mb-8 text-sm subtitle-colors",
     tag: "font-semibold text-primary",
     clear: "text-primary decoration-wavy underline-offset-4 hover:underline",
   },
   timeline: {
     root: "mt-14 max-w-2xl",
     item: "gap-4 stagger-in",
-    container: "gap-2",
+    container: "w-4 gap-2",
     separator: "w-px bg-primary/20",
+    wrapper: "-mt-0.5 pb-0",
   },
   year: {
     indicator: "size-4 bg-primary",
-    label: "pb-6 font-mono text-lg/4 font-semibold title-colors",
+    label: "pb-3 font-mono text-lg/4 font-semibold title-colors",
   },
   post: {
-    indicator: "mt-4 size-3 bg-transparent ring-2 ring-inset ring-primary/60",
-    row: "group/post relative -mt-1 mb-6 px-4 py-3",
+    indicator: "mt-2.5 size-3 bg-transparent ring-2 ring-inset ring-primary/60",
+    row: "relative -mt-1 mb-8 px-4 py-3",
     meta: "mb-1 text-sm subtitle-colors",
-    tag: "relative z-10 text-dimmed decoration-wavy decoration-primary underline-offset-4 transition-colors"
-      + " hover:text-primary hover:underline",
-    title: "text-xl font-semibold text-pretty title-colors transition-colors group-hover/post:text-primary",
-    titleLink: "after:absolute after:inset-0",
-    description: "mt-1 line-clamp-4 subtitle-colors",
+    title: "text-xl font-semibold text-pretty title-colors",
+    titleLink: "transition-colors after:absolute after:inset-0 hover:text-primary"
+      + " focus-visible:outline-none focus-visible:after:rounded-xl focus-visible:after:ring-1 focus-visible:after:ring-primary/40",
+    description: "mt-2 subtitle-colors",
+    tags: "relative z-10 mt-3 flex w-fit flex-wrap gap-2",
+    tagLink: "rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+    tag: "transition-colors hover:text-primary",
   },
 } as const;
 
@@ -80,6 +86,7 @@ const { elementX, elementY } = useMouseInElement(area);
 const { data: posts } = await useAsyncData("blog-posts", async () => {
   const all = await queryCollection("blog")
     .select("title", "path", "description", "summary", "date", "tags", "draft")
+    .order("date", "DESC")
     .order("path", "DESC")
     .all();
 
@@ -93,9 +100,9 @@ const { data: posts } = await useAsyncData("blog-posts", async () => {
 const activeTag = computed(() =>
   mounted.value && typeof route.query.tag === "string" ? route.query.tag : null);
 
-const timelineItems = computed<TimelineItem[]>(() => {
+const timelineItems = computed<(YearItem | PostItem)[]>(() => {
   const tag = activeTag.value;
-  const items: TimelineItem[] = [];
+  const items: (YearItem | PostItem)[] = [];
   let currentYear = "";
 
   for (const post of posts.value ?? []) {
@@ -271,21 +278,10 @@ useAnimate(`.${BlogItem}`, {
             :class="IndexStyle.post.row"
           >
             <p
-              v-if="item.date || item.tags.length"
+              v-if="item.date"
               :class="IndexStyle.post.meta"
             >
-              {{ item.date }}<template v-if="item.date && item.tags.length">
-                ·
-              </template>
-              <template
-                v-for="(tag, index) in item.tags"
-                :key="tag"
-              >
-                <NuxtLink
-                  :to="{ query: { tag } }"
-                  :class="IndexStyle.post.tag"
-                >{{ tag }}</NuxtLink>{{ index < item.tags.length - 1 ? ", " : "" }}
-              </template>
+              {{ item.date }}
             </p>
 
             <h3 :class="IndexStyle.post.title">
@@ -303,6 +299,28 @@ useAnimate(`.${BlogItem}`, {
             >
               {{ item.description }}
             </p>
+
+            <ul
+              v-if="item.tags.length"
+              :class="IndexStyle.post.tags"
+            >
+              <li
+                v-for="tag in item.tags"
+                :key="tag"
+              >
+                <NuxtLink
+                  :to="{ query: { tag } }"
+                  :class="IndexStyle.post.tagLink"
+                >
+                  <UBadge
+                    :label="tag"
+                    :color="tag === activeTag ? 'primary' : 'neutral'"
+                    variant="subtle"
+                    :class="IndexStyle.post.tag"
+                  />
+                </NuxtLink>
+              </li>
+            </ul>
           </div>
         </template>
       </UTimeline>

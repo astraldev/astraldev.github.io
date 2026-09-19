@@ -89,6 +89,21 @@ body {
   translate: 0 1.25rem;
 }
 
+/* animejs ignores reduced motion, so pin its targets to their final state. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .menu-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Keep a 1ms transition so the blog list's transitionend still fires. */
+  .stagger-in {
+    transition-duration: 1ms;
+    transition-delay: 0s;
+  }
+}
+
 .text-heading {
   @apply font-bold text-gray-600 dark:text-gray-400;
 }

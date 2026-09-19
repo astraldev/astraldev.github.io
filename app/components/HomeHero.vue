@@ -13,7 +13,7 @@ const HeroStyle = {
   actions: `${HeroItem} reveal mt-10 flex flex-wrap items-center gap-3`,
   cta: {
     trailingIcon: "size-4 opacity-60",
-    base: "py-2.5 px-4"
+    base: "py-2.5 px-4",
   },
 } as const;
 
@@ -48,9 +48,11 @@ useAnimate(`.${HeroItem}`, {
         </h1>
 
         <p :class="HeroStyle.caption">
+          <span class="sr-only">{{ thingsIDo.join(". ") }}</span>
           <span
             v-once
             ref="typed"
+            aria-hidden="true"
           />
         </p>
 
@@ -62,7 +64,6 @@ useAnimate(`.${HeroItem}`, {
             variant="solid"
             size="xl"
             :ui="HeroStyle.cta"
-            class="text-white"
           >
             Bloggg
           </UButton>
