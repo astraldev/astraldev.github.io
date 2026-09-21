@@ -13,8 +13,10 @@ const ProjectStyle = {
 
 const route = useRoute();
 
-const { data: project } = await useAsyncData(route.path, () => {
-  return queryCollection("projects").path(route.path).first();
+const path = computed(() => route.path.replace(/\/+$/, "") || "/");
+
+const { data: project } = await useAsyncData(path.value, () => {
+  return queryCollection("projects").path(path.value).first();
 });
 
 if (!project.value) {

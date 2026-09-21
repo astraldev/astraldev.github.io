@@ -11,8 +11,10 @@ const PostStyle = {
 
 const route = useRoute();
 
-const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection("blog").path(route.path).first();
+const path = computed(() => route.path.replace(/\/+$/, "") || "/");
+
+const { data: page } = await useAsyncData(path.value, () => {
+  return queryCollection("blog").path(path.value).first();
 });
 
 if (!page.value) {
